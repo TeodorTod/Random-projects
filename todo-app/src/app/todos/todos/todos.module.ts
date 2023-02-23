@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { TodosComponent } from './components/todos/todos.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
+import { MainComponent } from './components/main/main.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     TodosComponent,
-    HeaderComponent
+    HeaderComponent,
+    MainComponent
   ],
   imports: [
     RouterModule.forChild(routes)
