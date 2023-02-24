@@ -1,1 +1,3 @@
-<p>main works!</p>
+<ul class="todo-list">
+    <li *ngFor="let todo of visibleTodos$ | async">{{todo.text}}</li>
+</ul>
