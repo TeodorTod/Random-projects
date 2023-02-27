@@ -11,9 +11,11 @@ import { TodoInterface } from '../../types/todo.interface';
 })
 export class MainComponent {
   visibleTodos$: Observable<TodoInterface[]>;
-  noTodoClass$: Observable<boolean>
+  noTodoClass$: Observable<boolean>;
+  isAllTodosSelected$: Observable<boolean>;
 
   constructor(private todosService: TodosService) {
+    this.isAllTodosSelected$ = this.todosService.todos$.pipe(map((todos => todos.every((todo) => todo.isCompleted))))
     this.noTodoClass$ = this.todosService.todos$.pipe(map((todos => todos.length === 0)));
     this.visibleTodos$ = combineLatest(
       this.todosService.todos$,
@@ -27,5 +29,10 @@ export class MainComponent {
       return todos;
       
     }))
+  }
+
+  togleAllTodos(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.todosService.toggleAll(target.checked)
   }
 }
