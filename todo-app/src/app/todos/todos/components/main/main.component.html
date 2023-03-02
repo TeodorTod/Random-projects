@@ -8,6 +8,12 @@
         >
     <label for="toggle-all">Mark all as completed</label>
     <ul class="todo-list">
-        <app-todo *ngFor="let todo of visibleTodos$ | async" [todo]="todo"></app-todo>
+        <app-todo 
+            *ngFor="let todo of visibleTodos$ | async" 
+            [todo]="todo"
+            [isEditing]="editingId === todo.id"
+            (setEiditingId)="setEiditingId($event)"
+            >
+        </app-todo>
     </ul>
 </section>
