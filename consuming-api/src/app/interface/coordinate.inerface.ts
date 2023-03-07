@@ -1,4 +1,4 @@
 export interface Coordinate {
     latitude: number;
-    logitute: number
+    longitude: number
 }
