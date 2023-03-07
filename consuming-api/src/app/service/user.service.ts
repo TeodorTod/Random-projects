@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Response } from '../interface/response.interface';
 import { User } from '../interface/user.interface';
 
@@ -14,12 +14,16 @@ export class UserService {
 
   //fetch users
   getUsers(size: number = 10): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/?results=${size}`)
+    return this.http.get<any>(`${this.apiUrl}/?results=${size}`).pipe(
+      map(response => this.processResponse(response))
+    )
   }
 
   //fetch one user
   getUser(uuid: number = 11): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/?uuid=${uuid}`)
+    return this.http.get<any>(`${this.apiUrl}/?uuid=${uuid}`).pipe(
+      map(response => this.processResponse(response))
+    )
   }
 
   private processResponse(response: Response): Response {
