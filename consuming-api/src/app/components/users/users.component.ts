@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Response } from 'src/app/interface/response.interface';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -7,14 +8,17 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-
+  response: Response
   constructor(private userService: UserService) {
 
   }
 
   ngOnInit(): void {
-    this.userService.getUsers(10).subscribe((res) => {
-      console.log(res)
-    })
+    this.userService.getUsers(15).subscribe((results: any) => {
+      console.log(results)
+      this.response = results;
+    });
+   
+    
   }
 }
