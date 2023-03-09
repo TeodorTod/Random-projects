@@ -24,7 +24,7 @@
                             <h6 class="mb-0">First Name</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            <input  type="text" class="form-control"
+                            <input [disabled]="mode === 'locked'"  type="text" class="form-control"
                                 [value]="response.results[0].firstName">
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                             <h6 class="mb-0">Last Name</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            <input  type="text" class="form-control"
+                            <input [disabled]="mode === 'locked'"  type="text" class="form-control"
                                 [value]="response.results[0].lastName">
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                             <h6 class="mb-0">Date of Birth</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            <input  type="text" class="form-control"
+                            <input [disabled]="mode === 'locked'"  type="text" class="form-control"
                                 value="{{ response.results[0].dateOfBirth | date: 'mediumDate'}}">
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             <h6 class="mb-0">Email</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            <input  type="text" class="form-control" [value]="response.results[0].email">
+                            <input [disabled]="mode === 'locked'"  type="text" class="form-control" [value]="response.results[0].email">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -59,7 +59,7 @@
                             <h6 class="mb-0">Phone</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            <input  type="text" class="form-control" [value]="response.results[0].phone">
+                            <input [disabled]="mode === 'locked'"  type="text" class="form-control" [value]="response.results[0].phone">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -67,7 +67,7 @@
                             <h6 class="mb-0">Gender</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            <input type="text" class="form-control"
+                            <input [disabled]="mode === 'locked'" type="text" class="form-control"
                                 [value]="response.results[0].gender">
                         </div>
                     </div>
@@ -76,14 +76,14 @@
                             <h6 class="mb-0">Address</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            <input type="text" class="form-control"
+                            <input [disabled]="mode === 'locked'" type="text" class="form-control"
                                 [value]="response.results[0].address">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-9 text-secondary">
-                            <button  type="button" class="btn btn-primary px-4"> buttonText
+                            <button (click)="changeMode()" type="button" class="btn btn-primary px-4"> {{buttonText}}
                                 </button>
                         </div>
                     </div>
