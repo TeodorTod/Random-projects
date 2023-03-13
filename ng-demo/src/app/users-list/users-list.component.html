@@ -1,3 +1,10 @@
-<p>users-list works!</p>
-
-<h2 *ngFor="let user of users; let i = index">{{i + 1}}.{{user.name}}</h2>
+<input
+  type="text"
+  (change)="setNewUserName($event.target.value)"
+  [value]="newUserName"
+/>
+<button (click)="addUser()">Add user</button>
+<div *ngFor="let user of users">
+  {{ user.name }} is {{ user.age }} years old
+  <span (click)="removeUser(user.id)">Remove</span>
+</div>
