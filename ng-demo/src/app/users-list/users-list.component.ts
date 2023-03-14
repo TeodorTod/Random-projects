@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserInterface } from '../types/user.interface';
 
 @Component({
   selector: 'app-users-list',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class UsersListComponent {
   newUserName: string = ''
-  users = [
+  users: UserInterface[] = [
     {
       id: '1',
       name: 'Jack',
@@ -36,7 +37,7 @@ export class UsersListComponent {
 
   addUser(): void {
     const uniqueId = Math.random().toString(16)
-    const newUser = {
+    const newUser: UserInterface = {
       id: uniqueId,
       name: this.newUserName,
       age: 30
