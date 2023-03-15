@@ -1,2 +1,2 @@
 <h1>tests</h1>
-<app-users-list></app-users-list>
+<app-users-list [users]="users" (removeUser)="removeUser($event)" (myNewUser)="addUser($event)"></app-users-list>

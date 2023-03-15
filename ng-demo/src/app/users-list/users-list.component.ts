@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserInterface } from '../types/user.interface';
 
 @Component({
@@ -7,42 +7,19 @@ import { UserInterface } from '../types/user.interface';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent {
-  newUserName: string = ''
-  users: UserInterface[] = [
-    {
-      id: '1',
-      name: 'Jack',
-      age: 21
-    },
-    {
-      id: '2',
-      name: 'John',
-      age: 25
-    },
+  @Input() users: UserInterface[];
+  @Output() removeUser = new EventEmitter();
+  @Output() myNewUser = new EventEmitter();
 
-    {
-      id: '3',
-      name: 'Sam',
-      age: 29
-    }
-  ]
-
-  removeUser(id: string): void {
-    this.users = this.users.filter(user => user.id !== id)
-  }
+  newUserName: string = '';
 
   setNewUserName(userName: string): void {
     this.newUserName = userName
-  }
+  };
 
   addUser(): void {
-    const uniqueId = Math.random().toString(16)
-    const newUser: UserInterface = {
-      id: uniqueId,
-      name: this.newUserName,
-      age: 30
-    }
-    this.users.push(newUser)
+    this.myNewUser.emit(this.newUserName);
     this.newUserName = ''
   }
+ 
 }
