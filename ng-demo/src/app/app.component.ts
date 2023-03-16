@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title: string = 'ng-demo';
+  title: string = 'ng-demo1';
   users: UserInterface[] = [];
   constructor (private http: HttpClient) {
 
