@@ -1,6 +1,21 @@
-<h1>Demo test</h1>
+<input type="text" placeholder="Search for a game" [(ngModel)]="searchText">
+
+<h2>Searched text: {{searchText}}</h2>
+
+
+<div #container>
 
 <div *ngFor="let animal of animals; let i = index">
-    <h2>{{i + 1}}.Animal ID: {{animal.id}}</h2>
+    <h2>{{i + 1}}.Animal ID: {{animal.id > 1 ? animal.id : ''}}</h2>
     <img [src]="animal.img" alt="" style="width: 130px; height: 130px;">
 </div>
+
+Total games: {{container.children.length}}
+<br>
+<br>
+
+<button (click)="onClick(container)" >Test</button>
+</div>
+<app-demo [demo]="animals">
+
+</app-demo>
