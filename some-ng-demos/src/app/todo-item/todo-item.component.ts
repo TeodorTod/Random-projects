@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+export interface Todo {
+  title: string,
+  isCompleted: boolean
+}
 
 @Component({
   selector: 'app-todo-item',
@@ -6,5 +11,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./todo-item.component.scss']
 })
 export class TodoItemComponent {
+  @Input() todo!: Todo;
+  @Output() completeStateChange: EventEmitter<Todo> = new EventEmitter;
+
+  handleCompletion(todoState: Todo): void {
+    // todoState.isCompleted = !todoState.isCompleted;
+    this.completeStateChange.emit(todoState);
+  }
 
 }

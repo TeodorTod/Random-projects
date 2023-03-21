@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
+import { Todo } from '../todo-item/todo-item.component';
 
-interface Todo {
-  title: string,
-  isCompleted: boolean
-}
+
 
 @Component({
   selector: 'app-home',
@@ -18,14 +16,16 @@ export class HomeComponent {
     { title: 'Todo 4', isCompleted: true },
   ];
 
-  handleCompletion(todoState: Todo): void {
-    todoState.isCompleted = !todoState.isCompleted;
-  }
 
   markAllTodosCompleted() {
     for (let todo of this.todos) {
       todo.isCompleted = true;
     }
+  }
+
+  handleStateChange(todoItem: Todo): void {
+    todoItem.isCompleted = !todoItem.isCompleted;
+    
   }
 
 }

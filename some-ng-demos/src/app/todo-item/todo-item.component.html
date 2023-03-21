@@ -1,1 +1,7 @@
-<p>todo-item works!</p>
+<span>
+    {{todo.title}}
+</span>
+
+<button (click)="handleCompletion(todo)">
+    {{todo.isCompleted ? 'Mark as not completed' : 'Mark as completed'}}
+</button>
