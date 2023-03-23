@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo-item/todo-item.component';
+import { TodoService } from '../todo.service';
 
 
 
@@ -8,13 +9,28 @@ import { Todo } from '../todo-item/todo-item.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   todos: Todo[] = [
     { title: 'Todo 1', isCompleted: false },
     { title: 'Todo 2', isCompleted: true },
     { title: 'Todo 3', isCompleted: false },
     { title: 'Todo 4', isCompleted: true },
   ];
+
+  message: any;
+
+  constructor(private todoService: TodoService) {
+    
+  }
+
+  onClick(event: any) {
+    console.log(event);
+    this.message = event;
+  }
+
+  ngOnInit(): void {
+    this.todoService.getTodos();
+  }
 
 
   markAllTodosCompleted() {
@@ -25,6 +41,11 @@ export class HomeComponent {
 
   handleStateChange(todoItem: Todo): void {
     todoItem.isCompleted = !todoItem.isCompleted;
+    
+  }
+
+  update(event: Event) {
+    console.log('opa');
     
   }
 
