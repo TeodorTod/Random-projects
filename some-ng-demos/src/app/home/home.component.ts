@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Todo } from '../todo-item/todo-item.component';
 import { TodoService } from '../todo.service';
 
@@ -10,6 +11,12 @@ import { TodoService } from '../todo.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  obs = new Observable((sub: any) => {
+    sub.next('one');
+    sub.next('two');
+    sub.next('three');
+  });
+
   todos: Todo[] = [
     { title: 'Todo 1', isCompleted: false },
     { title: 'Todo 2', isCompleted: true },
@@ -30,6 +37,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoService.getTodos();
+    this.obs.subscribe(res => console.log(res)
+    )
   }
 
 
