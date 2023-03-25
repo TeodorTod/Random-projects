@@ -7,5 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ChildComponent {
   @Input() nameData: any;
+  @Input() markData: any;
+  @Input() objData: any;
 
 }

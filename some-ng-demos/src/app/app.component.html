@@ -6,9 +6,9 @@
         <br>
         <h3>Mark</h3>
         <input type="text" #mark> <br> <br>
-        <button (click)="transferData(name.value)">Submit</button>
+        <button (click)="transferData(name.value, mark.value)">Submit</button>
     </div>
     <div>
-        <app-child [nameData]="inputName"></app-child>
+        <app-child [nameData]="inputName" [markData]="markName" [objData]="inputObj"></app-child>
     </div>
 </div>

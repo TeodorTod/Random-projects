@@ -8,9 +8,19 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 export class AppComponent {
   title = 'some-ng-demos';
   inputName: string = '';
-
-  transferData(name: any) {
-    this.inputName = name;    
+  markName: string = '';
+  inputObj = {
+    name: '',
+    mark: ''
   }
 
+
+  transferData(name: any, mark: any) {
+    this.inputName = name;
+    this.markName = mark;
+    this.inputObj.name = name;
+    this.inputObj.mark = mark;    
+  }
+
+ 
 }
