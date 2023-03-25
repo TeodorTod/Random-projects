@@ -1,1 +1,14 @@
-<app-home></app-home>
+<div class="main">
+    <div>
+        <h1>parent component</h1>
+        <h3>Name</h3>
+        <input type="text" #name>
+        <br>
+        <h3>Mark</h3>
+        <input type="text" #mark> <br> <br>
+        <button (click)="transferData(name.value)">Submit</button>
+    </div>
+    <div>
+        <app-child [nameData]="inputName"></app-child>
+    </div>
+</div>
