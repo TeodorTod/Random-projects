@@ -15,7 +15,8 @@ export class ChildComponent {
     mark: 'pesho'
   }];
 
-  updateList(obj: any): void {
+  updateList(obj: any) {
     this.listArr.push(obj);
+    return obj.name + " is added";
   }
 }

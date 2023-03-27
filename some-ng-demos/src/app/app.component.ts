@@ -16,7 +16,8 @@ export class AppComponent {
   inputObj = {
     name: '',
     mark: ''
-  }
+  };
+  response: any;
 
 
   transferData(name: any, mark: any) {
@@ -24,7 +25,7 @@ export class AppComponent {
     this.markName = mark;
     this.inputObj.name = name;
     this.inputObj.mark = mark;
-    this.viewData.updateList(this.inputObj);  
+    this.response = this.viewData.updateList(this.inputObj);  
   }
 
  

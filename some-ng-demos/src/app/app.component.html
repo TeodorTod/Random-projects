@@ -7,6 +7,7 @@
         <h3>Mark</h3>
         <input type="text" #mark> <br> <br>
         <button (click)="transferData(name.value, mark.value)">Submit</button>
+        <span>{{response}}</span>
     </div>
     <div>
         <app-child [nameData]="inputName" [markData]="markName" [objData]="inputObj"></app-child>
