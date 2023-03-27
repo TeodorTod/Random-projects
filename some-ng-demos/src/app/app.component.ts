@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChildComponent } from './child/child.component';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  @ViewChild(ChildComponent) viewData !:ChildComponent
+
   title = 'some-ng-demos';
   inputName: string = '';
   markName: string = '';
@@ -19,7 +23,8 @@ export class AppComponent {
     this.inputName = name;
     this.markName = mark;
     this.inputObj.name = name;
-    this.inputObj.mark = mark;    
+    this.inputObj.mark = mark;
+    this.viewData.updateList(this.inputObj);  
   }
 
  

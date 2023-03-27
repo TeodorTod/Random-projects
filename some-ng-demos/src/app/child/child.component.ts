@@ -10,4 +10,12 @@ export class ChildComponent {
   @Input() markData: any;
   @Input() objData: any;
 
+  listArr = [{
+    name: "Gosho",
+    mark: 'pesho'
+  }];
+
+  updateList(obj: any): void {
+    this.listArr.push(obj);
+  }
 }
