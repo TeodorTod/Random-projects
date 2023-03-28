@@ -1,15 +1,17 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ChildComponent } from './child/child.component';
+import { MasterService } from './service/master.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   @ViewChild(ChildComponent) viewData !:ChildComponent
 
+  count!: number;
   title = 'some-ng-demos';
   inputName: string = '';
   markName: string = '';
@@ -18,6 +20,20 @@ export class AppComponent {
     mark: ''
   };
   response: any;
+
+  constructor(private masterService: MasterService) {
+
+  }
+
+  ngOnInit(): void {
+    this.masterService.count.subscribe(res => {
+      this.count = res;
+    })
+  }
+
+  nextCount() {
+    this.masterService.nextCount()
+  }
 
 
   transferData(name: any, mark: any) {

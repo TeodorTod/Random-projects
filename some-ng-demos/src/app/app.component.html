@@ -1,6 +1,9 @@
 <div class="main">
     
     <div>
+        <h3>Count from app component: {{count}}</h3>
+        <button (click)="nextCount()">Add from app component</button>
+        <br>
         <h1>App title: {{title}}</h1>
         <br>
         <h1>Parent component</h1>
@@ -14,5 +17,8 @@
     </div>
     <div>
         <app-child [nameData]="inputName" [markData]="markName" [objData]="inputObj" (dataUpdateEvent)="updateTitle($event)"></app-child>
+    </div>
+    <div>
+        <app-second-child></app-second-child>
     </div>
 </div>
