@@ -28,5 +28,8 @@ export class AppComponent {
     this.response = this.viewData.updateList(this.inputObj);  
   }
 
+  updateTitle(title: any) {
+    this.title = title
+  }
  
 }

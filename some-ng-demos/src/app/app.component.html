@@ -1,5 +1,8 @@
 <div class="main">
+    
     <div>
+        <h1>App title: {{title}}</h1>
+        <br>
         <h1>Parent component</h1>
         <h3>Name</h3>
         <input type="text" #name>
@@ -10,6 +13,6 @@
         <span>{{response}}</span>
     </div>
     <div>
-        <app-child [nameData]="inputName" [markData]="markName" [objData]="inputObj"></app-child>
+        <app-child [nameData]="inputName" [markData]="markName" [objData]="inputObj" (dataUpdateEvent)="updateTitle($event)"></app-child>
     </div>
 </div>

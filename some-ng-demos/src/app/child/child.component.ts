@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -10,6 +10,8 @@ export class ChildComponent {
   @Input() markData: any;
   @Input() objData: any;
 
+  @Output() dataUpdateEvent = new EventEmitter<string>();
+
   listArr = [{
     name: "Gosho",
     mark: 'pesho'
@@ -18,5 +20,10 @@ export class ChildComponent {
   updateList(obj: any) {
     this.listArr.push(obj);
     return obj.name + " is added";
+  }
+
+  updateTite(title: any) {
+    this.dataUpdateEvent.emit(title)
+
   }
 }
