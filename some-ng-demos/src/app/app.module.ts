@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { ChildComponent } from './child/child.component';
 import { SecondChildComponent } from './second-child/second-child.component';
+import { CustomerModule } from './customer/customer.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,14 @@ import { SecondChildComponent } from './second-child/second-child.component';
     TodoItemComponent,
     ChildComponent,
     SecondChildComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CustomerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
