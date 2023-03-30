@@ -1,5 +1,5 @@
 <ul>
     <li *ngFor="let customer of customers">
-        {{customer}}
+        <app-customer-list-item [childCustomer]="customer"></app-customer-list-item>
     </li>
 </ul>
