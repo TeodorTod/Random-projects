@@ -7,5 +7,5 @@ import { IUser } from '../customer.service';
   styleUrls: ['./customer-list-item.component.scss']
 })
 export class CustomerListItemComponent {
-  @Input() childCustomer!: IUser
+  @Input() item!: IUser
 }

@@ -43,4 +43,8 @@ export class CustomerService implements OnInit {
     return this.http.get<IUser[]>('https://jsonplaceholder.typicode.com/users')
   }
 
+  $getUsersById(id: string): Observable<IUser> {
+    return this.http.get<IUser>(`https://jsonplaceholder.typicode.com/users/${id}`)
+  }
+
 }

@@ -10,6 +10,9 @@ import { ChildComponent } from './child/child.component';
 import { SecondChildComponent } from './second-child/second-child.component';
 import { CustomerModule } from './customer/customer.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CoreModule } from './core/core.module';
+import { AboutComponent } from './pages/about/about.component';
+import { OurHomeComponent } from './pages/our-home/our-home.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     TodoItemComponent,
     ChildComponent,
     SecondChildComponent,
+    AboutComponent,
+    OurHomeComponent,
     
   ],
   imports: [
@@ -25,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     CustomerModule,
-    HttpClientModule
+    HttpClientModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
