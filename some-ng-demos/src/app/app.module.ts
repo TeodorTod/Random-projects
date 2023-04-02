@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { AboutComponent } from './pages/about/about.component';
 import { OurHomeComponent } from './pages/our-home/our-home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { OurHomeComponent } from './pages/our-home/our-home.component';
     SecondChildComponent,
     AboutComponent,
     OurHomeComponent,
+    NotFoundComponent,
     
   ],
   imports: [
