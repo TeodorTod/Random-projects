@@ -1,0 +1,10 @@
+<p [ngClass]="bigFont == true ? 'big-font' : 'small-font'">directives-demo works!</p>
+<button (click)="changeFont()">changeFont</button>
+
+<p *ngIf="isShown; else loading">
+    Show text
+</p>
+
+<ng-template #loading>Loading</ng-template>
+
+<button (click)="onChange()">Change text</button>
