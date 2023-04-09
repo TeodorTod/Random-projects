@@ -17,8 +17,6 @@ import { TemplatesFormDemoComponent } from './templates-form-demo/templates-form
     DirectivesDemoComponent,
     HighlightComponent,
     TemplatesFormDemoComponent
-
-    
   ],
   imports: [
     BrowserModule,
