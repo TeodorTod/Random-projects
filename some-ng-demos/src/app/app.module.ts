@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DirectivesDemoComponent } from './directives-demo/directives-demo.component';
 import { HighlightComponent } from './highlight/highlight.component';
+import { TemplatesFormDemoComponent } from './templates-form-demo/templates-form-demo.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DirectivesDemoComponent,
-    HighlightComponent
+    HighlightComponent,
+    TemplatesFormDemoComponent
 
     
   ],
