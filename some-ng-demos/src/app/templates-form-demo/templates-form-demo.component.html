@@ -30,7 +30,8 @@
             </select>
         </div>
 
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button (click)="onClear()" type="submit" class="btn btn-success">Clear</button>
+        <button [disabled]="laptopForm.invalid" type="submit" class="btn btn-success">Submit</button>
 
     </form>
 </div>

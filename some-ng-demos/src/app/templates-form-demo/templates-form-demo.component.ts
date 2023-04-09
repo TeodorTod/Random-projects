@@ -26,4 +26,8 @@ export class TemplatesFormDemoComponent implements AfterViewInit{
     console.log(this.laptopForm.value);
   }
 
+  onClear() {
+    this.laptopForm.reset();
+  }
+
 }
