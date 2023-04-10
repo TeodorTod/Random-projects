@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>Laptop Form</h1>
+    <form (ngSubmit)="onSubmit()" [formGroup]="laptopGroup">
+        <div class="form-group">
+            <label for="processor">Proccessor</label>
+            <input type="text" class="form-control" id="processor" required formControlName="processor">
+
+            <ng-container *ngIf="laptopGroup.controls['processor'].touched && laptopGroup.controls['processor'].invalid">
+                <div *ngIf="laptopGroup.controls['processor'].errors?.['required']" class="div-alert-danger">
+                    Processor is reqired!
+                </div>
+                <div *ngIf="laptopGroup.controls['processor'].errors?.['minlength']" class="div-alert-danger">
+                    Processor must be more than 4 characters long!
+                </div>
+            </ng-container>
+        </div>
+        <div class="form-group">
+            <label for="ram">RAM</label>
+            <input type="text" class="form-control" id="ram" required formControlName="ram">
+        </div>
+        <div class="form-group">
+            <label for="hardDisk">Hard Disk (GB)</label>
+            <input type="number" class="form-control" id="hardDisk" formControlName="hardDisc">
+        </div>
+        <div class="form-group">
+            <label for="os">Operating System</label>
+              <select class="form-control" 
+                id="os" 
+                required formControlName="os">
+                  <option *ngFor="let os of operatingSystems" [value]="os">{{os}}</option>
+              </select>
+          </div>
+          
+          <button type="submit" class="btn btn-success">Submit</button>
+          
+    </form>
+</div>
