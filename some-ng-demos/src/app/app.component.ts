@@ -1,15 +1,22 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-
+import { Component, Injectable } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
+  title = 'su-modules-and-routing';
+}
 
-  ngOnInit(): void {
- 
-  }
 
+export abstract class Engine {
+}
+
+@Injectable()
+export class PetrolEngine extends Engine {
+}
+
+@Injectable()
+export class DieselEngine extends Engine {
 }
