@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   templateUrl: './reactive-forms-demo.component.html',
   styleUrls: ['./reactive-forms-demo.component.scss']
 })
-export class ReactiveFormsDemoComponent {
+export class ReactiveFormsDemoComponent implements OnInit{
   operatingSystems: string[] = [
     'Windows 10', 
     'Linux', 
@@ -22,6 +22,13 @@ export class ReactiveFormsDemoComponent {
 
   constructor(private formBuilder: FormBuilder) {
 
+  }
+
+  ngOnInit(): void {
+    this.laptopGroup.valueChanges.subscribe(() => {
+      console.log('form changed');
+      
+    })
   }
 
   onSubmit(): void {
