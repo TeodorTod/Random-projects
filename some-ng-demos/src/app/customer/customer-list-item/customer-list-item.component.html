@@ -1,4 +1,4 @@
 <p>
-    {{item.name}} 
+    {{item.name | uppercase}} 
     <a [routerLink]="['/customer', item.id]"> See Profile</a>
 </p>
