@@ -13,6 +13,9 @@ export class CustomerListItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.item.email = 'new_email@test.com';
+    }, 2000)
   }
 
 }

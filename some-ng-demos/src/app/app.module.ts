@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './pages/login/login.component';
 import { CustomForms } from './custom-forms/custom-forms.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CustomForms } from './custom-forms/custom-forms.module';
     AboutComponent,
     DefaultViewComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,7 @@ import { CustomForms } from './custom-forms/custom-forms.module';
     BrowserAnimationsModule,
     CustomForms,
     CustomerModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

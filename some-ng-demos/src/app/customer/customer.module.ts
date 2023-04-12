@@ -8,6 +8,7 @@ import { CustomerProfilePostsComponent } from './customer-profile-posts/customer
 import { CustomerProfileAlbumsComponent } from './customer-profile-albums/customer-profile-albums.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CustomerRoutingModule } from './customer-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CustomerRoutingModule } from './customer-routing.module';
     CommonModule,
     RouterModule,
     MatProgressSpinnerModule,
-    CustomerRoutingModule
+    CustomerRoutingModule,
+    SharedModule
   ],
   exports: [
     CustomerListComponent
