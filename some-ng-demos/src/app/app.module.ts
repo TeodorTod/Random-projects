@@ -32,7 +32,6 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     BrowserAnimationsModule,
     CustomForms,
-    CustomerModule,
     SharedModule
   ],
   providers: [],
