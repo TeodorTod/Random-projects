@@ -28,6 +28,10 @@
     <span class="error"
         *ngIf="registerForm.get('password')?.hasError('required') && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty || isSubmitted)">This
         field is required</span>
+
+        <select name="" id="" formControlName="roleId">
+            <option *ngFor="let role of roles" [ngValue]="role.id">{{role.title}}</option>
+        </select>
     <div>
         <button class="button" type="submit">Register</button>
     </div>
