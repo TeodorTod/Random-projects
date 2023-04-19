@@ -9,9 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AppComponent {
   reactiveForm = this.formBuilder.group({
-    firstname: [, Validators.required],
-    lastname: [, Validators.email],
-    email: [, Validators.required],
+    personalDetails: this.formBuilder.group({
+      firstname: ['', [Validators.required]],
+      lastname: ['', [Validators.required]],
+      email: ['', [Validators.email]],
+    }),
     country: '',
     gender: '',
     hobbies: ''
@@ -23,7 +25,7 @@ export class AppComponent {
 
   onSubmit() {
     console.log(this.reactiveForm);
-    
+
   }
 
 }
