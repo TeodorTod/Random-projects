@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AppComponent {
   reactiveForm = this.formBuilder.group({
-    firstname: '',
-    lastname: '',
-    email: '',
+    firstname: [, Validators.required],
+    lastname: [, Validators.email],
+    email: [, Validators.required],
     country: '',
     gender: '',
     hobbies: ''
@@ -22,7 +22,7 @@ export class AppComponent {
   }
 
   onSubmit() {
-    console.log(this.reactiveForm.value);
+    console.log(this.reactiveForm);
     
   }
 
