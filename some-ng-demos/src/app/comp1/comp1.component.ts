@@ -15,7 +15,7 @@ export class Comp1Component {
   }
 
   onClick() {
-    this.data.raiseDataEmitter(this.enteredText)
+    this.data.subjEmmit(this.enteredText)
     
   }
 }

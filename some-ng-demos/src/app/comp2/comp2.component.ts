@@ -6,7 +6,7 @@ import { DataService } from '../data.service';
   templateUrl: './comp2.component.html',
   styleUrls: ['./comp2.component.scss']
 })
-export class Comp2Component implements OnInit{
+export class Comp2Component implements OnInit {
   inputText: string = '';
 
   constructor(private data: DataService) {
@@ -14,7 +14,7 @@ export class Comp2Component implements OnInit{
   }
 
   ngOnInit(): void {
-    this.data.dataEmitter.subscribe(res => {
+    this.data.mySubject.subscribe(res => {
       this.inputText = res;
     })
   }
