@@ -53,11 +53,11 @@ export class AppComponent implements OnInit {
     //     alert('Observable has completed!')
     //   })
 
-    this.transformedObs.subscribe({
-      next: (v) => console.log(v),
-      error: (e) => alert(e.message),
-      complete: () => alert('Observable has completed!')
-    })
+    // this.transformedObs.subscribe({
+    //   next: (v) => console.log(v),
+    //   error: (e) => alert(e.message),
+    //   complete: () => alert('Observable has completed!')
+    // })
   }
 
 
