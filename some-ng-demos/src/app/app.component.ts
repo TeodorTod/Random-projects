@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
     return val % 5 == 0
   }));
 
-  counterObservable = interval(10000);
+  counterObservable = interval(1000);
   counterSub: any;
 
 
@@ -70,6 +70,9 @@ export class AppComponent implements OnInit {
   }
 
 
+  unsubscribe() {
+    this.counterSub.unsubscribe();
+  }
 
 
 }
