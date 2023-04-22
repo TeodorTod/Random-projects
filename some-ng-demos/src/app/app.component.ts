@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, filter, find, from, map, of } from 'rxjs';
+import { Observable, filter, find, from, interval, map, of } from 'rxjs';
 import { DataService } from './data.service';
 
 @Component({
@@ -40,6 +40,8 @@ export class AppComponent implements OnInit {
     return val % 5 == 0
   }));
 
+  counterObservable = interval(10000);
+  counterSub: any;
 
 
   constructor(private data: DataService) {
@@ -60,6 +62,11 @@ export class AppComponent implements OnInit {
     //   error: (e) => alert(e.message),
     //   complete: () => alert('Observable has completed!')
     // })
+
+    this.counterSub = this.counterObservable.subscribe((res) => {
+      console.log(res);
+      
+    })
   }
 
 
