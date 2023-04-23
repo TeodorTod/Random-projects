@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { FeaturesModule } from './features/features.module';
 import { SharedModule } from './shared/shared.module';
+import { MaterialModule } from './material.module';
 
 
 
@@ -25,7 +26,8 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     CoreModule,
     FeaturesModule,
-    SharedModule
+    SharedModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

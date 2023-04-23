@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactInfoComponent } from './components/contact-info/contact-info.component';
 import { EducationComponent } from './components/education/education.component';
+import { MaterialModule } from '../material.module';
 
 
 
@@ -11,7 +12,8 @@ import { EducationComponent } from './components/education/education.component';
     EducationComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   exports: [
     ContactInfoComponent,
