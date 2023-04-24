@@ -25,7 +25,6 @@ import { MaterialModule } from './material.module';
     ReactiveFormsModule,
     FormsModule,
     CoreModule,
-    FeaturesModule,
     SharedModule,
     MaterialModule
   ],

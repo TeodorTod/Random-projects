@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EducationComponent } from './components/education/education.component';
 import { ContactInfoComponent } from './components/contact-info/contact-info.component';

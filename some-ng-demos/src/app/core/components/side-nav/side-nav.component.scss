@@ -14,3 +14,28 @@
     width: 224px;
 }
 
+.menus {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    gap: 10px;
+}
+
+.menu {
+    display: flex;
+    padding: 10px 15px;
+    justify-content:space-between;
+    align-items: center;
+    width: 224px;
+}
+
+.logout {
+    display: flex;
+    justify-content:space-between;
+    padding: 10px 15px;
+    width: 224px;
+    position: absolute;
+    bottom: 0;
+}
+
+
