@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EducationComponent } from './components/education/education.component';
+import { ContactInfoComponent } from './components/contact-info/contact-info.component';
 
-const routes: Routes = [
- 
-];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class FeaturesModule { }
+export const FeaturesRoutingModule = RouterModule.forChild([
+  {
+    path: 'education', component: EducationComponent
+  },
+  {
+    path: 'contact-info', component: ContactInfoComponent
+  }
+])
