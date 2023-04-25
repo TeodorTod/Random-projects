@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MaterialModule } from '../material.module';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -13,7 +14,8 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    AppRoutingModule
   ],
   exports: [
     NavbarComponent,
