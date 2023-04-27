@@ -41,4 +41,23 @@
   flex-direction: column;
 }
 
+.our-form {
+  display: flex;
+  gap: 30px
+}
+
+.submit {
+  padding: 20px 0;
+  background-color: #DCB05C;
+  border-radius: 28px;
+  color: white;
+  border: 1px solid #DCB05C
+}
+
+.submit:hover {
+  background-color: #e3ba6f;
+}
+
+
+
 

@@ -5,6 +5,7 @@ import { EducationComponent } from './components/education/education.component';
 import { MaterialModule } from '../material.module';
 import { FeaturesRoutingModule } from './features-routing.module';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MaterialModule,
     FeaturesRoutingModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     ContactInfoComponent,

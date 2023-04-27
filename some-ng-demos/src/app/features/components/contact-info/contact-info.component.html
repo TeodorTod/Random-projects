@@ -3,33 +3,44 @@
     <h3 class="sub-head">Let’s start!</h3>
     <div class="form">
         <img class="image" src="../../../../assets//icons/profile-circle-svgrepo-com.svg" alt="">
-        <div class="first-column">
-            <mat-form-field appearance="fill">
-                <mat-label>Fill form field</mat-label>
-                <input matInput placeholder="Placeholder">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Fill form field</mat-label>
-                <input matInput placeholder="Placeholder">  
-            </mat-form-field>
-            <div class="radio">
-                <span>Are you authorised to work in the UK?</span>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Option 1</mat-radio-button>
-                    <mat-radio-button value="2">Option 2</mat-radio-button>
-                    <mat-radio-button value="3">Option 3</mat-radio-button>
-                </mat-radio-group>
+        <form action="" class="our-form" [formGroup]="contactForm" (submit)="onSubmit()">
+            <div class="first-column">
+                <mat-form-field appearance="fill">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="John" formControlName="firstName">
+                    <mat-error
+                        *ngIf="contactForm.controls['firstName'].errors && contactForm.controls['firstName'].errors['required']">
+                        First Name is required!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Date of birth</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div class="radio">
+                    <span>Are you authorised to work in the UK?</span>
+                    <mat-radio-group aria-label="Select an option" formControlName="fromUK">
+                        <mat-radio-button value="1">Yes</mat-radio-button>
+                        <mat-radio-button value="2">No</mat-radio-button>
+                        <mat-radio-button value="3">Other</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <input type="submit" value="Submit" id="btn" class="submit">
             </div>
-        </div>
-        <div class="second-column">
-            <mat-form-field appearance="fill">
-                <mat-label>Fill form field</mat-label>
-                <input matInput placeholder="Placeholder">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Fill form field</mat-label>
-                <input matInput placeholder="Placeholder">
-            </mat-form-field>
-        </div>
+            <div class="second-column">
+                <mat-form-field appearance="fill">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="Adams" formControlName="lastName">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Phone</mat-label>
+                    <input matInput placeholder="+44 123 123 1231" formControlName="phone">
+                </mat-form-field>
+            </div>
+
+        </form>
     </div>
 </div>
