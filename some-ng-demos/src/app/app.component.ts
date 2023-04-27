@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, filter, find, from, interval, map, of } from 'rxjs';
 
 @Component({
@@ -11,7 +12,7 @@ import { Observable, filter, find, from, interval, map, of } from 'rxjs';
 export class AppComponent implements OnInit {
 
 
-  constructor() {
+  constructor(public router: Router) {
 
   }
 

@@ -1,8 +1,23 @@
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #F4F4F4;
+}
 button {
-    background-color: #ffff;
-    border: none;
+  background-color: #ffff;
+  border: none;
 }
 
+.mat-mdc-text-field-wrapper {
+  border: 1px solid #dcb05c;
+  border-radius: 28px;
+  background-color: white;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: white !important;
+}
