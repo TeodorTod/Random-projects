@@ -6,24 +6,30 @@ import { MaterialModule } from '../material.module';
 import { FeaturesRoutingModule } from './features-routing.module';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 
 
 @NgModule({
   declarations: [
     ContactInfoComponent,
-    EducationComponent
+    EducationComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FeaturesRoutingModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+  
   ],
   exports: [
     ContactInfoComponent,
     EducationComponent,
+    HomeComponent,
+ 
   ]
 })
 export class FeaturesModule { }

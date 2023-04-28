@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module';
 import { FeaturesModule } from './features/features.module';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './material.module';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 
 
@@ -26,7 +27,7 @@ import { MaterialModule } from './material.module';
     FormsModule,
     CoreModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
