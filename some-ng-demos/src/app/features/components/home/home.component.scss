@@ -3,8 +3,54 @@
   width: calc(100vw - 335px);
 }
 
-.line {
-    display: flex;
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.head-text {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  letter-spacing: 0px;
+  color: #31576f;
+  opacity: 1;
+  font-size: 45px;
+}
+
+h3 {
+  font-size: 25px;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+
+.right-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px
+}
+
+.not-find {
+  font-size: 20px;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+
+.btn {
+  border: 5px solid #DCB05C;
+  font-size: 24px;
+  border-radius: 15px;
+  color: #DCB05C
+} 
+
+.btn:hover {
+  color: white;
+  background-color: #DCB05C;
 }
 
 
