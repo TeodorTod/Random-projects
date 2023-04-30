@@ -57,4 +57,72 @@ h3 {
   border-radius: 18px;
 }
 
+.cards {
+  display: flex;
+}
+
+.card {
+  background-image: url('../../../../assets/images/finance.png');
+  background-size: cover;
+  cursor: pointer;
+  width: 274.6px;
+  height: 397.14px;
+  border-radius: 47px;
+}
+
+.card:hover {
+  opacity: 0.8;
+  .plus-el {
+    color: #3B436A;
+    background-color: transparent;
+  }
+  .inner-el {
+    background-color: transparent;
+    span {
+     color: #3B436A;;
+    }
+   }
+}
+
+.inner-el {
+  width: 260px;
+  height: 84px;
+  border-radius: 0px 20px 20px 0px;
+  background-color: #3B436A;
+  position: relative;
+  top: 241px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 1s;
+}
+
+.inner-el span {
+  font-size: 30px;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin-left: 22px;
+}
+
+.plus-el {
+  font-size: 33px;
+  width: 42px;
+  height: 42px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  color: #E7B260;
+}
+
+svg:not(:host).svg-inline--fa, svg:not(:root).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+
+
+
 
