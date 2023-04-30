@@ -11,6 +11,8 @@ import { FeaturesModule } from './features/features.module';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './material.module';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { RouterModule } from '@angular/router';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
@@ -28,8 +30,11 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     CoreModule,
     SharedModule,
     MaterialModule,
+    RouterModule,
+    CarouselModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
@@ -23,6 +24,7 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     FeaturesRoutingModule,
     RouterModule,
     ReactiveFormsModule,
+    CarouselModule
   
   ],
   exports: [

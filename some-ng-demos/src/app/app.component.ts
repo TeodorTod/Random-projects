@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, filter, find, from, interval, map, of } from 'rxjs';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 @Component({
@@ -12,6 +12,33 @@ import { Observable, filter, find, from, interval, map, of } from 'rxjs';
 })
 export class AppComponent implements OnInit {
 
+  
+  limit: number = 10; // <==== Edit this number to limit API results
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: false,
+    pullDrag: false,
+    dots: true,
+    margin: 10,
+    navSpeed: 700,
+    navText: ['Previous', 'Next'],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  };
 
   constructor(public router: Router) {
 
@@ -21,10 +48,5 @@ export class AppComponent implements OnInit {
 
   }
 
-  images = [
-    {path: '../assets/images/Group 974.png'},
-    {path: '../assets/images/Group 976.png'},
-    {path: '../assets/images/Group 982.png'},
-]
 
 }

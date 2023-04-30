@@ -1,3 +1,6 @@
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
 html,
 body {
   height: 100%;
@@ -20,4 +23,13 @@ button {
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: white !important;
+}
+
+.owl-theme .owl-dots .owl-dot span{
+  background-color: #DCB05C;
+  width: 50px;
+}
+
+.owl-theme .owl-dots .owl-dot span:hover {
+  background-color: #DCB05C;
 }
