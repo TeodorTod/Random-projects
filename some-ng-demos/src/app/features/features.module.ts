@@ -5,10 +5,11 @@ import { EducationComponent } from './components/education/education.component';
 import { MaterialModule } from '../material.module';
 import { FeaturesRoutingModule } from './features-routing.module';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { JobSearchComponent } from './components/job-search/job-search.component';
 
 
 
@@ -16,7 +17,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   declarations: [
     ContactInfoComponent,
     EducationComponent,
-    HomeComponent
+    HomeComponent,
+    JobSearchComponent
   ],
   imports: [
     CommonModule,
@@ -24,14 +26,15 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     FeaturesRoutingModule,
     RouterModule,
     ReactiveFormsModule,
-    CarouselModule
+    CarouselModule,
+    FormsModule
   
   ],
   exports: [
     ContactInfoComponent,
     EducationComponent,
     HomeComponent,
- 
+    JobSearchComponent
   ]
 })
 export class FeaturesModule { }
