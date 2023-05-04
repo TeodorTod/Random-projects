@@ -1,23 +1,23 @@
 <p>
     <mat-toolbar>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-            <mat-icon>menu</mat-icon>
-        </button>
         <a routerLink="/">My App</a>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-            <mat-icon>favorite</mat-icon>
-        </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-            <mat-icon>share</mat-icon>
-        </button>
         <div class="menus">
-        <a routerLink="/candidate/home">Home</a>
-        <a routerLink="/candidate/education">Education</a>
-        <a routerLink="/candidate/contact-info">Contact Info</a>
-        <a routerLink="/candidate/contact-info">Work Experience</a>
-        <a routerLink="/candidate/contact-info">Additional info</a>
-        <a routerLink="/candidate/job-search">Job search</a>
-        </div>  
+            <a routerLink="/candidate/home">Home</a>
+            <a routerLink="/candidate/education">Education</a>
+            <a routerLink="/candidate/contact-info">Contact Info</a>
+            <a routerLink="/candidate/contact-info">Work Experience</a>
+            <a routerLink="/candidate/contact-info">Additional info</a>
+            <a routerLink="/candidate/job-search">Job search</a>
+        </div>
+        <div >
+            <button class="demo-section" mat-raised-button matBadge={{badgeCount}} [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()" mat-button [matMenuTriggerFor]="menu">
+                <mat-icon matBadgeColor="warn">home</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Item 1</button>
+                <button mat-menu-item>Item 2</button>
+              </mat-menu>
+        </div>
     </mat-toolbar>
 </p>

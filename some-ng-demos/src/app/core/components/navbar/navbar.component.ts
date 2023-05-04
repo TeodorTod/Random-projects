@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  hidden = false;
+  badgeCount: number = 3;
+
+
+  toggleBadgeVisibility() {
+    this.badgeCount = 0
+  }
 
 }
