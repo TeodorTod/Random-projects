@@ -9,9 +9,17 @@ export class NavbarComponent {
   hidden = false;
   badgeCount: number = 3;
 
+  constructor() {
+    setTimeout(() => {
+      this.badgeCount++
+    }, 5000)
+  }
+
 
   toggleBadgeVisibility() {
     this.badgeCount = 0
   }
+
+
 
 }
