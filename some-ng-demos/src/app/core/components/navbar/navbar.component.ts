@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +10,15 @@ export class NavbarComponent {
   hidden = false;
   badgeCount: number = 3;
 
+
+  
+
+
+
   constructor() {
-    setTimeout(() => {
-      this.badgeCount++
-    }, 5000)
+   setInterval(() => {
+    this.badgeCount++
+   }, 2000)
   }
 
 
