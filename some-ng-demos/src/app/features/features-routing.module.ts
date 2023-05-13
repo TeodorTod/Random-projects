@@ -3,6 +3,7 @@ import { EducationComponent } from './components/education/education.component';
 import { ContactInfoComponent } from './components/contact-info/contact-info.component';
 import { HomeComponent } from './components/home/home.component';
 import { JobSearchComponent } from './components/job-search/job-search.component';
+import { TableComponent } from './components/table/table.component';
 
 
 export const FeaturesRoutingModule = RouterModule.forChild([
@@ -10,4 +11,5 @@ export const FeaturesRoutingModule = RouterModule.forChild([
   { path: 'contact-info', component: ContactInfoComponent },
   { path: 'home', component: HomeComponent },
   { path: 'job-search', component: JobSearchComponent },
+  { path: 'table', component: TableComponent },
 ])

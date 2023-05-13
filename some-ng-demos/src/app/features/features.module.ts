@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { JobSearchComponent } from './components/job-search/job-search.component';
+import { TableComponent } from './components/table/table.component';
 
 
 
@@ -18,7 +19,8 @@ import { JobSearchComponent } from './components/job-search/job-search.component
     ContactInfoComponent,
     EducationComponent,
     HomeComponent,
-    JobSearchComponent
+    JobSearchComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { JobSearchComponent } from './components/job-search/job-search.component
     ContactInfoComponent,
     EducationComponent,
     HomeComponent,
-    JobSearchComponent
+    JobSearchComponent,
+    TableComponent
   ]
 })
 export class FeaturesModule { }
