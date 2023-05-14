@@ -11,7 +11,7 @@ export class NavbarComponent {
   badgeCount: number = 3;
 
 
-  test = interval(2000)
+  test = interval(60000)
   .pipe(takeWhile(() => !this.hidden))
   .subscribe(() => {
     this.badgeCount++
