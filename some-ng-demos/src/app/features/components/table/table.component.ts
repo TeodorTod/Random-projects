@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-table',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class TableComponent {
 
+  handlepageEvent(pageEvent: PageEvent) {
+    console.log(pageEvent);
+    
+  }
 }
