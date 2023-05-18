@@ -4,6 +4,7 @@ import { ContactInfoComponent } from './components/contact-info/contact-info.com
 import { HomeComponent } from './components/home/home.component';
 import { JobSearchComponent } from './components/job-search/job-search.component';
 import { TableComponent } from './components/table/table.component';
+import { YJsComponent } from './components/y-js/y-js.component';
 
 
 export const FeaturesRoutingModule = RouterModule.forChild([
@@ -12,4 +13,5 @@ export const FeaturesRoutingModule = RouterModule.forChild([
   { path: 'home', component: HomeComponent },
   { path: 'job-search', component: JobSearchComponent },
   { path: 'table', component: TableComponent },
+  { path: 'add-info', component: YJsComponent },
 ])
