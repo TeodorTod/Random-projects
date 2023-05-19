@@ -37,7 +37,7 @@ export class YJsComponent implements OnInit {
     // Observe that the changes have merged
     console.log(ymap.toJSON()) // => { keyA: 'valueA', keyB: 'valueB' }
     this.demoForm.valueChanges.subscribe((result: any) => {
-      ymap.set('prop-name', result)
+      ymap.set('prop-name1', result)
       
       
     })
