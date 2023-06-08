@@ -1,4 +1,5 @@
-import { Component, OnInit, computed, effect, signal } from '@angular/core';
+import { Component, OnInit, computed, effect, inject, signal } from '@angular/core';
+import { AppService } from './app.service';
 
 interface UserInterface {
   id: string,
@@ -13,6 +14,7 @@ interface UserInterface {
 export class AppComponent implements OnInit{
   title = signal('');
   users = signal<UserInterface[]>([]);
+  appService = inject(AppService);
 
   usersChangeEffect = effect(() => {
     console.log(this.users().length);
@@ -22,6 +24,8 @@ export class AppComponent implements OnInit{
   usersTotal = computed(() => this.users().length)
 
   ngOnInit(): void {
+    this.appService.showNames();
+    
     setTimeout(() => {
       // this.users.set([{id: '1', name: 'Gosho'}]);
       this.users.update(prevUsers => [...prevUsers, {id: '1', name: 'Gosho'}])
