@@ -1,15 +1,9 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BehaviorSubject, combineLatest, distinctUntilChanged, map } from 'rxjs';
 
-const users = [
-  { id: 1, name: 'Spiderman' },
-  { id: 2, name: 'Hulk' },
-  { id: 3, name: 'Wolverine' },
-  { id: 4, name: 'Cyclops' },
-  { id: 5, name: 'Venom' },
-];
+
 
 @Component({
   selector: 'app-signal',
@@ -21,16 +15,26 @@ const users = [
 
 export class SignalComponent {
 
-  todos = signal([{title: 'Learn signals', done: false}]);
+  search = signal('')
 
-  constructor() {
-    this.todos.mutate(value => {
-      value[0]['title'] = 'Hello'
-    })    
-    console.log(this.todos);
+  users = signal([
+    { id: 1, name: 'Pesho' },
+    { id: 2, name: 'Gosho' },
+  ])
+
+
+  logger = effect(() => {
+    localStorage.setItem('searchString', this.search())
+  })
+  fileredUsers = computed(() => this.users().filter(u => u.name.startsWith(this.search())))
+
+  setSearchString(e: Event) {
+    this.search.set((e.target as HTMLInputElement).value);
+    
   }
 
-// Signals are getter functions - calling them reads their value.
-
+  addUser() {
+    this.users.update(user => [...user, {id: 3, name: 'Misho'}])
+  }
 
 }
