@@ -22,5 +22,6 @@ export class UsersComponent {
   changeName() {
     this.firstName.set('Signal Spider');
     this.lastName.set('Man');
+    this.signalCounter++;
   }
 }
