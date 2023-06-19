@@ -10,18 +10,23 @@ export class UsersComponent {
 
   firstName = signal('Peter');
   lastName = signal('Parker');
+  counter = signal(1);
+  todoList = signal([1, 2, 3, 4, 5,]);
 
   signalCounter = 0;
 
   fullName = computed(() => {
     this.signalCounter++;
-    console.log('signal name change');
     return `${this.firstName()} ${this.lastName()}`;
   });
+
+  isEven = computed(() => this.counter() % 2 == 0)
 
   changeName() {
     this.firstName.set('Signal Spider');
     this.lastName.set('Man');
-    this.signalCounter++;
+    
+    console.log(this.isEven());
+    
   }
 }
