@@ -23,7 +23,7 @@ export class UsersComponent {
   isEven = computed(() => this.counter() % 2 == 0)
 
   changeName() {
-    this.firstName.set('Signal Spiderr');
+    this.firstName.set('Signal Spider');
     this.lastName.set('Man');
     
     console.log(this.isEven());
