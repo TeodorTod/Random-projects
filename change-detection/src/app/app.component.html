@@ -1,1 +1,4 @@
-<h1>test</h1>
+<h2>{{topicName}}</h2>
+<div *ngIf="isVisible"> {{getInfo()}}</div>
+<app-chanel [name]="name"></app-chanel>
+<div> Created at: {{createdDate | date: 'short'}}</div>
