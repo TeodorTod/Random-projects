@@ -7,7 +7,7 @@ import { ChanelComponent } from './chanel/chanel.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, 
     ChanelComponent
   ],
   imports: [

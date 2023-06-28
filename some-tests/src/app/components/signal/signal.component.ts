@@ -1,7 +1,8 @@
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component, computed, effect, signal, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { BehaviorSubject, combineLatest, distinctUntilChanged, map } from 'rxjs';
+import { BehaviorSubject, Subject, combineLatest, distinctUntilChanged, interval, map, of, take, takeUntil } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 
 
@@ -13,9 +14,24 @@ import { BehaviorSubject, combineLatest, distinctUntilChanged, map } from 'rxjs'
 })
 
 
-export class SignalComponent {
+export class SignalComponent implements OnInit, OnDestroy {
 
-  search = signal('')
+  search = signal('');
+  data$ = interval(1000);
+  unsubscribe = new Subject();
+  
+
+  constructor() {
+    
+  }
+
+  ngOnInit(): void {
+    this.data$.pipe(takeUntil(this.unsubscribe)).subscribe((data) => {
+      console.log(data);
+    })
+  }
+
+
 
   users = signal([
     { id: 1, name: 'Pesho' },
@@ -35,6 +51,12 @@ export class SignalComponent {
 
   addUser() {
     this.users.update(user => [...user, {id: 3, name: 'Misho'}])
+  }
+
+  ngOnDestroy(): void {
+    // this.data$.
+    this.unsubscribe.next('');
+    this.unsubscribe.complete();
   }
 
 }

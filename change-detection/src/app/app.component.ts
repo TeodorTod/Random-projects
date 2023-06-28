@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { BehaviorSubject, Subject, interval } from 'rxjs';
 
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   name = 'JS Frontend'
@@ -13,11 +14,10 @@ export class AppComponent {
   topicName = 'Change-detection in Angular';
   isVisible = true;
   createdDate = new Date();
-  counter = 1;
   subject = new BehaviorSubject(0);
   subscription: any;
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor() {
     this.subscription = interval(1000).subscribe(() => {
       const currentValue = this.subject.getValue();
       this.subject.next(currentValue + 1);
@@ -25,9 +25,9 @@ export class AppComponent {
     });
     setTimeout(() => {
       this.subscription.pipe(
-        
+        takeUntilDestroyed()
       )
-    })
+    }, 5000)
   }
 
 
