@@ -51,6 +51,7 @@ export class SignalComponent implements OnInit, OnDestroy {
 
   addUser() {
     this.users.update(user => [...user, {id: 3, name: 'Misho'}])
+    
   }
 
   ngOnDestroy(): void {
