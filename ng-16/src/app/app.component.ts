@@ -31,7 +31,7 @@ export class AppComponent implements OnInit{
       this.users.update(prevUsers => [...prevUsers, {id: '1', name: 'Gosho'}])
       console.log(this.users());
       
-    }, 2000)
+    }, 112000)
   }
 
   changeTitle(event: Event) {

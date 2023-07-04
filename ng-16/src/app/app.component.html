@@ -1,3 +1,7 @@
 <input type="text" [value]="title()" (keyup)="changeTitle($event)">
 {{title()}}
 {{usersTotal()}}
+<br><br>
+<button [routerLink]="'/demo'">Demo</button><br><br>
+<button [routerLink]="'/post'">Post</button>
+<router-outlet></router-outlet>
