@@ -15,13 +15,17 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 })
 export class PostComponent implements OnInit {
   data$ = interval(1000);
-  destroyRef = inject(DestroyRef);
-  // unsubscribe$ = new Subject<void>();
+  // destroyRef = inject(DestroyRef);
+  // unsubscribe = new Subject<void>();
 
-  ngOnInit(): void {
-    this.data$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((data) => {
+  constructor() {
+    this.data$.pipe(takeUntilDestroyed()).subscribe((data) => {
       console.log('data', data);
     });
+  }
+
+  ngOnInit(): void {
+    
   }
   
 
