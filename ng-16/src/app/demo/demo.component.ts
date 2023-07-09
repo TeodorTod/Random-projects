@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { interval } from 'rxjs';
 
 @Component({
@@ -8,25 +8,25 @@ import { interval } from 'rxjs';
 })
 export class DemoComponent {
 
-  quntity = signal(1)
+  quantity = signal(1);
+  qtyAvailable = signal([1, 2, 3, 4, 5, 6]);
+  selectedVehicle = signal({id: 1, name: 'Tora-Bora', price: 20000});
+  vehicles = signal<[]>([]);
+
+  exPrice = computed(() => this.selectedVehicle().price * this.quantity())
+
 
   constructor() {
-    this.quntity.set(2);
-    console.log(this.quntity());
-    this.quntity.update((el) => el * 5);
-    console.log(this.quntity());
-    setTimeout(() => {
-      this.quntity.set(10)
-    }, 5000)
+    this.quantity.update((el) => el * 2)
   }
 
-  price = computed(() => {
-  this.quntity() * 5
-  })
+  qtyEff = effect(() => console.log('latest quntity', this.quantity()))
 
-  showSignal() {
-    console.log(this.quntity());
-    
+  onQuantitySelected(qty: number) {
+    this.quantity.set(qty)
+
+    // this.quantity.set(5);
+    // this.quantity.set(42);
   }
 
 
