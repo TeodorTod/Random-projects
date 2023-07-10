@@ -1,0 +1,12 @@
+<h1>{{counter()}}</h1><br><br>
+<button (click)="increment()">Increment</button>
+<button (click)="reset()">Reset</button>
+<hr>
+<ul >
+    <li *ngFor="let num of numbers()">
+        {{num}}
+    </li>
+</ul>
+<button (click)="mutate()">Mutate</button>
+<br>
+<span>Sum of numbers in arr: {{sumOfNums()}}</span>
