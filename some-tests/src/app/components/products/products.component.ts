@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { concatMap, delay, exhaustMap, from, interval, map, mergeMap, Observable, of, Subscription, switchMap } from 'rxjs';
+import { concatMap, delay, exhaustMap, from, interval, map, mergeMap, Observable, of, Subscription, switchAll, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -13,16 +13,17 @@ export class ProductsComponent implements OnInit {
 
     const food$ = from(food);
     food$.pipe
-      (map((data) => {
+      (switchMap((data) => {
         return this.getData(data)
-      }
-      ))
+      })
+      )
       .subscribe((res) => {
-        res.subscribe((el) => console.log(el))
+        console.log(res);
+        
       })
   }
 
   getData(message: any): Observable<string> {
-    return of(message + 'opaa');
+    return of(message + 'opaa').pipe(delay(1000));
   }
 }

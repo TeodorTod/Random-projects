@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SignalComponent } from './components/signal/signal.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SignalComponent } from './components/signal/signal.component';
     UsersComponent,
     NavbarComponent,
     ProductsComponent,
-    SignalComponent
+    SignalComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
