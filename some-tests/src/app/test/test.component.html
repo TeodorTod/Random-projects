@@ -2,7 +2,7 @@
     <input type="text" formControlName="name">
 </form>
 
-<div *ngFor="let user of users$ | async">
+<div *ngFor="let user of usersSignal()">
     {{user.name}}
     <span (click)="removeUser(user.id)">X</span>
 </div>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, computed, signal } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserInterface } from '../user'
 
@@ -7,21 +7,23 @@ import { UserInterface } from '../user'
 })
 export class UsersService {
 
-  private users$ = new BehaviorSubject<UserInterface[]>([]);
+  // private users$ = new BehaviorSubject<UserInterface[]>([]);
+  private usersSignal = signal<UserInterface[]>([])
 
-  getUsers(): Observable<UserInterface[]> {
-    return this.users$.asObservable();
+  getUsers(): Signal<UserInterface[]> {
+    return computed(this.usersSignal)
   }
 
   addUser(user: UserInterface) {
-    const updatedUsers = [...this.users$.getValue(), user]
-    this.users$.next(updatedUsers);
+    this.usersSignal.update(users => [...users, user])
+    // const updatedUsers = [...this.users$.getValue(), user]
+    // this.users$.next(updatedUsers);
   }
 
   removeUser(userId: string) {
-    const updatedUsers = this.users$
-      .getValue()
-      .filter((user) => user.id !== userId)
-    this.users$.next(updatedUsers);
+    const updatedUsers = this.usersSignal().filter((user) => user.id !== userId);
+    this.usersSignal.set(updatedUsers);
+    // this.users$.next(updatedUsers);
+
   }
 }

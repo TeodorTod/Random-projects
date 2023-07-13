@@ -15,7 +15,8 @@ export class TestComponent {
     name: ''
   })
 
-  users$ = this.usersService.getUsers();
+
+  usersSignal = this.usersService.getUsers();
 
   onUserAdd() {
     const user: UserInterface = {
