@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SignalComponent } from './components/signal/signal.component';
 import { TestComponent } from './test/test.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TestComponent } from './test/test.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule, 
+    RouterModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

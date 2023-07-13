@@ -1,1 +1,8 @@
-<p>test works!</p>
+<form [formGroup]="addForm" (ngSubmit)="onUserAdd()">
+    <input type="text" formControlName="name">
+</form>
+
+<div *ngFor="let user of users$ | async">
+    {{user.name}}
+    <span (click)="removeUser(user.id)">X</span>
+</div>
