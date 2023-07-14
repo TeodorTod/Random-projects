@@ -10,6 +10,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { SignalComponent } from './components/signal/signal.component';
 import { TestComponent } from './test/test.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ExampleComponent } from './components/example/example.component';
+import { HttpClientModule } from  '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     ProductsComponent,
     SignalComponent,
-    TestComponent
+    TestComponent,
+    ExampleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
