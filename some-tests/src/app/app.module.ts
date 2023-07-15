@@ -12,6 +12,7 @@ import { TestComponent } from './test/test.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ExampleComponent } from './components/example/example.component';
 import { HttpClientModule } from  '@angular/common/http';
+import { MapsComponent } from './components/maps/maps.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from  '@angular/common/http';
     ProductsComponent,
     SignalComponent,
     TestComponent,
-    ExampleComponent
+    ExampleComponent,
+    MapsComponent
   ],
   imports: [
     BrowserModule,
