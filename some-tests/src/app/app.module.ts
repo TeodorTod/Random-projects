@@ -9,7 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductsComponent } from './components/products/products.component';
 import { SignalComponent } from './components/signal/signal.component';
 import { TestComponent } from './test/test.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExampleComponent } from './components/example/example.component';
 import { HttpClientModule } from  '@angular/common/http';
 import { MapsComponent } from './components/maps/maps.component';
@@ -31,7 +31,8 @@ import { MapsComponent } from './components/maps/maps.component';
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterLink
+    RouterLink,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
