@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodosComponent } from './todos/todos/todos.component';
+import { TodosComponent } from './todos/todos.component';
 
 @NgModule({
   declarations: [
