@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { TodoInterface } from '../types/todo.interface';
+import { FilterEnum } from '../types/filter.enum';
 const { v4: uuidv4 } = require('uuid');
 
 @Injectable({
@@ -7,6 +8,11 @@ const { v4: uuidv4 } = require('uuid');
 })
 export class TodosService {
   todosSig = signal<TodoInterface[]>([]);
+  filterSignal = signal<FilterEnum>(FilterEnum.all);
+
+  changeFilter(filterName: FilterEnum) {
+    this.filterSignal.set(filterName);
+  }
 
   addTodo(text: string) {
     const newTodo: TodoInterface = {
