@@ -5,6 +5,8 @@ import { MainComponent } from './components/main/main.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { BookService } from './services/book.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material.module';
 
 
 
@@ -16,13 +18,16 @@ import { BookService } from './services/book.service';
     SidenavComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule
   ],
   exports: [
     NavbarComponent,
     MainComponent,
     FooterComponent,
-    SidenavComponent
+    SidenavComponent,
   ],
   providers: [BookService]
 })

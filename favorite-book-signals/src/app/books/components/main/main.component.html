@@ -1,1 +1,29 @@
-<p>main works!</p>
+<section class="container">
+    <form (submit)="submitBook()" [formGroup]="bookForm" class="form-login">
+     
+      <mat-form-field appearance="outline">
+        <mat-label>Author</mat-label>
+        <input matInput formControlName="author" type="text" placeholder="Author">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <div>
+          <input matInput formControlName="name" type="text" placeholder="Name">
+        </div>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Year of writing</mat-label>
+        <div>
+          <input matInput formControlName="yearOfWrite" type="number"  placeholder="Year of writing">
+        </div>
+      </mat-form-field>
+
+
+      <div class="">
+        <button mat-button type="submit" color="primary" [disabled]="bookForm.invalid" class="btn">Add book
+        </button>
+      </div>
+    </form>
+  </section>

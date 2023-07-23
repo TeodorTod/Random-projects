@@ -65,7 +65,6 @@ const globalRippleConfig: RippleGlobalOptions = {
 
 @NgModule({
   declarations: [],
-  imports: [MatIconModule],
   exports: [
     A11yModule,
     ClipboardModule,
