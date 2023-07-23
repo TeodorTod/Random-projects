@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.add-book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 55vw;
+    border: 1px solid #393646;
+    border-radius: 20px;
+    padding: 20px 0;
+    margin: 50px 30px 0 0;
+}
+
+.sidenav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40vw;
+    border: 1px solid #393646;
+    border-radius: 20px;
+    margin-top: 50px;
+}
