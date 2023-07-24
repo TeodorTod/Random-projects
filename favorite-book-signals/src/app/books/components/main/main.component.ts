@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { BookService } from '../../services/book.service';
 
 @Component({
   selector: 'app-main',
@@ -8,11 +9,19 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 })
 export class MainComponent {
   formBuilder = inject(FormBuilder);
+  bookSevice = inject(BookService);
+
+  visibleBooks = computed(() => {
+    const books = this.bookSevice.booksSignal();
+
+    return books;
+  })
   
 
   submitBook() {
-    console.log(this.bookForm.value);
-    
+    const { author, name, yearOfWrite } = this.bookForm.value;
+    this.bookSevice.addBook(author, name, yearOfWrite);
+    this.bookForm.reset();
   }
 
   bookForm = new FormGroup({

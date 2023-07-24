@@ -1,1 +1,9 @@
-<p>sidenav works!</p>
+<section class="container" *ngIf="bookService.booksSignal() != undefined">
+    <div *ngFor="let book of bookService.booksSignal(); let i = index">
+        <div class="single-book">
+            <span>{{i + 1}}. Author: {{book.author}}</span>
+            <span>Book name: {{book.name}}</span>
+            <span>Year of write: {{book.yearOfWrite}}</span>
+        </div>
+    </div>
+</section>

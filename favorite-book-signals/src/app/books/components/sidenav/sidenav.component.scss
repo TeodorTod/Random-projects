@@ -1,0 +1,15 @@
+.container {
+    width: 100%;
+}
+
+.single-book {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+span {
+    font-size: 24px;
+}
