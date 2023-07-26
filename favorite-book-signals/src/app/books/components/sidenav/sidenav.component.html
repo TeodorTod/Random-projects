@@ -1,5 +1,5 @@
 <section class="container" *ngIf="bookService.booksSignal() != undefined">
     <div *ngFor="let book of bookService.booksSignal(); let i = index">
-            <h3>{{i + 1}}. <strong>Author:</strong> {{book.author}};----  <strong>Book name:</strong> {{book.name}};---- <strong>Year of write:</strong> {{book.yearOfWrite}}<mat-icon>done</mat-icon><mat-icon>delete</mat-icon></h3>
+            <h3>{{i + 1}}. <strong>Author:</strong> {{book.author}};----  <strong>Book name:</strong> {{book.name}};---- <strong>Year of write:</strong> {{book.yearOfWrite}}<mat-icon>done</mat-icon><mat-icon (click)="onDelete(book.id)">delete</mat-icon></h3>
     </div>
 </section>

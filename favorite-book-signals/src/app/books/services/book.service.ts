@@ -19,5 +19,9 @@ export class BookService {
     this.booksSignal.update(data => [...data, newBook])
   }
 
+  removeBook(id: any) {
+    this.booksSignal.update(books => books.filter((book) => book.id !== id))
+  }
+
 
 }

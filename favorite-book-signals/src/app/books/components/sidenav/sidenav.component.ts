@@ -12,6 +12,8 @@ import { Subscription } from 'rxjs';
 export class SidenavComponent {
   bookService = inject(BookService);
   
-
+  onDelete(id: any) {
+    this.bookService.removeBook(id);
+  }
  
 }
