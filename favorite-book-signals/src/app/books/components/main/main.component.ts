@@ -11,11 +11,11 @@ export class MainComponent {
   formBuilder = inject(FormBuilder);
   bookSevice = inject(BookService);
 
-  visibleBooks = computed(() => {
-    const books = this.bookSevice.booksSignal();
+  // visibleBooks = computed(() => {
+  //   const books = this.bookSevice.booksSignal();
 
-    return books;
-  })
+  //   return books;
+  // })
   
 
   submitBook() {

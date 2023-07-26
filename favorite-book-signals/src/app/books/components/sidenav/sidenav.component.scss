@@ -2,14 +2,12 @@
     width: 100%;
 }
 
-.single-book {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 20px;
-    padding-top: 20px;
+mat-icon {
+    padding: 0 0 0 10px;
 }
 
-span {
-    font-size: 24px;
+h3 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
