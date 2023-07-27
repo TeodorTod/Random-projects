@@ -7,6 +7,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { BookService } from './services/book.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
+import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
 
 
 
@@ -15,7 +16,8 @@ import { MaterialModule } from '../material.module';
     NavbarComponent,
     MainComponent,
     FooterComponent,
-    SidenavComponent
+    SidenavComponent,
+    EditDialogComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { MaterialModule } from '../material.module';
     MainComponent,
     FooterComponent,
     SidenavComponent,
+    EditDialogComponent
   ],
   providers: [BookService]
 })
