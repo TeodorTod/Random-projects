@@ -23,5 +23,4 @@ export class BookService {
     this.booksSignal.update(books => books.filter((book) => book.id !== id))
   }
 
-
 }

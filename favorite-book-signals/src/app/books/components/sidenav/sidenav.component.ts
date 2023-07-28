@@ -13,17 +13,21 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 })
 export class SidenavComponent {
   bookService = inject(BookService);
-  dialog = inject(MatDialog)
+  dialog = inject(MatDialog);
+
   
   onDelete(id: any) {
     this.bookService.removeBook(id);
   }
 
   openDialog(id: any) {
+    const book = 1
+    
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '640px',
       height: '326px',
       hasBackdrop: true,
+      data: {book}
     });
   }
  
