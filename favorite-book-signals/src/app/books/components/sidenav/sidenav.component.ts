@@ -20,14 +20,14 @@ export class SidenavComponent {
     this.bookService.removeBook(id);
   }
 
-  openDialog(id: any) {
-    const book = 1
+  openDialog(book: any) {
+    const bookFromSignal = book;
     
     const dialogRef = this.dialog.open(EditDialogComponent, {
       width: '640px',
       height: '326px',
       hasBackdrop: true,
-      data: {book}
+      data: {bookFromSignal}
     });
   }
  

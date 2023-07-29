@@ -1,1 +1,27 @@
-<p>edit-dialog works!</p>
+<section class="container">
+    <form (submit)="editBook()" [formGroup]="bookForm" class="form-login">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Author</mat-label>
+            <input matInput formControlName="author" type="text" placeholder="Author" [ngModel]="bookDataToEdit.author">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <div>
+                <input matInput formControlName="name" type="text" placeholder="Name" [ngModel]="bookDataToEdit.name">
+            </div>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Year of writing</mat-label>
+            <div>
+                <input matInput formControlName="yearOfWrite" type="number" placeholder="Year of writing"
+                    [ngModel]="bookDataToEdit.yearOfWrite">
+            </div>
+        </mat-form-field>
+
+        <button mat-button type="submit" color="primary" [disabled]="bookForm.invalid" class="btn">Edit
+        </button>
+    </form>
+</section>

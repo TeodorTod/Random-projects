@@ -22,5 +22,16 @@ export class BookService {
   removeBook(id: any) {
     this.booksSignal.update(books => books.filter((book) => book.id !== id))
   }
+  editBook(id: any, author: any, name: any, yearOfWrite: number) {
+    this.booksSignal.update(data => {
+      return data.map(book => {
+        if (book.id === id) {
+          return { ...book, author, name, yearOfWrite };
+        } else {
+          return book;
+        }
+      });
+    });
+  }
 
 }
