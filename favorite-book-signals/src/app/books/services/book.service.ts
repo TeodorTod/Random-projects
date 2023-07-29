@@ -8,6 +8,7 @@ const { v4: uuidv4 } = require('uuid');
 })
 export class BookService {
   booksSignal = signal<BookI[]>([]);
+  allTimeBooksAdded = signal(0);
 
   addBook(author: any, name: any, yearOfWrite: number) {
     const newBook: BookI = {
@@ -32,6 +33,10 @@ export class BookService {
         }
       });
     });
+  }
+
+  allTimeBooks() {
+    this.allTimeBooksAdded.update(sum => sum += 1);
   }
 
 }
