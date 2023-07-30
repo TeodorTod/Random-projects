@@ -6,6 +6,7 @@ import { SignalComponent } from './components/signal/signal.component';
 import { TestComponent } from './test/test.component';
 import { ExampleComponent } from './components/example/example.component';
 import { MapsComponent } from './components/maps/maps.component';
+import { TerminalComponent } from './components/terminal/terminal.component';
 
 const routes: Routes = [
   { path: 'users', component: UsersComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'test', component: TestComponent },
   { path: 'example', component: ExampleComponent },
   { path: 'maps', component: MapsComponent },
+  { path: 'terminal', component: TerminalComponent },
 ];
 
 @NgModule({

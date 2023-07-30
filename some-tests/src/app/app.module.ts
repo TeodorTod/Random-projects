@@ -11,8 +11,11 @@ import { SignalComponent } from './components/signal/signal.component';
 import { TestComponent } from './test/test.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExampleComponent } from './components/example/example.component';
-import { HttpClientModule } from  '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MapsComponent } from './components/maps/maps.component';
+import { TerminalComponent } from './components/terminal/terminal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CdkDropListGroup, CdkDrag, CdkDropList, CdkDragDrop } from '@angular/cdk/drag-drop'
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { MapsComponent } from './components/maps/maps.component';
     SignalComponent,
     TestComponent,
     ExampleComponent,
-    MapsComponent
+    MapsComponent,
+    TerminalComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,11 @@ import { MapsComponent } from './components/maps/maps.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterLink,
-    FormsModule
+    FormsModule,
+    CdkDropListGroup,
+    BrowserAnimationsModule,
+    CdkDrag,
+    CdkDropList
   ],
   providers: [],
   bootstrap: [AppComponent]

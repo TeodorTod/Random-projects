@@ -1,0 +1,7 @@
+<div cdkDropListGroup class="users-container">
+    <div cdkDropList [cdkDropListData]="users" class="users-list" (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let user of users" cdkDrag class="user">
+            {{user.name}}
+        </div>
+    </div>
+</div>
