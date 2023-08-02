@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'mat-table';
+  registerForm = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]]
+  })
+
+  constructor(private fb: FormBuilder) {
+
+  }
+
+  onSubmit() {
+    console.log(this.registerForm.invalid);
+  }
 }
