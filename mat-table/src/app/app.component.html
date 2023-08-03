@@ -1,34 +1,4 @@
-<form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="field">
-      <label class="label">username</label>
-      <input
-        type="text"
-        class="input"
-        formControlName="username"
-        [class.invalid]=
-        "registerForm.get('username')?.invalid &&
-        (registerForm.get('username')?.dirty || 
-        registerForm.get('username')?.touched)"
-      />
-    </div>
-    <div class="field">
-      <label class="label">email</label>
-      <input
-        type="text"
-        class="input"
-        formControlName="email"
-       >
-    </div>
-    <div class="field">
-      <label class="label">password</label>
-      <input
-        type="text"
-        class="input"
-        formControlName="password"
-      />
-    </div>
-  
-    <div>
-      <button type="submit" class="button">Register</button>
-    </div>
-  </form>
+<label for="name">Name: </label>
+<input id="name" type="text" [formControl]="name">
+<p>Value: {{ name.value }}</p>
+<button type="button" (click)="updateName()">Update Name</button>

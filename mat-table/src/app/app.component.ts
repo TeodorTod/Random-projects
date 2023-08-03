@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms'
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-root',
@@ -7,17 +7,9 @@ import { FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  registerForm = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]]
-  })
+  name = new FormControl('');
 
-  constructor(private fb: FormBuilder) {
-
-  }
-
-  onSubmit() {
-    console.log(this.registerForm.invalid);
+  updateName() {
+    this.name.setValue('Nancy');
   }
 }
