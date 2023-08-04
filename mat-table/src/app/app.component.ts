@@ -7,9 +7,13 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  name = new FormControl('');
+  profileForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+  });
 
-  updateName() {
-    this.name.setValue('Nancy');
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.profileForm.value);
   }
 }
