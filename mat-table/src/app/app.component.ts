@@ -1,4 +1,4 @@
-import { Component, OnInit, Signal, WritableSignal, computed, signal } from '@angular/core';
+import { Component, OnInit, Signal, WritableSignal, computed, effect, signal } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 @Component({
@@ -7,11 +7,12 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  count: WritableSignal<number> = signal(0);
-  doubleCount: Signal<number> = computed(() => this.count() * 2);
-
+  readonly count = signal(0);
   constructor() {
- 
+    // Register a new effect.
+    effect(() => {
+      console.log(`The count is: ${this.count()})`);
+    });
   }
 
 }
