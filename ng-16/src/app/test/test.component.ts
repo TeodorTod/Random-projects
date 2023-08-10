@@ -7,7 +7,7 @@ import { Component, computed, effect, signal } from '@angular/core';
 })
 export class TestComponent {
   counter = signal(0);
-  numbers = signal([1, 2, 3, 4, 5, 6, 7]);
+  numbers = signal([1, 2, 3, 4, 5, 6, 7, 8]);
   sumOfNums = computed(() => 
     this.numbers().reduce((sum, i) => sum+i) 
   )
