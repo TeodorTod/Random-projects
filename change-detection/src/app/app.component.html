@@ -1,5 +1,5 @@
 <h2>{{topicName}}</h2>
 <div *ngIf="isVisible"> {{getInfo()}}</div>
-<button (click)="changeTopic()">Change Topic</button>
+<button (click)="changeTopic()">Change Topic:</button>
 <app-chanel [name]="name"></app-chanel>
 <div> Created at: {{createdDate | date: 'short'}}</div>
