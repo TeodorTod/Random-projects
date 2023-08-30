@@ -17,7 +17,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class SignalComponent implements OnInit, OnDestroy {
 
   search = signal('');
-  data$ = interval(1500);
+  data$ = interval(1000);
   unsubscribe = new Subject();
   
 
