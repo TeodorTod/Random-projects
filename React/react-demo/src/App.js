@@ -4,27 +4,26 @@ import Footer from './Footer';
 import Header from './Header';
 import { useState, useEffect  } from "react";
 import SearchItem from './SearchItem';
+const { v4: uuidv4 } = require('uuid');
 
 
 function App() {
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppingList')));
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppingList')) || []);
   const [newItem, setNewItem] = useState('');
   const [search, setSearch] = useState('');
+  useEffect(() => {
+    localStorage.setItem('shoppingList', JSON.stringify(items))
+  }, [items]);
 
-
-  const setAndSaveItems = (newItems) => {
-    setItems(newItems);
-    localStorage.setItem('shoppingList', JSON.stringify(newItems))
-  }
 
   const onDelete = (id) => {
     const newItems = items.filter((item) => item.id !== id)
-    setAndSaveItems(newItems);
+    setItems(newItems);
   };
 
   const handleCheck = (id) => {
     const newItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
-    setAndSaveItems(newItems);
+    setItems(newItems);
   };
 
   const handleSubmit = (e) => {
@@ -32,13 +31,13 @@ function App() {
     if (!newItem) return;
     // Create a new item object
     const newItemObject = {
-      id: items.length ? items.length + 1 : 1,
+      id: uuidv4(),
       checked: false,
       item: newItem,
     };
     // Update the items state
     const newItems = [...items, newItemObject];
-    setAndSaveItems(newItems);
+    setItems(newItems);
     setNewItem('');
   };
 
