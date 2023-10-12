@@ -4,8 +4,8 @@ import Footer from './Footer';
 import Header from './Header';
 import { useState, useEffect } from "react";
 import SearchItem from './SearchItem';
-const { v4: uuidv4 } = require('uuid');
 import apiRequest from './apiRequest';
+const { v4: uuidv4 } = require('uuid');
 
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
   }, []);
 
   const addItem = async (item) => {
-    const id = items.length ? items[items.length - 1].id + 1 : 1;
+    const id = uuidv4();
     const myNewItem = { id, checked: false, item };
     const listItems = [...items, myNewItem];
     setItems(listItems);
@@ -53,35 +53,44 @@ function App() {
   } 
 
 
-  const onDelete = (id) => {
-    const newItems = items.filter((item) => item.id !== id)
-    setItems(newItems);
-  };
+  const handleDelete = async (id) => {
+    const listItems = items.filter((item) => item.id !== id);
+    setItems(listItems);
 
-  const handleCheck = (id) => {
-    const newItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
-    setItems(newItems);
-  };
+    const deleteOptions = { method: 'DELETE' };
+    const reqUrl = `${API_URL}/${id}`;
+    const result = await apiRequest(reqUrl, deleteOptions);
+    if (result) setFetchError(result);
+  }
+
+  const handleCheck = async (id) => {
+    const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
+    setItems(listItems);
+
+    const myItem = listItems.filter((item) => item.id === id);
+    const updateOptions = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ checked: myItem[0].checked })
+    };
+    const reqUrl = `${API_URL}/${id}`;
+    const result = await apiRequest(reqUrl, updateOptions);
+    if (result) setFetchError(result);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newItem) return;
-    // Create a new item object
-    const newItemObject = {
-      id: uuidv4(),
-      checked: false,
-      item: newItem,
-    };
-    // Update the items state
-    const newItems = [...items, newItemObject];
-    setItems(newItems);
+    addItem(newItem);
     setNewItem('');
-  };
+  }
 
 
   return (
     <div className="App">
-      <Header title="Groceries List" />
+      <Header title="Grocery List" />
       <AddItems
         newItem={newItem}
         setNewItem={setNewItem}
@@ -92,12 +101,12 @@ function App() {
         setSearch={setSearch}
       />
       <main>
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <p>Loading Items...</p>}
         {fetchError && <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>}
         {!fetchError && !isLoading && <Content
-          items={items.filter((item) => ((item.item).toLowerCase()).includes(search.toLowerCase()))}
-          onDelete={onDelete}
+          items={items.filter(item => ((item.item).toLowerCase()).includes(search.toLowerCase()))}
           handleCheck={handleCheck}
+          handleDelete={handleDelete}
         />}
       </main>
       <Footer length={items.length} />

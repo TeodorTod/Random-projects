@@ -1,14 +1,14 @@
 import { FaTrashAlt } from 'react-icons/fa';
 import LineItem from './LineItem';
 
-const ItemList = ({ items, onDelete, handleCheck }) => {
+const ItemList = ({ items, handleDelete, handleCheck }) => {
     return (
         <ul>
             {items.map((item => (
                 <LineItem
                     key={item.id}
                     item={item}
-                    onDelete={onDelete}
+                    handleDelete={handleDelete}
                     handleCheck={handleCheck}
                 />
             )))}

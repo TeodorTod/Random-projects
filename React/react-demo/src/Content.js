@@ -2,14 +2,14 @@ import { useState } from "react";
 
 import ItemList from "./ItemList";
 
-const Content = ({ items, onDelete, handleCheck }) => {
+const Content = ({ items, handleDelete, handleCheck }) => {
 
     return (
         <>
             {items.length ? (
                 <ItemList
                     items={items}
-                    onDelete={onDelete}
+                    handleDelete={handleDelete}
                     handleCheck={handleCheck}
                 />
             ) : (
