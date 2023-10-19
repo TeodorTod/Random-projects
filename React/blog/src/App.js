@@ -22,9 +22,9 @@ function App() {
   const [editTitle, setEditTitle] = useState('');
   const [editBody, setEditBody] = useState('');
   const navigate = useNavigate();
-  const {width} = useWindowSize();
+  const { width } = useWindowSize();
 
-  const {data, fetchError, isLoading} = useAxiosFetch(`http://localhost:3500/posts`);
+  const { data, fetchError, isLoading } = useAxiosFetch(`http://localhost:3500/posts`);
 
   useEffect(() => {
     setPosts(data);
@@ -60,7 +60,7 @@ function App() {
     const updatedPost = { id, title: editTitle, datetime, body: editBody };
     try {
       const response = await api.put(`/posts/${id}`, updatedPost);
-      setPosts(posts.map((post) => post.id === id ? {...response.data} : post));
+      setPosts(posts.map((post) => post.id === id ? { ...response.data } : post));
       setEditTitle('');
       setEditBody('');
       navigate('/');
@@ -81,47 +81,47 @@ function App() {
   }
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout
-        search={search}
-        setSearch={setSearch}
-      />}>
-        <Route index element={<Home
-         posts={searchResults} 
-         fetchError={fetchError}
-         isLoading={isLoading}
-         />} />
-        <Route path="post">
-          <Route index element={<NewPost
-            handleSubmit={handleSubmit}
-            postTitle={postTitle}
-            setPostTitle={setPostTitle}
-            postBody={postBody}
-            setPostBody={setPostBody}
+    <DataProvider>
+      <Routes>
+        <Route path="/" element={<Layout
+        />}>
+          <Route index element={<Home
+            posts={searchResults}
+            fetchError={fetchError}
+            isLoading={isLoading}
           />} />
-          
-          <Route path=":id" element={<PostPage
-            posts={posts}
-            handleDelete={handleDelete}
-          />} />
+          <Route path="post">
+            <Route index element={<NewPost
+              handleSubmit={handleSubmit}
+              postTitle={postTitle}
+              setPostTitle={setPostTitle}
+              postBody={postBody}
+              setPostBody={setPostBody}
+            />} />
+
+            <Route path=":id" element={<PostPage
+              posts={posts}
+              handleDelete={handleDelete}
+            />} />
+          </Route>
+          <Route path="edit/:id">
+            <Route index element={<EditPost
+              handleEdit={handleEdit}
+              editTitle={editTitle}
+              setEditTitle={setEditTitle}
+              editBody={editBody}
+              setEditBody={setEditBody}
+            />} />
+            <Route path=":id" element={<PostPage
+              posts={posts}
+              handleDelete={handleDelete}
+            />} />
+          </Route>
+          <Route path="about" element={<About />} />
+          <Route path="*" element={<Missing />} />
         </Route>
-        <Route path="edit/:id">
-          <Route index element={<EditPost
-            handleEdit={handleEdit}
-            editTitle={editTitle}
-            setEditTitle={setEditTitle}
-            editBody={editBody}
-            setEditBody={setEditBody}
-          />} />
-          <Route path=":id" element={<PostPage
-            posts={posts}
-            handleDelete={handleDelete}
-          />} />
-        </Route>
-        <Route path="about" element={<About />} />
-        <Route path="*" element={<Missing />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </DataProvider>
   );
 }
 
