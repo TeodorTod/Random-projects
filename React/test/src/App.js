@@ -1,21 +1,23 @@
 import { useState } from "react";
-import { ThemeContext } from "./context/ThemeContext";
-import PageContent from "./PageContent";
+import Demo from "./components/Demo";
+import { Context } from "./context"
+import Outside from "./components/Outside";
+
 
 function App() {
-    const [themeValue, setThemeValue] = useState('light');
-
-    const toggleTheme = () => {
-        setThemeValue((prev) => (prev === 'dark' ? 'light' : 'dark'));
-    };
+    const [value, setValue] = useState(1) 
+    const changeValue = () => {
+        setValue(value + 1)
+    }
 
     return (
         <>
-            <ThemeContext.Provider value={{ themeValue, toggleTheme }}>
-                <button onClick={toggleTheme}>Toggle theme value {themeValue}</button>
-                <PageContent />
-            </ThemeContext.Provider>
-        </>
+        <Context.Provider value={value}>
+            <Demo />
+            <button onClick={changeValue}>Change</button>
+        </Context.Provider>
+        <Outside />
+    </>
     );
 }
 
