@@ -1,12 +1,13 @@
+import Counter from "./app/features/counter/Counter";
 
 
 function App() {
- 
+
 
     return (
-        <>
-      sdfsdf
-    </>
+        <main className="App">
+            <Counter />
+        </main>
     );
 }
 
