@@ -29,7 +29,7 @@ const CartContainer = () => {
                 <div className="cart-total">
                     <h4>total <span>${total}</span></h4>
                 </div>
-                <button className="btn clear-btn">clear cart</button>
+                <button className="btn clear-btn">Clear cart</button>
             </footer>
         </section>
     )
