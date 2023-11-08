@@ -14,7 +14,7 @@ export class AppComponent implements AfterViewInit {
 
   public chartLabels: Label[] = ['El1', 'El2', 'El3', 'El4'];
   public chartData: ChartDataSets[] = [{
-    data: [26, 21, 35, 42], label: 'TSLA',
+    data: [26, 21, 35, 43], label: 'TSLA',
     fill: true
   }, 
   // {
