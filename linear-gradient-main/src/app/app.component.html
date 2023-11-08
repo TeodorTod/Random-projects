@@ -1,0 +1,12 @@
+<div class="chart-container">
+  <div class="chart">
+    <canvas #myCanvas baseChart
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [options]="chartOptions"
+            [colors]="chartColors"
+            [legend]="true"
+            chartType="line">
+    </canvas>
+  </div>
+</div>
