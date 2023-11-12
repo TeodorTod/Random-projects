@@ -1,4 +1,15 @@
+
+
 .main-container {
-    max-width: 70vw;
-    max-height: 70vh;
+    display: flex;
+    padding: 20px 30px;
 }
+
+.chart {
+    height: 500px !important;
+    width: 1000px !important; 
+}
+
+
+
+
