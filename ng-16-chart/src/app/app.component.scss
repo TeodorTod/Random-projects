@@ -1,5 +1,3 @@
-
-
 .main-container {
     display: flex;
     padding: 20px 30px;
@@ -7,8 +5,15 @@
 
 .chart {
     height: 500px !important;
-    width: 1000px !important; 
+    width: 1200px !important; 
+    padding-top: 6px;
 }
+
+.aside {
+    width: 30vw;
+}
+
+
 
 
 

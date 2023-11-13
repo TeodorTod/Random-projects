@@ -8,18 +8,22 @@ import { ChartService } from './services/chart.service';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChartComponent,
-    ButtonsComponent
+    ButtonsComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [ChartService],
   bootstrap: [AppComponent]
