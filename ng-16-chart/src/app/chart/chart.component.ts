@@ -22,8 +22,8 @@ export class ChartComponent implements AfterViewInit, OnDestroy {
 
   dayData = [
     [12, 15, 10, 13, 17, 14, 18], 
-    [22, 25, 20, 23, 27, 24, 28], 
-    [32, 35, 30, 33, 37, 34, 38]  
+    [13, 25, 14, 21, 27, 11, 8], 
+    [15, 25, 20, 23, 27, 34, 17]  
   ];
 
   weekData = [
