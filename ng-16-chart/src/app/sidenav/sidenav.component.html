@@ -1,10 +1,10 @@
 <mat-card class="example-card">
     <mat-card-content>
-        <div class="sidenav-content">
-            <h3>Chart Info</h3>
-            <p>Chart Type: {{ chartType }}</p>
-            <p>Highest Data: {{ highestData }}</p>
-            <p>Lowest Data: {{ lowestData }}</p>
-          </div>          
+        <div>
+            <p>Current Time Period: {{ timePeriod }}</p>
+            <p>Data Range: </p>
+            <p>Min - {{ dataRange.min }}</p>
+            <p> Max - {{ dataRange.max }}</p>
+        </div>
     </mat-card-content>
 </mat-card>

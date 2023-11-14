@@ -119,20 +119,35 @@ export class ChartComponent implements AfterViewInit, OnDestroy {
   }
 
   changeTimePeriod(timePeriod: string) {
+    let data: number[][] | undefined;
+    let labels: string[] | undefined;  // Add this line to declare labels
+  
     switch (timePeriod) {
       case 'days':
-        this.updateChartData(this.dayLabels, this.dayData);
+        data = this.dayData;
+        labels = this.dayLabels;  // Assign the correct labels
         break;
       case 'weeks':
-        this.updateChartData(this.weekLabels, this.weekData);
+        data = this.weekData;
+        labels = this.weekLabels; // Assign the correct labels
         break;
       case 'months':
-        this.updateChartData(this.monthLabels, this.monthData);
+        data = this.monthData;
+        labels = this.monthLabels; // Assign the correct labels
         break;
-      default:
-        // Handle default case or throw an error
+      // Handle other cases or default
+    }
+  
+    if (data && labels) {  // Ensure both data and labels are defined
+      this.updateChartData(labels, data);
+      this.chartService.updateChartDataRange(data);
+    } else {
+      console.error(`No data or labels available for time period: ${timePeriod}`);
+      // Handle the undefined case, perhaps by setting a default or showing an error
     }
   }
+  
+  
 
   updateChartData(labels: string[], data: number[][]) {
     this.chart.data.labels = labels;
