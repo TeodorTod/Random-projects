@@ -1,5 +1,7 @@
+<!-- <div *ngFor="let user of usernames$ | async">
+  {{user}}
+</div>  -->
 
-  @switch (title) {
-    @case ('angular17') {<h1>ng17</h1>}
-    @case ('angular18') {<h1>ng18</h1>}
-  }
+<div *ngFor="let user of filteredusers$ | async">
+  {{user.name}}
+</div>
