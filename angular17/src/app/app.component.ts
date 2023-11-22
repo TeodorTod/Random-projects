@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   users = [
     { id: 1, name: 'John', isActive: true },
-    { id: 2, name: 'Pencho', isActive: true },
+    { id: 2, name: 'Penchoo', isActive: true },
     { id: 3, name: 'Stancho', isActive: false },
   ];
 
