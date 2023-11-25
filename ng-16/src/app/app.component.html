@@ -1,8 +1,8 @@
-<input type="text" [value]="title()" (keyup)="changeTitle($event)">
-{{title()}}
-{{usersTotal()}}
-<br><br>
-<button [routerLink]="'/demo'">Demo</button><br><br>
-<button [routerLink]="'/post'">Post</button><br><br>
-<button [routerLink]="'/test'">Test</button><br><br>
+<div>
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
+</div>
+<div>
+    <span (click)="logout()">Logout</span>
+</div>
 <router-outlet></router-outlet>
