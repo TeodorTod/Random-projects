@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "chartjs-demo:build:production"
+              "buildTarget": "chartjs-demo:build:production"
             },
             "development": {
-              "browserTarget": "chartjs-demo:build:development"
+              "buildTarget": "chartjs-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "chartjs-demo:build"
+            "buildTarget": "chartjs-demo:build"
           }
         },
         "test": {
