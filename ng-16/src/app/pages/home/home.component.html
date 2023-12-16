@@ -1,12 +1,12 @@
-<div *ngIf="products$; else loading">
-    <div *ngFor="let product of products$ | async ">
+<!-- <div *ngIf="products$; else loading"> -->
+    <div *ngFor="let product of allProducts ">
       <!-- Render product details here -->
       <h2>{{ product.productName }}</h2>
       <p>Price: {{ product.productPrice }}</p>
       <!-- Other product details -->
       <img [src]="product.productImageUrl" alt="{{ product.productName }}" width="200">
     </div>
-  </div>
-  <ng-template #loading>
+  <!-- </div> -->
+  <!-- <ng-template #loading>
     <p>Loading..</p>
-  </ng-template>
+  </ng-template> -->
