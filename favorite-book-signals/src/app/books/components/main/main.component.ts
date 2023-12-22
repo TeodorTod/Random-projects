@@ -11,14 +11,6 @@ export class MainComponent {
   formBuilder = inject(FormBuilder);
   bookSevice = inject(BookService);
   
-
-  // visibleBooks = computed(() => {
-  //   const books = this.bookSevice.booksSignal();
-
-  //   return books;
-  // })
-  
-
   submitBook() {
     const { author, name, yearOfWrite } = this.bookForm.value;
     this.bookSevice.addBook(author, name, yearOfWrite);
