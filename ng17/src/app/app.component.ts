@@ -10,21 +10,6 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  counter = signal(0);
-  numbers = signal([2, 4, 6])
-  sumOfNumbers = computed(() => this.numbers().map((el) => el * 2))
-
-  increment() {
-    this.counter.update((el) => el + 1)
-  }
-
-  constructor() {
-    effect(() => {
-      if (this.counter() > 10) {
-        alert('Over 10')
-      }
-    })
-  }
 
 
 }
