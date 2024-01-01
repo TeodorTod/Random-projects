@@ -1,1 +1,28 @@
-<h1>oaoao</h1>
+@for(user of users(); track $index) {
+    <div>{{user.name}}</div>
+}
+@empty {
+    <div>We don't have anything!</div>
+}
+
+@if (user.role === 'developer') {
+    <div>I am a developer</div>
+}
+@else {
+    <div>I'm not a developer</div>
+}
+
+@defer () {
+    <div>defer</div>
+}
+@loading (after 100ms; minimum 1000ms) {
+    <div>Loading...</div>
+}
+@placeholder (minimum 1500ms) {
+    <div>Placeholder</div>
+}
+@error {
+    <div>Error</div>
+}
+
+<router-outlet></router-outlet>
