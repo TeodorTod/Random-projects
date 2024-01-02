@@ -1,0 +1,12 @@
+import { Component } from "@angular/core";
+
+@Component({
+    selector: 'mc-register',
+    templateUrl: './register.component.html',
+    standalone: true,
+    imports: []
+})
+
+export class RegisterComponent {
+
+}
