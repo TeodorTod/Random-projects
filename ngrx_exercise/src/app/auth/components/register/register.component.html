@@ -1,3 +1,5 @@
+{{isSubmitting$ | async}}
+=====
 <div class="auth-page">
     <div class="container page">
         <div class="row">
@@ -8,15 +10,18 @@
                 </p>
                 <form [formGroup]="form" (ngSubmit)="onSubmit()">
                     <fieldset class="form-group">
-                        <input type="text" class="form-control form-control-lg" placeholder="Username" formControlName="username">
+                        <input type="text" class="form-control form-control-lg" placeholder="Username"
+                            formControlName="username">
                     </fieldset>
                     <fieldset class="form-group">
-                        <input type="text" class="form-control form-control-lg" placeholder="Email" formControlName="email">
+                        <input type="text" class="form-control form-control-lg" placeholder="Email"
+                            formControlName="email">
                     </fieldset>
                     <fieldset class="form-group">
-                        <input type="password" class="form-control form-control-lg" placeholder="Password" formControlName="password">
+                        <input type="password" class="form-control form-control-lg" placeholder="Password"
+                            formControlName="password">
                     </fieldset>
-                    <button type="submit" class="btn btn-lg btn-primary pull-xs-right">Sign Up</button>
+                    <button type="submit" class="btn btn-lg btn-primary pull-xs-right" [disabled]="isSubmitting$ | async">Sign Up</button>
                 </form>
             </div>
         </div>
