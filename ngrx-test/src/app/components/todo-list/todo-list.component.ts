@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Todo } from 'src/app/models/todo.model';
-import { addTodo, removeTodo, toggleTodo } from 'src/app/store/actions/todo.actions';
+import { addTodo, loadTodos, removeTodo, toggleTodo } from 'src/app/store/actions/todo.actions';
 const { v4: uuidv4 } = require('uuid');
 
 @Component({
@@ -9,7 +9,7 @@ const { v4: uuidv4 } = require('uuid');
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss']
 })
-export class TodoListComponent {
+export class TodoListComponent implements OnInit {
   todos$!: Todo[];
   newTodoTitle = '';
 
@@ -17,6 +17,10 @@ export class TodoListComponent {
     store.select('todos').subscribe((todoState: { todos: Todo[] }) => {
       this.todos$ = todoState.todos;
     })
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(loadTodos({todos: this.todos$}))
   }
 
   addTodo() {
