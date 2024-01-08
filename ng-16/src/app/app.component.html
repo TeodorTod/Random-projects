@@ -1,3 +1,14 @@
-<app-sender></app-sender>
+<!-- <app-sender></app-sender>
 <app-receiver></app-receiver>
-<app-second-receiver></app-second-receiver>
+<app-second-receiver></app-second-receiver> -->
+<div style="text-align: center;">
+  <h1>Welcome</h1>
+  <div>
+    <button (click)="increment()">Increment</button>
+    <button (click)="decrement()">Decrement</button>
+    <button (click)="add()">Add</button>
+    <app-child [myCounter]="counter" [numbers]="numbers">
+      
+    </app-child>
+  </div>
+</div>

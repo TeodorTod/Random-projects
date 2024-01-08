@@ -9,6 +9,7 @@ import { SenderComponent } from './components/sender/sender.component';
 import { ReceiverComponent } from './components/receiver/receiver.component';
 import { SharedDataService } from './services/shared-data.service';
 import { SecondReceiverComponent } from './components/second-receiver/second-receiver.component';
+import { ChildComponent } from './components/child/child.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { SecondReceiverComponent } from './components/second-receiver/second-rec
     SenderComponent,
     ReceiverComponent,
     SecondReceiverComponent,
+    ChildComponent,
 
 
   ],
