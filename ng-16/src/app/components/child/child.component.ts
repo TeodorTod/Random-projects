@@ -1,11 +1,11 @@
-import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { AfterContentInit, Component, DoCheck, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-child',
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.scss']
 })
-export class ChildComponent implements OnChanges, OnInit, DoCheck {
+export class ChildComponent implements OnChanges, OnInit, DoCheck, AfterContentInit {
   @Input() myCounter!: number;
   @Input() numbers!: number[];
   public changeLog: string[] = [];
@@ -28,6 +28,10 @@ export class ChildComponent implements OnChanges, OnInit, DoCheck {
   ngDoCheck(): void {
     console.log('Do check');
     this.changeLog.push(`ngDoCheck ${this.numbers.toString()}`)
+  }
+
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit');
     
   }
 }

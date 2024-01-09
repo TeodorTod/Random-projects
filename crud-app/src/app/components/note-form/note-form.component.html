@@ -1,0 +1,12 @@
+<div class="note-form">
+    <h2>Add New Note</h2>
+    <form [formGroup]="noteForm" (submit)="onSubmit()">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" placeholder="Title" formControlName="title">
+
+        <label for="content">Content</label>
+        <input type="text" name="content" id="content" placeholder="Content" formControlName="content">
+
+        <button type="submit">Add New Note</button>
+    </form>
+</div>
