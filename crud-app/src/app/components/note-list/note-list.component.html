@@ -1,1 +1,8 @@
-<p>note-list works!</p>
+<div class="note-list">
+    <div class="note" *ngFor="let note of notes$ | async">
+        <h2>Title: {{note.title}}</h2>
+        <p>Content: {{note.content}}</p>
+        <button (click)="editNote(note)">Edit note</button>
+        <button (click)="deleteNote(note.id)">Delete</button>
+    </div>
+</div>

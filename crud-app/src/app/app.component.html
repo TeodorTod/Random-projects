@@ -1,5 +1,5 @@
 <div class="app-container">
   <h1>Note taking app</h1>
-  <app-note-form></app-note-form>
-  <app-note-list></app-note-list>
+  <app-note-form [selectedNote]="selectedNote"></app-note-form>
+  <app-note-list (selectedNote)="selectNote($event)"></app-note-list>
 </div>
