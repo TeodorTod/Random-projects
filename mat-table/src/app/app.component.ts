@@ -14,7 +14,7 @@ export class AppComponent {
     this.bhvSubject.subscribe((res) => {
       console.log(res);
     })
-    this.bhvSubject.next('hello')
+    this.bhvSubject.next('hello world')
  }
 
 }
