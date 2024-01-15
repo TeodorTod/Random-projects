@@ -1,6 +1,6 @@
 import { Component, OnInit, Signal, WritableSignal, computed, effect, signal } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
-import { BehaviorSubject, Observable, fromEvent, interval, take, throttleTime } from 'rxjs';
+import { BehaviorSubject, Observable, fromEvent, interval, map, shareReplay, take, tap, throttleTime, } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +8,23 @@ import { BehaviorSubject, Observable, fromEvent, interval, take, throttleTime } 
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  obs = interval(1000).pipe(take(5));
+  currentItem = '123';
+  obs = interval(500)
+    .pipe(
+        take(5),
+        tap(i => console.log("obs value "+ i)),
+        shareReplay()
+    );
+
   constructor() { }
 
   ngOnInit() {
-   this.obs.subscribe((res) => {
-    console.log(res);
-    
-   })
+    this.obs.subscribe(value => console.log("observer 1 received " + value));
+
+    this.obs.subscribe(value => console.log("observer 2 received " + value));
   }
 
-  
+
+
+
 }
