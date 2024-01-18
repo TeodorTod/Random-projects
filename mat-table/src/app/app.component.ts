@@ -9,12 +9,20 @@ import { BehaviorSubject, Observable, fromEvent, interval, map, shareReplay, tak
 })
 export class AppComponent {
   currentItem = '123';
+
   obs = interval(500)
     .pipe(
         take(5),
         tap(i => console.log("obs value "+ i)),
         shareReplay()
     );
+
+    items = ['item1', 'item2', 'item3', 'item4'];
+
+    addItem(newItem: string) {
+      this.items.push(newItem);
+    }
+  
 
   constructor() { }
 

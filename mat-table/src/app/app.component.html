@@ -1,2 +1,6 @@
 <h1>sadsad</h1>
-<app-child [item]="currentItem"></app-child>
+<app-child (newItemEvent)="addItem($event)"></app-child>
+
+<ul>
+    <li *ngFor="let item of items">{{item}}</li>
+</ul>

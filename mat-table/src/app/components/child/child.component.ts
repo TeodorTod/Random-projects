@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -6,5 +6,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./child.component.scss']
 })
 export class ChildComponent {
-  @Input() item = ''
+  @Input() item = '';
+  @Output() newItemEvent = new EventEmitter<string>();
+
+  addNewItem(value: string) {
+    this.newItemEvent.emit(value);
+  }
 }
