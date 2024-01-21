@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, effect, input } from '@angular/core';
 
 @Component({
   selector: 'counter',
@@ -8,6 +8,15 @@ import { Component, Input } from '@angular/core';
   styleUrl: './counter.component.scss'
 })
 export class CounterComponent { 
-    @Input() value!: number;
+ value = input(0, {
+  alias: 'counter',
+  transform: (val: number) => val * 100
+ });
+
+ constructor() {
+
+  effect(() => console.log(`New value change to ${this.value()}`)
+  )
+ }
 
 }
