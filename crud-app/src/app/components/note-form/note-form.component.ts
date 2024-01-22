@@ -44,6 +44,8 @@ export class NoteFormComponent implements OnInit, OnChanges {
       return
     }
     const note: Note = this.noteForm.getRawValue();
+    console.log(note);
+    
     if (this.isEdit) {
       this.noteService.updateNote(note);
       this.noteService.setIsEditTable(false);
