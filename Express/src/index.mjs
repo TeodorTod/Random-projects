@@ -26,12 +26,10 @@ app.get('/api/users', (req, res) => {
     if (!filter || !value) {
         return res.send(mockUsers);
     }
-
     if (filter && value) {
         const filteredUsers = mockUsers.filter((user) => {
             return user[filter].includes(value);
         });
-
         res.send(filteredUsers);
     }
 });
@@ -54,7 +52,6 @@ app.get('/api/users/:id', (req, res) => {
     if (!findUser) {
         return res.sendStatus(404);
     }
-
     return res.send(findUser);
 });
 
