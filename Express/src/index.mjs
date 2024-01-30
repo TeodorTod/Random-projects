@@ -1,33 +1,19 @@
 import express from "express";
 import routes from './routes/index.mjs';
+import cookieParser from "cookie-parser";
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser('helloworld'));
 app.use(routes);
 
 
 const PORT = process.env.PORT || 3000;
 
-app.get(
-    "/",
-    (req, res, next) => {
-        console.log("Base url 1");
-        next();
-    },
-    (req, res, next) => {
-        console.log("Base url 2");
-        next();
-    },
-    (req, res, next) => {
-        console.log("Base url 3");
-        next();
-    },
-    (req, res) => {
-        res.status(201).send({
-            msg: "Hello",
-        });
-    }
-);
+app.get("/", (req, res) => {
+    res.cookie('hello', 'world', {maxAge: 60000 * 60, signed: true});
+    res.send('hello')
+});
 
 
 app.listen(PORT, () => {
