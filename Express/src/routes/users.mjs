@@ -14,8 +14,15 @@ router.get('/api/users', query("filter")
     .isLength({ min: 3, max: 9 })
     .withMessage("Must be between 3 and 9 characters"),
     (req, res) => {
+        console.log(req.session.id);
+        req.sessionStore.get(req.session.id, (err, sessionData) => {
+            if (err) {
+                console.log(err);
+                throw err;
+            }
+            console.log(sessionData);
+        });
         let result = validationResult(req);
-        console.log(result);
         const {
             query: { filter, value },
         } = req;
