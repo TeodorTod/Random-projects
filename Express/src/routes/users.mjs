@@ -2,6 +2,7 @@ import { Router } from "express";
 import { query, validationResult, body } from "express-validator";
 import { mockUsers } from '../utils/constants.mjs';
 import { resolveIndexByUserById } from '../utils/middlewares.mjs'
+import { User } from "../mongoose/schemas/user.mjs";
 
 const router = Router();
 
@@ -38,22 +39,17 @@ router.get('/api/users', query("filter")
     }
 );
 
-router.post(
-    "/api/users",
-    body("username")
-        .notEmpty()
-        .withMessage("Username can not be empty"),
-    (req, res) => {
-        let { body } = req;
-        let result = validationResult(req);
-        console.log(result);
-        let newUser = { id: mockUsers[mockUsers.length - 1].id + 1, ...body };
-        // let updatedUsers = [...mockUsers, newUser]; 
-        // return res.send(updatedUsers);
-        mockUsers.push(newUser);
-        return res.send(mockUsers);
+router.post("/api/users", async (req, res) => {
+    const { body } = req;
+    const newUser = new User(body);
+    try {
+        const savedUser = await newUser.save();
+        return res.status(201).send(savedUser);
+    } catch (error) {
+        console.log(error);
+        return res.sendStatus(400);
     }
-);
+});
 
 router.get("/api/users/:id", resolveIndexByUserById, (req, res) => {
     const { index } = req;
