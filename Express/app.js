@@ -29,6 +29,18 @@ server.on("request", (request, res) => {
       res.write(data);
       res.end();
     });
+  } else if (request.url === "/create-file") {
+    const data = "<h1>This is test file</h1>";
+    fs.writeFile("temp/test.html", data, (err, data) => {
+      if (err) {
+        res.writeHead(500, { "Content-Type": "text/plain" });
+        res.end("Internal Server Error");
+        return;
+      }
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write('file is created');
+      res.end();
+    });
   } else {
     fs.readFile("page/404.html", "utf8", (err, data) => {
       if (err) {
