@@ -1,12 +1,10 @@
 const express = require('express');
 const app = express();
-const PORT = 5000;
+const PORT = 3000;
+const routes = require('./routes/index');
 
-app.get('/', (req, res) => {
-    res.send('hello world')
-  })
-
+app.use(routes);
 
 app.listen(PORT, () => {
-    console.log(`Server is running at port ${PORT}`);
+  console.log(`Server is running at port ${PORT}`);
 })
