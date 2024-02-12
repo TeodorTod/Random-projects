@@ -1,11 +1,12 @@
 const express = require('express');
 const bookRouter = require('./book');
 const router = express.Router();
+const path = require('path');
 
 router.use('/book', bookRouter);
 
 router.get('/', (req, res) => {
-    res.send('hello world')
+    res.render("index", { name: 'Gincho' })
 });
 
 router.all('/*', (req, res) => {
