@@ -1,6 +1,7 @@
 const express = require('express');
 const bookRouter = express.Router();
 const connect = require('../database/db');
+const { ObjectId } = require('mongodb');
 
 bookRouter
     .route('/')
@@ -11,27 +12,44 @@ bookRouter
     })
     .post(async (req, res) => {
         const db = await connect();
-        const data = {
-            title: 'The man of searching for a meaning',
-            author: 'Viktor Frankl'
-        }
-        await db.collection("book").insertOne(data);
-        res.json({ data: "Book is stored" })
+
+        await db.collection("book").insertOne(req.body);
+        res.status(201).json({ data: "Book is stored" })
     });
 
 bookRouter
     .route("/:id")
-    .get((req, res) => {
+    .get(async (req, res) => {
         const { params: { id } } = req;
-        res.send(`The searched book is with id ${id}`)
+        if (!ObjectId.isValid(id)) {
+            return res.status(400).json({ error: 'Invalid ObjectId' });
+        }
+        const db = await connect();
+        const book = await db.collection('book').findOne({ _id: new ObjectId(id) });
+
+        if (!book) {
+            return res.status(404).json({ error: 'Book not found' });
+        }
+
+        res.json(book);
     })
-    .patch((req, res) => {
+    .patch(async (req, res) => {
         const { params: { id } } = req;
+        if (!ObjectId.isValid(id)) {
+            return res.status(400).json({ error: 'Invalid ObjectId' });
+        }
+        const db = await connect();
+        await db.collection('book').updateOne({ _id: new ObjectId(id) }, { $set: req.body });
         res.send(`The searched book is with id ${id} to update`)
     })
-    .delete((req, res) => {
+    .delete(async (req, res) => {
         const { params: { id } } = req;
-        res.send(`The searched book is with id ${id} to delete`)
+        if (!ObjectId.isValid(id)) {
+            return res.status(400).json({ error: 'Invalid ObjectId' });
+        }
+        const db = await connect();
+        await db.collection('book').deleteOne({ _id: new ObjectId(id) }, { $set: req.body });
+        res.status(204).send()
     });
 
 
