@@ -1,25 +1,7 @@
-const { MongoClient } = require('mongodb');
-// or as an es module:
-// import { MongoClient } from 'mongodb'
+const { default: mongoose } = require("mongoose");
 
-// Connection URL
-const url = `mongodb://127.0.0.1:27017`;
-const client = new MongoClient(url);
-
-// Database Name
-const dbName = 'nodejs_express';
-
-
-async function connect() {
-    try {
-        await client.connect();
-        const db = client.db(dbName);
-        return db;
-    } catch (error) {
-        console.error('Connection to MongoDB failed:', error);
-        process.exit(1);
-    }
+async function connectDB() {
+  await mongoose.connect("mongodb://127.0.0.1:27017/nodejs_express");
 }
 
-
-module.exports = connect;
+module.exports = connectDB;
