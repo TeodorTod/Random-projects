@@ -9,7 +9,7 @@ const auth = async (req, res, next) => {
             const decode = await jwt.verify(token, 'fake-secret');
             const user = await User.findOne({ _id: decode.user._id })
             if (!user) {
-                res.status(401).json({ error: 'Unauthorized' });
+                res.status(401).json({ error: 'Unauthorized!' });
                 return;
             }
 
