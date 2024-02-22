@@ -1,15 +1,25 @@
 import { UserInterface } from "../types/user.interface";
+import { UtilsService } from "../utils/util.service";
 import { UsersService } from "./users.service";
 import { TestBed } from '@angular/core/testing';
 
 describe('UserService', () => {
     let userService: UsersService;
+    let utilsService: UtilsService;
+    const utilsServiceMock = {
+        pluck: jest.fn(),
+    };
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [UsersService]
+            providers: [
+                UsersService,
+                //  { provide: UtilsService, useValue: utilsServiceMock }
+                UtilsService
+            ]
         });
 
         userService = TestBed.inject(UsersService);
+        utilsService = TestBed.inject(UtilsService);
     });
 
     it('creates a service', () => {
@@ -33,5 +43,19 @@ describe('UserService', () => {
             userService.removeUser('3');
             expect(userService.users).toEqual([])
         })
+    });
+
+    describe('getUsernames', () => {
+        it('should get usernames', () => {
+            jest.spyOn(utilsService, 'pluck');
+            userService.users = [{ id: '3', name: 'foo' }];
+            userService.getUsernames();
+            expect(utilsService.pluck).toHaveBeenCalledOnceWith(
+                userService.users,
+                'name'
+            )
+            // utilsServiceMock.pluck.mockReturnValue(['foo'])
+            // expect(userService.getUsernames()).toEqual(['foo']);
+        });
     });
 });
