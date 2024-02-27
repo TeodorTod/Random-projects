@@ -20,4 +20,19 @@ describe('FakeService', () => {
     expect(httpClientSpy.get).toHaveBeenCalledTimes(1);
     expect(httpClientSpy.get).toHaveBeenCalledWith(url);
   });
+
+  it('should test getDataV2', () => {
+    const res = 'test res';
+    const url = 'https://jsonplaceholder.typicode.com/todos/1';
+    jest.spyOn(httpClientSpy, 'get').mockReturnValue(of(res));
+    service.getDataV2().subscribe(
+      {
+        next: data => {
+
+        }
+      }
+    );
+    expect(httpClientSpy.get).toHaveBeenCalledTimes(1);
+    expect(httpClientSpy.get).toHaveBeenCalledWith(url);
+  });
 });
