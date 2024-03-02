@@ -4,25 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Box</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 
 <body>
-    <section class="chat_section">
-        <div class="code">
-            <img class="chat-img" src="chat.png" alt="chat">
-            <h1>CHATBOX</h1>
-        </div>
-        <div class="message_area">
+    <div id="chat">
+        <div id="messages">
 
         </div>
-        <div>
-            <textarea id="textarea" cols="30" rows="10" placeholder="Write something..."></textarea>
-        </div>
-    </section>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/client.js"></script>
+        <input type="text" id="input" placeholder="Type your message here...">
+    </div>
 </body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+    const input = document.getElementById('input');
+    const messages = document.getElementById('messages');
+
+    input.addEventListener('keydown', event => {
+        if (event.key === 'Enter' && input.value.trim()) {
+            socket.emit('chat message', input.value);
+            input.value = '';
+        }
+    });
+
+    socket.on('chat message', msg => {
+        const messageElement = document.createElement('div');
+        messageElement.textContent = msg;
+        messages.appendChild(messageElement);
+        messages.scrollTop = messages.scrollHeight;
+    });
+</script>
 
 </html>
