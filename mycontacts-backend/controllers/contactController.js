@@ -1,14 +1,14 @@
+const asyncHandler = require('express-async-handler')
 
-
-const getContacts = (req, res) => {
+const getContacts = asyncHandler(async (req, res) => {
     res.status(200).json({ msg: 'Get all contacts' });
-};
+});
 
-const getContact = (req, res) => {
+const getContact = asyncHandler(async (req, res) => {
     res.status(200).json({msg: `Get contact ${req.params.id}`})
-};
+});
 
-const createContact = (req, res) => {
+const createContact = asyncHandler(async (req, res) => {
     console.log(req.body);
     const {name, email, phone} = req.body;
     if (!name || !email || !phone) {
@@ -16,14 +16,14 @@ const createContact = (req, res) => {
         throw new Error('All fields are required!');
     }
     res.status(200).json({msg: 'Create contact'});
-};
+});
 
-const updateContact = (req, res) => {
+const updateContact = asyncHandler(async (req, res) => {
     res.status(200).json({msg: `Update contact ${req.params.id}`});
-};
+});
 
-const deleteContact = (req, res) => {
+const deleteContact = asyncHandler(async (req, res) => {
     res.status(200).json({msg: `Delete contact for ${req.params.id}`});
-};
+});
 
 module.exports = { getContacts, createContact, getContact, updateContact, deleteContact };
