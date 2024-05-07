@@ -83,20 +83,6 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
-    },
-    {
-      "id": "a4cd",
-      "title": "asdasd",
-      "type": "Internship",
-      "location": "asdasd",
-      "description": "asdasd",
-      "salary": "$80K - 90K",
-      "company": {
-        "name": "yasdyyasd",
-        "description": "asdsadsasd",
-        "contactEmail": "nokian7733@abv.bg",
-        "contactPhone": "0883474455"
-      }
     }
   ]
 }
