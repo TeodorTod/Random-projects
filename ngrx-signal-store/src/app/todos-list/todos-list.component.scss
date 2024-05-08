@@ -1,0 +1,19 @@
+.delete-todo {
+    cursor: pointer;
+}
+
+.list-todo {
+    display: flex;
+    flex-direction: column;
+}
+
+.inside-todos {
+    display: flex;
+    align-items: center;
+}
+
+.sub-header {
+    display: flex;
+    align-items: center !important;
+    justify-content: center;
+}

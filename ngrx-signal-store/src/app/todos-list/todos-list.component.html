@@ -1,0 +1,26 @@
+<h1>All todos</h1>
+<div class="sub-header">
+    <mat-form-field style="padding-top: 20px;" appearance="outline">
+        <mat-label>Enter a TODO and press enter</mat-label>
+        <input matInput type="text" #input>
+        <mat-icon matSuffix>edit</mat-icon>
+    </mat-form-field>
+
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #filter>
+        <mat-button-toggle value="all">All</mat-button-toggle>
+        <mat-button-toggle value="pending">Pending</mat-button-toggle>
+        <mat-button-toggle value="completed">Completed</mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
+<mat-selection-list #shoes class="list-todo">
+    @for (todo of store.todos(); track todo.id; let index = $index) {
+    <div class="inside-todos">
+        <mat-list-option>
+            <div>
+                <span>{{todo.title}}</span>
+            </div>
+        </mat-list-option>
+        <mat-icon class="delete-todo">delete</mat-icon>
+    </div>
+    }
+</mat-selection-list>
