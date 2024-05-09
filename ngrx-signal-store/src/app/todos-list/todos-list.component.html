@@ -2,7 +2,7 @@
 <div class="sub-header">
     <mat-form-field style="padding-top: 20px;" appearance="outline">
         <mat-label>Enter a TODO and press enter</mat-label>
-        <input matInput type="text" #input>
+        <input matInput type="text" #input (keyup.enter)="onAddTodo(input)">
         <mat-icon matSuffix>edit</mat-icon>
     </mat-form-field>
 
@@ -20,7 +20,7 @@
                 <span>{{todo.title}}</span>
             </div>
         </mat-list-option>
-        <mat-icon class="delete-todo">delete</mat-icon>
+        <mat-icon class="delete-todo" (click)="onDelete(todo.id)">delete</mat-icon>
     </div>
     }
 </mat-selection-list>
