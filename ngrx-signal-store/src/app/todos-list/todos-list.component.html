@@ -6,18 +6,18 @@
         <mat-icon matSuffix>edit</mat-icon>
     </mat-form-field>
 
-    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #filter>
+    <mat-button-toggle-group (change)="onFilterTodos($event)" name="fontStyle" aria-label="Font Style" #filter>
         <mat-button-toggle value="all">All</mat-button-toggle>
         <mat-button-toggle value="pending">Pending</mat-button-toggle>
         <mat-button-toggle value="completed">Completed</mat-button-toggle>
     </mat-button-toggle-group>
 </div>
-<mat-selection-list #shoes class="list-todo">
-    @for (todo of store.todos(); track todo.id; let index = $index) {
+<mat-selection-list class="list-todo">
+    @for (todo of store.filteredTodos(); track todo.id; let index = $index) {
     <div class="inside-todos">
-        <mat-list-option>
+        <mat-list-option [selected]="todo.completed" (selectedChange)="onTodoToggled(todo.id, $event)">
             <div>
-                <span>{{todo.title}}</span>
+                <span [ngStyle]="{'text-decoration': todo.completed ? 'line-through' : ''}">{{todo.title}}</span>
             </div>
         </mat-list-option>
         <mat-icon class="delete-todo" (click)="onDelete(todo.id)">delete</mat-icon>

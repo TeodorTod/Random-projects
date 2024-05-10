@@ -23,8 +23,11 @@ export class TodoService {
     };
 
     async deleteTodo(id: string) {
-        await sleep(500);
-        
+        await sleep(500); 
+    }
+
+    async updateTodo(id: string, completed: boolean) {
+        await sleep(500); 
     }
 }
 
