@@ -17,7 +17,7 @@ interface UserInterface {
 })
 export class AppComponent {
   users = signal<UserInterface[]>([
-    {id: '1', name: 'foo', role: 'developer1'},
+    {id: '1', name: 'foo', role: 'developer'},
     {id: '2', name: 'bar', role: 'admin'},
     {id: '3', name: 'baz', role: 'qa'},
   ])
