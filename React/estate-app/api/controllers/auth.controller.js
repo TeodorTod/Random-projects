@@ -51,11 +51,13 @@ export const login = async (req, res) => {
             expiresIn: age
         });
 
+        const { password: userPassword, ...userInfo } = user;
+
         res.cookie("token", token, {
             httpOnly: true,
             // secure: true,
             maxAge: age
-        }).status(200).json({ message: "Login successful!" })
+        }).status(200).json(userInfo)
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Failed to login!" })
@@ -63,5 +65,5 @@ export const login = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-    res.clearCookie("token").status(200).json({message: "Logout successfull"});
+    res.clearCookie("token").status(200).json({ message: "Logout successfull" });
 }
