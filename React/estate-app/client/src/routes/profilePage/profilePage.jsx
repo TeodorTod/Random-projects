@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
+
 function ProfilePage() {
   const { updateUser, currentUser } = useContext(AuthContext);
 
@@ -48,7 +49,9 @@ function ProfilePage() {
           </div>
           <div className="title">
             <h1>My List</h1>
-            <button>Create New Post</button>
+            <Link to="/add">
+              <button>Create New Post</button>
+            </Link>
           </div>
           <List />
           <div className="title">
