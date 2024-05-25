@@ -27,7 +27,7 @@ model Post {
   id         String      @id @default(auto()) @map("_id") @db.ObjectId
   title      String
   price      Int
-  images    String[]
+  images     String[]
   address    String
   city       String
   bedroom    Int
@@ -67,3 +67,4 @@ model PostDetail {
   post       Post    @relation(fields: [postId], references: [id])
   postId     String  @unique @db.ObjectId
 }
+
