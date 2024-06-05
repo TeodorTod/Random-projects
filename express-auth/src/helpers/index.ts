@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-const SECRET = 'ANTONIO-REST-API';
+const SECRET = 'ANTONIO-REST-APII';
 
 export const authentication = (salt: string, password: string): string => {
   return crypto.createHmac('sha256', [salt, password].join('/')).update(SECRET).digest('hex');
