@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import "./navbar.scss";
+import { AuthContext } from '../../contexts/AuthContext';
+import axios from 'axios';
 
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -14,9 +16,14 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import LogoutModal from '../logout-modal/logoutModal'
+import apiRequest from '../../lib/apiRequest';
 
 export default function Navbar() {
+    const { currentUser, updateUser } = useContext(AuthContext);
     const [anchorEl, setAnchorEl] = useState(null);
+    const [isModalOpen, setModalOpen] = useState(false);
+    const navigate = useNavigate();
     const open = Boolean(anchorEl);
 
     const handleClick = (event) => {
@@ -25,6 +32,25 @@ export default function Navbar() {
 
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    const handleLogoutClick = () => {
+        setModalOpen(true);
+    };
+
+    const handleModalClose = () => {
+        setModalOpen(false);
+    };
+
+    const handleConfirmLogout = async () => {
+        try {
+            await apiRequest.post('/auth/logout');
+            updateUser(null);
+            setModalOpen(false);
+            navigate('/signin');
+        } catch (error) {
+            console.error('Failed to logout:', error);
+        }
     };
 
     return (
@@ -40,35 +66,44 @@ export default function Navbar() {
                 }}
             >
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <Typography sx={{ minWidth: 100 }}>Home</Typography>
-                    </Link>
-                    <Link to="/services" style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <Typography sx={{ minWidth: 100 }}>Services</Typography>
-                    </Link>
-                    <Link to="/contact" style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-                    </Link>
+                    {currentUser && (
+                        <>
+                            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <Typography sx={{ minWidth: 100 }}>Home</Typography>
+                            </Link>
+                            <Link to="/services" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <Typography sx={{ minWidth: 100 }}>Services</Typography>
+                            </Link>
+                            <Link to="/contact" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <Typography sx={{ minWidth: 100 }}>Contact</Typography>
+                            </Link>
+                        </>
+                    )}
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Link to="/signin" style={{ textDecoration: 'none', color: 'inherit', marginRight: '1rem' }}>
-                        <Typography>Sign In</Typography>
-                    </Link>
-                    <Link to="/signup" style={{ textDecoration: 'none', color: 'inherit', marginRight: '1rem' }}>
-                        <Typography>Sign Up</Typography>
-                    </Link>
-                    <Tooltip title="Account settings">
-                        <IconButton
-                            onClick={handleClick}
-                            size="small"
-                            sx={{ ml: 2 }}
-                            aria-controls={open ? 'account-menu' : undefined}
-                            aria-haspopup="true"
-                            aria-expanded={open ? 'true' : undefined}
-                        >
-                            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
-                        </IconButton>
-                    </Tooltip>
+                    {!currentUser ? (
+                        <>
+                            <Link to="/signin" style={{ textDecoration: 'none', color: 'inherit', marginRight: '1rem' }}>
+                                <Typography>Sign In</Typography>
+                            </Link>
+                            <Link to="/signup" style={{ textDecoration: 'none', color: 'inherit', marginRight: '1rem' }}>
+                                <Typography>Sign Up</Typography>
+                            </Link>
+                        </>
+                    ) : (
+                        <Tooltip title="Account settings">
+                            <IconButton
+                                onClick={handleClick}
+                                size="small"
+                                sx={{ ml: 2 }}
+                                aria-controls={open ? 'account-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}
+                            >
+                                <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                            </IconButton>
+                        </Tooltip>
+                    )}
                 </Box>
             </Box>
             <Menu
@@ -125,13 +160,14 @@ export default function Navbar() {
                     </ListItemIcon>
                     Settings
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleLogoutClick}>
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>
                     Logout
                 </MenuItem>
             </Menu>
+            <LogoutModal open={isModalOpen} handleClose={handleModalClose} handleConfirm={handleConfirmLogout} />
         </div>
     );
 }
