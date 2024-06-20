@@ -8,6 +8,7 @@ import Home from './components/home/Home';
 import SignIn from './components/sign-up/SignIn';
 import SignUp from './components/sign-in/SignUp';
 import { AuthContext } from './contexts/AuthContext'
+import AddService from './components/add-service/AddService';
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -19,8 +20,8 @@ function App() {
         <Routes>
           {currentUser ? (
             <>
-              <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/add-service" element={<AddService />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<Navigate to="/" />} />
             </>

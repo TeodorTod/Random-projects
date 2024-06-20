@@ -68,11 +68,11 @@ export default function Navbar() {
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     {currentUser && (
                         <>
-                            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                <Typography sx={{ minWidth: 100 }}>Home</Typography>
-                            </Link>
                             <Link to="/services" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <Typography sx={{ minWidth: 100 }}>Services</Typography>
+                            </Link>
+                            <Link to="/add-service" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <Typography sx={{ minWidth: 100 }}>Add Service</Typography>
                             </Link>
                             <Link to="/contact" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <Typography sx={{ minWidth: 100 }}>Contact</Typography>
