@@ -36,7 +36,7 @@ const SignIn = () => {
         try {
             const response = await apiRequest.post('/auth/login', formData);
             updateUser(response.data);
-            navigate('/signIn')
+            navigate('/services')
         } catch (error) {
             console.error('Error registering user:', error);
         }

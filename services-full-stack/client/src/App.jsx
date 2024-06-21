@@ -7,7 +7,7 @@ import Contact from './components/contact/Contact';
 import Home from './components/home/Home';
 import SignIn from './components/sign-up/SignIn';
 import SignUp from './components/sign-in/SignUp';
-import { AuthContext } from './contexts/AuthContext'
+import { AuthContext } from './contexts/AuthContext';
 import AddService from './components/add-service/AddService';
 
 function App() {
