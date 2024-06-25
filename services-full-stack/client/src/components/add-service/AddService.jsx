@@ -14,7 +14,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 import apiRequest from '../../lib/apiRequest';
 import './AddService.css';
-import { services as servicesList, years } from '../../common/dropdownsValues';
+import { services as servicesList, years, range } from '../../common/dropdownsValues';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -37,16 +37,23 @@ function getStyles(name, services, theme) {
 }
 
 const AddService = () => {
-    const [formData, setFormData] = useState({ name: '', serviceType: '', yearsExperience: '', priceRange: '', portfolio: '', rating: '' });
+    const [formData, setFormData] = useState({ name: '', serviceType: '', yearsExperience: '', priceRange: '', portfolio: '', weekAvailability: '' });
     const [services, setServices] = useState([]);
     const [yearsExperience, setYearsExperience] = useState([]);
+    const [priceRange, setPriceRange] = useState([]);
     const navigate = useNavigate();
     const theme = useTheme();
 
     const handleChange = (e) => {
         const { value, id } = e.target;
         if (Array.isArray(value)) {
-            setServices(typeof value === 'string' ? value.split(',') : value);
+            if (id === 'serviceType') {
+                setServices(typeof value === 'string' ? value.split(',') : value);
+            } else if (id === 'yearsExperience') {
+                setYearsExperience(typeof value === 'string' ? value.split(',') : value);
+            } else if (id === 'priceRange') {
+                setPriceRange(typeof value === 'string' ? value.split(',') : value);
+            }
         } else {
             setFormData({ ...formData, [id]: value });
         }
@@ -55,6 +62,11 @@ const AddService = () => {
     const handleYearsChange = (e) => {
         const { value } = e.target;
         setYearsExperience(typeof value === 'string' ? value.split(',') : value);
+    };
+
+    const handlePriceChange = (e) => {
+        const { value } = e.target;
+        setPriceRange(typeof value === 'string' ? value.split(',') : value);
     };
 
     const handleDeleteChip = (chipToDelete) => (event) => {
@@ -129,16 +141,47 @@ const AddService = () => {
                                 value={yearsExperience}
                                 onChange={handleYearsChange}
                                 input={<OutlinedInput label="Years Experience" />}
-                                renderValue={(selected) => selected.join(', ')}
+                                renderValue={(selected) => selected.map(value => `${value.includes('0') ? `${value} year` : `${value} years`}`).join(', ')}
                                 MenuProps={MenuProps}
                             >
                                 {years.map((year) => (
                                     <MenuItem key={year} value={year}>
                                         <Checkbox checked={yearsExperience.indexOf(year) > -1} />
-                                        <ListItemText primary={year} />
+                                        <ListItemText primary={`${year} years`} />
                                     </MenuItem>
                                 ))}
                             </Select>
+                        </FormControl>
+                    </div>
+                    <div>
+                    <FormControl sx={{ m: 1, width: 300 }} variant="outlined">
+                            <InputLabel id="price-range-label">Price Range</InputLabel>
+                            <Select
+                                labelId="price-range-label"
+                                id="priceRange"
+                                value={priceRange}
+                                onChange={handlePriceChange}
+                                input={<OutlinedInput label="Price Range" />}
+                                renderValue={(selected) => selected.map(value => `$${value} per hour`).join(', ')}
+                                MenuProps={MenuProps}
+                            >
+                                {range.map((price) => (
+                                    <MenuItem key={price} value={price}>
+                                        <Checkbox checked={priceRange.indexOf(price) > -1} />
+                                        <ListItemText primary={`$${price} per hour`} />
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+                        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+                            <TextField
+                                label="Portfolio"
+                                id="portfolio"
+                                placeholder='Portfolio site'
+                                fullWidth
+                                value={formData.portfolio}
+                                onChange={handleChange}
+                            />
                         </FormControl>
                     </div>
                     <Button type="submit" variant="contained" sx={{ m: 1, width: '250px' }}>
