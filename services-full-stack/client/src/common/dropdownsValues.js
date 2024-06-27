@@ -28,4 +28,12 @@ export const range = [
   '30-40',
   '40-50',
   '50+'
+];
+
+export const availability = [
+  '0h-10h',
+  '10h-20h',
+  '20h-30h',
+  '30h-40h',
+  '40h+'
 ]

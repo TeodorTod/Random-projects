@@ -14,7 +14,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 import apiRequest from '../../lib/apiRequest';
 import './AddService.css';
-import { services as servicesList, years, range } from '../../common/dropdownsValues';
+import { services as servicesList, years, range, availability } from '../../common/dropdownsValues';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -41,6 +41,8 @@ const AddService = () => {
     const [services, setServices] = useState([]);
     const [yearsExperience, setYearsExperience] = useState([]);
     const [priceRange, setPriceRange] = useState([]);
+    const [workingAvailability, setWorkingAvailability] = useState([]);
+
     const navigate = useNavigate();
     const theme = useTheme();
 
@@ -52,6 +54,8 @@ const AddService = () => {
             } else if (id === 'yearsExperience') {
                 setYearsExperience(typeof value === 'string' ? value.split(',') : value);
             } else if (id === 'priceRange') {
+                setPriceRange(typeof value === 'string' ? value.split(',') : value);
+            } else if (id === 'workingAvailability') {
                 setPriceRange(typeof value === 'string' ? value.split(',') : value);
             }
         } else {
@@ -67,6 +71,11 @@ const AddService = () => {
     const handlePriceChange = (e) => {
         const { value } = e.target;
         setPriceRange(typeof value === 'string' ? value.split(',') : value);
+    };
+
+    const handleAvailabilityChange = (e) => {
+        const { value } = e.target;
+        setWorkingAvailability(typeof value === 'string' ? value.split(',') : value);
     };
 
     const handleDeleteChip = (chipToDelete) => (event) => {
@@ -154,7 +163,7 @@ const AddService = () => {
                         </FormControl>
                     </div>
                     <div>
-                    <FormControl sx={{ m: 1, width: 300 }} variant="outlined">
+                        <FormControl sx={{ m: 1, width: 300 }} variant="outlined">
                             <InputLabel id="price-range-label">Price Range</InputLabel>
                             <Select
                                 labelId="price-range-label"
@@ -182,6 +191,25 @@ const AddService = () => {
                                 value={formData.portfolio}
                                 onChange={handleChange}
                             />
+                        </FormControl>
+                        <FormControl sx={{ m: 1, width: 300 }} variant="outlined">
+                            <InputLabel id="working-availability-label">Price Range</InputLabel>
+                            <Select
+                                labelId="working-availability-label"
+                                id="workingAvailability"
+                                value={workingAvailability}
+                                onChange={handleAvailabilityChange}
+                                input={<OutlinedInput label="Weekly availability" />}
+                                renderValue={(selected) => selected.map(value => `${value} per week`).join(', ')}
+                                MenuProps={MenuProps}
+                            >
+                                {availability.map((availability) => (
+                                    <MenuItem key={availability} value={availability}>
+                                        <Checkbox checked={priceRange.indexOf(availability) > -1} />
+                                        <ListItemText primary={`${availability} per week`} />
+                                    </MenuItem>
+                                ))}
+                            </Select>
                         </FormControl>
                     </div>
                     <Button type="submit" variant="contained" sx={{ m: 1, width: '250px' }}>

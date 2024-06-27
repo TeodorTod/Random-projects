@@ -13,6 +13,7 @@ app.use(cors({
 connectDB();
 app.use(express.json());
 app.use("/api/auth", require("./routes/authRoute"));
+app.use("/api/service", require("./routes/serviceRoute"));
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
