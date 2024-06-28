@@ -7,12 +7,12 @@ const router = express.Router();
 
 router.get('/get-service/:id', validateToken, getSingleService);
 
-router.get('/get-all', getAllServices);
+router.get('/get-all', validateToken, getAllServices);
 
-router.post('/add-service', addService);
+router.post('/add-service', validateToken, addService);
 
-router.put('/update-service', updateService);
+router.put('/update-service', validateToken, updateService);
 
-router.delete('/delete-service', deleteService);
+router.delete('/delete-service', validateToken, deleteService);
 
 module.exports = router;
