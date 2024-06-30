@@ -25,9 +25,6 @@ const addService = async (req, res) => {
         return;
     }
 
-    console.log('Request Body:', req.body); // Log the request body
-    console.log('User ID:', req.user_id); // Log the user ID from the token
-
     try {
         const newService = new Service({
             name,

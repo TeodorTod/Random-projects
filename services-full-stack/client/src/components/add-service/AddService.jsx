@@ -61,22 +61,9 @@ const AddService = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const user = JSON.parse(localStorage.getItem('user')); // Parse the user object
-        const token = user?.accessToken; // Extract the accessToken from the user object
-        console.log('Retrieved Token:', token); // Log the token
-
-        if (!token) {
-            console.error('No token found');
-            return;
-        }
 
         try {
-            const response = await apiRequest.post('/service/add-service', formData, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-            console.log('Service added successfully:', response.data); // Log the response data
+            const response = await apiRequest.post('/service/add-service', formData);
             navigate('/services');
         } catch (error) {
             console.error('Error adding service:', error.response ? error.response.data : error.message); // Log detailed error
