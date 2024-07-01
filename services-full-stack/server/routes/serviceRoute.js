@@ -11,8 +11,8 @@ router.get('/get-all', validateToken, getAllServices);
 
 router.post('/add-service', validateToken, addService);
 
-router.put('/update-service', validateToken, updateService);
+router.put('/update-service/:id', validateToken, updateService);
 
-router.delete('/delete-service', validateToken, deleteService);
+router.delete('/delete-service/:id', validateToken, deleteService);
 
 module.exports = router;

@@ -66,7 +66,7 @@ const AddService = () => {
             const response = await apiRequest.post('/service/add-service', formData);
             navigate('/services');
         } catch (error) {
-            console.error('Error adding service:', error.response ? error.response.data : error.message); // Log detailed error
+            console.error('Error adding service:', error.response ? error.response.data : error.message); 
         }
     };
 
