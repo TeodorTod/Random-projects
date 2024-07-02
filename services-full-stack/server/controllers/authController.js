@@ -54,7 +54,7 @@ const loginUser = async (req, res) => {
                 isAdmin: false
             },
             process.env.ACCESS_TOKEN_SECRET, {
-                expiresIn: '7d'
+                expiresIn: '24h'
             });
 
             res.cookie("token", token, {

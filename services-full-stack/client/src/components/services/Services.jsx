@@ -49,12 +49,12 @@ const Services = () => {
               column !== '_id' &&
               column !== 'user_id'
             );
-  
+
           const formattedColumns = filteredColumns.map(item => ({
             id: item,
             label: item.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())
           }));
-  
+
           const formattedServices = services.map(service => {
             const formattedService = { ...service };
             Object.keys(formattedService).forEach(key => {
@@ -64,7 +64,7 @@ const Services = () => {
             });
             return formattedService;
           });
-  
+
           setColumns(formattedColumns);
           setData(formattedServices);
         }
@@ -72,10 +72,10 @@ const Services = () => {
         console.error('Error fetching services:', error);
       }
     };
-  
+
     fetchAllServices();
   }, []);
-  
+
 
   const deleteSelectedServices = async () => {
     try {
@@ -91,7 +91,7 @@ const Services = () => {
       console.error('Error deleting services:', error);
     }
   };
-  
+
 
   const renderCellContent = (content) => {
     if (typeof content === 'string' && content.length > 15) {
@@ -300,11 +300,18 @@ const Services = () => {
         />
 
         {numSelected > 0 ? (
-          <Tooltip title="Delete">
-            <IconButton onClick={deleteSelectedServices}>
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
+          <>
+            <Tooltip title="Delete">
+              <IconButton onClick={deleteSelectedServices}>
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Edit">
+              <IconButton onClick={deleteSelectedServices}>
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+          </>
         ) : (
           <Tooltip title="Filter list">
             <IconButton>

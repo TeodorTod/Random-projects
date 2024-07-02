@@ -59,11 +59,10 @@ const deleteService = async (req, res) => {
         res.status(404);
         throw new Error("Service not found");
     }
-    if (service.user_id.toString() !== req.user.id) {
+    if (service.user_id.toString() !== req.user_id) {
         res.status(403);
         throw new Error("User don't have permission to delete other service");
     }
-
     try {
         await service.deleteOne();
         return res.status(200).json({ message: "Delete service!" });
