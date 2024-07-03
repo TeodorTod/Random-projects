@@ -19,10 +19,12 @@ import Tooltip from '@mui/material/Tooltip';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import TextField from '@mui/material/TextField';
 import apiRequest from '../../lib/apiRequest';
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
   const [order, setOrder] = useState('asc');
@@ -34,6 +36,7 @@ const Services = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [data, setData] = useState([]);
   const [columns, setColumns] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAllServices = async () => {
@@ -92,6 +95,9 @@ const Services = () => {
     }
   };
 
+  const editSelectedServices = () => {
+    navigate('/edit-service', { state: { selected } });
+  };
 
   const renderCellContent = (content) => {
     if (typeof content === 'string' && content.length > 15) {
@@ -307,8 +313,8 @@ const Services = () => {
               </IconButton>
             </Tooltip>
             <Tooltip title="Edit">
-              <IconButton onClick={deleteSelectedServices}>
-                <DeleteIcon />
+              <IconButton onClick={editSelectedServices}>
+                <EditIcon />
               </IconButton>
             </Tooltip>
           </>

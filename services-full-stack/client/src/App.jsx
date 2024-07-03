@@ -8,6 +8,7 @@ import Home from './components/home/Home';
 import SignIn from './components/sign-up/SignIn';
 import SignUp from './components/sign-in/SignUp';
 import { AuthContext } from './contexts/AuthContext';
+import EditService from './components/edit-service/EditService';
 import AddService from './components/add-service/AddService';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <>
               <Route path="/services" element={<Services />} />
               <Route path="/add-service" element={<AddService />} />
+              <Route path="/edit-service" element={<EditService />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<Navigate to="/" />} />
             </>
