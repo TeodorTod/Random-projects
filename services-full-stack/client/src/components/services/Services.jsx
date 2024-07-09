@@ -16,13 +16,13 @@ import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
+import TextField from '@mui/material/TextField';
+import { visuallyHidden } from '@mui/utils';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import FilterListIcon from '@mui/icons-material/FilterList';
-import { visuallyHidden } from '@mui/utils';
-import TextField from '@mui/material/TextField';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import apiRequest from '../../lib/apiRequest';
 import { useNavigate } from 'react-router-dom';
 
@@ -79,7 +79,6 @@ const Services = () => {
     fetchAllServices();
   }, []);
 
-
   const deleteSelectedServices = async () => {
     try {
       await Promise.all(
@@ -96,7 +95,11 @@ const Services = () => {
   };
 
   const editSelectedServices = () => {
-    navigate('/edit-service', { state: { selected } });
+    if (selected.length === 1) {
+      navigate(`/edit-service/${selected[0]}`);
+    } else {
+      alert('Please select a single service to edit.');
+    }
   };
 
   const renderCellContent = (content) => {
@@ -128,7 +131,7 @@ const Services = () => {
   const handleClick = (event, id) => {
     const selectedIndex = selected.indexOf(id);
     let newSelected = [];
-
+  
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, id);
     } else if (selectedIndex === 0) {
@@ -143,7 +146,7 @@ const Services = () => {
     }
     setSelected(newSelected);
   };
-
+  
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -262,9 +265,7 @@ const Services = () => {
     rowCount: PropTypes.number.isRequired,
   };
 
-  const EnhancedTableToolbar = (props) => {
-    const { numSelected, searchQuery, setSearchQuery, deleteSelectedServices } = props;
-
+  const EnhancedTableToolbar = ({ numSelected, searchQuery, setSearchQuery, deleteSelectedServices, editSelectedServices }) => {
     return (
       <Toolbar
         sx={{
@@ -277,21 +278,11 @@ const Services = () => {
         }}
       >
         {numSelected > 0 ? (
-          <Typography
-            sx={{ flex: '1 1 100%' }}
-            color="inherit"
-            variant="subtitle1"
-            component="div"
-          >
+          <Typography sx={{ flex: '1 1 100%' }} color="inherit" variant="subtitle1" component="div">
             {numSelected} selected
           </Typography>
         ) : (
-          <Typography
-            sx={{ flex: '1 1 100%' }}
-            variant="h6"
-            id="tableTitle"
-            component="div"
-          >
+          <Typography sx={{ flex: '1 1 100%' }} variant="h6" id="tableTitle" component="div">
             All services
           </Typography>
         )}
@@ -334,12 +325,19 @@ const Services = () => {
     searchQuery: PropTypes.string.isRequired,
     setSearchQuery: PropTypes.func.isRequired,
     deleteSelectedServices: PropTypes.func.isRequired,
+    editSelectedServices: PropTypes.func.isRequired,
   };
 
   return (
-    <Box sx={{ width: '95vw' }}>
+    <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} searchQuery={searchQuery} setSearchQuery={setSearchQuery} deleteSelectedServices={deleteSelectedServices} />
+        <EnhancedTableToolbar
+          numSelected={selected.length}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          deleteSelectedServices={deleteSelectedServices}
+          editSelectedServices={editSelectedServices}
+        />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
@@ -352,7 +350,7 @@ const Services = () => {
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={filteredRows.length}
+              rowCount={data.length}
             />
             <TableBody>
               {visibleRows.map((row, index) => {
@@ -368,7 +366,6 @@ const Services = () => {
                     tabIndex={-1}
                     key={row._id}
                     selected={isItemSelected}
-                    sx={{ cursor: 'pointer' }}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
@@ -379,7 +376,7 @@ const Services = () => {
                         }}
                       />
                     </TableCell>
-                    {columns.map(column => (
+                    {columns.map((column) => (
                       <TableCell key={column.id} align="right">
                         {renderCellContent(row[column.id])}
                       </TableCell>

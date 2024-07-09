@@ -3,12 +3,17 @@ const Service = require('../models/serviceModel');
 
 const getSingleService = async (req, res) => {
     try {
-        return res.status(200).json({ message: "Get single service!" });
+        const singleService = await Service.findById(req.params.id);
+        if (!singleService) {
+            return res.status(404).json({ message: "Current service not found" });
+        }
+        return res.status(200).json({ message: "Get single service!", service: singleService });
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ message: "Failed to get current user!" });
+        return res.status(500).json({ message: "Failed to get current service!" });
     }
 };
+
 const getAllServices = async (req, res) => {
     try {
         const allServices = await Service.find({ user_id: req.user_id })
