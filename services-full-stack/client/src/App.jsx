@@ -40,13 +40,13 @@ function App() {
               <Route path="/add-service" element={<AddService />} />
               <Route path="/edit-service/:id" element={<EditService />} loader={singleServiceLoader} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="*" element={<Navigate to="/services" />} />
             </>
           ) : (
             <>
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="*" element={<Navigate to="/signin" />} />
+              <Route path="*" element={<Navigate to="/services" />} />
             </>
           )}
         </Routes>
