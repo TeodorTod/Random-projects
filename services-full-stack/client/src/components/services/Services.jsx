@@ -25,6 +25,7 @@ import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import apiRequest from '../../lib/apiRequest';
 import { useNavigate } from 'react-router-dom';
+import './services.scss'
 
 const Services = () => {
   const [order, setOrder] = useState('asc');
@@ -329,7 +330,8 @@ const Services = () => {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%' }} className='container'>
+      <h2 style={{textAlign: 'center', color: '#fff', fontFamily: 'monospace', fontSize: '30px'}}>Choose your desired service</h2>
       <Paper sx={{ width: '100%', mb: 2 }}>
         <EnhancedTableToolbar
           numSelected={selected.length}
@@ -340,9 +342,10 @@ const Services = () => {
         />
         <TableContainer>
           <Table
-            sx={{ minWidth: 750 }}
+            sx={{ minWidth: 1250 }}
             aria-labelledby="tableTitle"
             size={dense ? 'small' : 'medium'}
+           
           >
             <EnhancedTableHead
               numSelected={selected.length}

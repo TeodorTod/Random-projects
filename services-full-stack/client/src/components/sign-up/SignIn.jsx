@@ -45,7 +45,7 @@ const SignIn = () => {
 
     return (
         <>
-            <h1>Sign in here</h1>
+            <h1 style={{color: '#fff', textAlign: 'center'}}>Sign in here</h1>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', alignItems: 'center' }}>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
@@ -56,6 +56,7 @@ const SignIn = () => {
                             fullWidth
                             value={formData.email}
                             onChange={handleChange}
+                            style={{backgroundColor: '#fff', borderRadius: '5px'}}
                         />
                     </FormControl>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
@@ -65,6 +66,7 @@ const SignIn = () => {
                             type={showPassword ? 'text' : 'password'}
                             value={formData.password}
                             onChange={handleChange}
+                            style={{backgroundColor: '#fff'}}
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton

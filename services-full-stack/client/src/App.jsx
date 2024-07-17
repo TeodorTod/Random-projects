@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
@@ -28,6 +27,7 @@ function App() {
   const { currentUser } = useContext(AuthContext);
 
   return (
+    <div className='container'>
     <Router>
       <NavigationSetup />
       <Navbar />
@@ -52,6 +52,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </div>
   );
 }
 

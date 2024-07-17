@@ -40,7 +40,7 @@ const SignUp = () => {
 
     return (
         <>
-            <h1>Sign up here</h1>
+            <h1 style={{color: '#fff', textAlign: 'center'}}>Sign up here</h1>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', alignItems: 'center' }}>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
@@ -51,6 +51,7 @@ const SignUp = () => {
                             fullWidth
                             value={formData.email}
                             onChange={handleChange}
+                            style={{backgroundColor: '#fff'}}
                         />
                     </FormControl>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
@@ -61,6 +62,7 @@ const SignUp = () => {
                             fullWidth
                             value={formData.username}
                             onChange={handleChange}
+                            style={{backgroundColor: '#fff'}}
                         />
                     </FormControl>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
@@ -70,6 +72,7 @@ const SignUp = () => {
                             type={showPassword ? 'text' : 'password'}
                             value={formData.password}
                             onChange={handleChange}
+                            style={{backgroundColor: '#fff'}}
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton
@@ -85,7 +88,7 @@ const SignUp = () => {
                             label="Password"
                         />
                     </FormControl>
-                    <Button type="submit" variant="contained" sx={{ m: 1, width: '25ch' }}>
+                    <Button type="submit" variant="contained" sx={{ m: 1, width: '250px' }}>
                         Register
                     </Button>
                 </Box>
