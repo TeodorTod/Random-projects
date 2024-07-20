@@ -83,6 +83,7 @@ const AddService = () => {
                                 fullWidth
                                 value={formData.name}
                                 onChange={handleChange}
+                                style={{backgroundColor: '#fff', borderRadius: '5px'}}
                             />
                         </FormControl>
                         <FormControl sx={{ m: 1, width: 300 }} variant="outlined">

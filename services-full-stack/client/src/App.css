@@ -44,6 +44,11 @@ padding: 0;
 .container {
   background-image: url('public/background.jpg');
   width: 100vw;
-  min-height: 87vh;
+  min-height: 91vh;
   background-size: cover;
 }
+
+.child {
+  background: none; /* Ensures child elements don't inherit background styles */
+}
+

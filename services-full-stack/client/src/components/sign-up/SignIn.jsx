@@ -66,7 +66,7 @@ const SignIn = () => {
                             type={showPassword ? 'text' : 'password'}
                             value={formData.password}
                             onChange={handleChange}
-                            style={{backgroundColor: '#fff'}}
+                            style={{backgroundColor: '#fff', borderRadius: '5px'}}
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton

@@ -25,7 +25,7 @@ import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import apiRequest from '../../lib/apiRequest';
 import { useNavigate } from 'react-router-dom';
-import './services.scss'
+import './services.scss';
 
 const Services = () => {
   const [order, setOrder] = useState('asc');
@@ -132,7 +132,7 @@ const Services = () => {
   const handleClick = (event, id) => {
     const selectedIndex = selected.indexOf(id);
     let newSelected = [];
-  
+
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, id);
     } else if (selectedIndex === 0) {
@@ -147,7 +147,7 @@ const Services = () => {
     }
     setSelected(newSelected);
   };
-  
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -330,9 +330,9 @@ const Services = () => {
   };
 
   return (
-    <Box sx={{ width: '100%' }} className='container'>
+    <Box sx={{ width: "90%", paddingLeft: 5, paddingRight: 20, overflowX: 'hidden' }} className='container'>
       <h2 style={{textAlign: 'center', color: '#fff', fontFamily: 'monospace', fontSize: '30px'}}>Choose your desired service</h2>
-      <Paper sx={{ width: '100%', mb: 2 }}>
+      <Paper sx={{  mb: 2, px: 2, overflowX: 'hidden' }}>
         <EnhancedTableToolbar
           numSelected={selected.length}
           searchQuery={searchQuery}
@@ -340,12 +340,12 @@ const Services = () => {
           deleteSelectedServices={deleteSelectedServices}
           editSelectedServices={editSelectedServices}
         />
+
         <TableContainer>
           <Table
-            sx={{ minWidth: 1250 }}
             aria-labelledby="tableTitle"
             size={dense ? 'small' : 'medium'}
-           
+            sx={{ tableLayout: 'fixed', width: '100%' }}
           >
             <EnhancedTableHead
               numSelected={selected.length}

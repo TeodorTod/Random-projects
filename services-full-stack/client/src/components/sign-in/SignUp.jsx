@@ -62,7 +62,7 @@ const SignUp = () => {
                             fullWidth
                             value={formData.username}
                             onChange={handleChange}
-                            style={{backgroundColor: '#fff'}}
+                            style={{backgroundColor: '#fff', borderRadius: '5px'}}
                         />
                     </FormControl>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
@@ -72,7 +72,7 @@ const SignUp = () => {
                             type={showPassword ? 'text' : 'password'}
                             value={formData.password}
                             onChange={handleChange}
-                            style={{backgroundColor: '#fff'}}
+                            style={{backgroundColor: '#fff', borderRadius: '5px'}}
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton
