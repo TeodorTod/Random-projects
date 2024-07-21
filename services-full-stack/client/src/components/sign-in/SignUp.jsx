@@ -9,7 +9,6 @@ import InputLabel from '@mui/material/InputLabel';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Button from '@mui/material/Button';
-import axios from 'axios';
 import apiRequest from '../../lib/apiRequest';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,7 +31,7 @@ const SignUp = () => {
         e.preventDefault();
         try {
             const response = await apiRequest.post('/auth/register', formData);
-            navigate('/signIn')
+            navigate('/signIn');
         } catch (error) {
             console.error('Error registering user:', error);
         }
@@ -40,7 +39,7 @@ const SignUp = () => {
 
     return (
         <>
-            <h1 style={{color: '#fff', textAlign: 'center'}}>Sign up here</h1>
+            <h1 style={{ color: '#fff', textAlign: 'center' }}>Sign up here</h1>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', alignItems: 'center' }}>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
@@ -51,7 +50,20 @@ const SignUp = () => {
                             fullWidth
                             value={formData.email}
                             onChange={handleChange}
-                            style={{backgroundColor: '#fff'}}
+                            sx={{
+                                backgroundColor: '#fff',
+                                borderRadius: '5px',
+                                '& .MuiOutlinedInput-root': {
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: 'black',
+                                    },
+                                },
+                                '& .MuiInputLabel-root': {
+                                    '&.Mui-focused': {
+                                        color: 'black',
+                                    },
+                                },
+                            }}
                         />
                     </FormControl>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
@@ -62,17 +74,45 @@ const SignUp = () => {
                             fullWidth
                             value={formData.username}
                             onChange={handleChange}
-                            style={{backgroundColor: '#fff', borderRadius: '5px'}}
+                            sx={{
+                                backgroundColor: '#fff',
+                                borderRadius: '5px',
+                                '& .MuiOutlinedInput-root': {
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: 'black',
+                                    },
+                                },
+                                '& .MuiInputLabel-root': {
+                                    '&.Mui-focused': {
+                                        color: 'black',
+                                    },
+                                },
+                            }}
                         />
                     </FormControl>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-                        <InputLabel htmlFor="password">Password</InputLabel>
+                        <InputLabel
+                            htmlFor="password"
+                            sx={{
+                                '&.Mui-focused': {
+                                    color: 'black',
+                                },
+                            }}
+                        >
+                            Password
+                        </InputLabel>
                         <OutlinedInput
                             id="password"
                             type={showPassword ? 'text' : 'password'}
                             value={formData.password}
                             onChange={handleChange}
-                            style={{backgroundColor: '#fff', borderRadius: '5px'}}
+                            sx={{
+                                backgroundColor: '#fff',
+                                borderRadius: '5px',
+                                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                    borderColor: 'black',
+                                },
+                            }}
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton

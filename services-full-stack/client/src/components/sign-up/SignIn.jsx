@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -19,13 +19,11 @@ const SignIn = () => {
     const navigate = useNavigate();
     const { updateUser } = useContext(AuthContext);
 
-
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -36,16 +34,15 @@ const SignIn = () => {
         try {
             const response = await apiRequest.post('/auth/login', formData);
             updateUser(response.data);
-            navigate('/services')
+            navigate('/services');
         } catch (error) {
             console.error('Error registering user:', error);
         }
     };
 
-
     return (
         <>
-            <h1 style={{color: '#fff', textAlign: 'center'}}>Sign in here</h1>
+            <h1 style={{ color: '#fff', textAlign: 'center' }}>Sign in here</h1>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', alignItems: 'center' }}>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
@@ -56,17 +53,45 @@ const SignIn = () => {
                             fullWidth
                             value={formData.email}
                             onChange={handleChange}
-                            style={{backgroundColor: '#fff', borderRadius: '5px'}}
+                            sx={{
+                                backgroundColor: '#fff',
+                                borderRadius: '5px',
+                                '& .MuiOutlinedInput-root': {
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: 'black',
+                                    },
+                                },
+                                '& .MuiInputLabel-root': {
+                                    '&.Mui-focused': {
+                                        color: 'black',
+                                    },
+                                },
+                            }}
                         />
                     </FormControl>
                     <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-                        <InputLabel htmlFor="password">Password</InputLabel>
+                        <InputLabel
+                            htmlFor="password"
+                            sx={{
+                                '&.Mui-focused': {
+                                    color: 'black',
+                                },
+                            }}
+                        >
+                            Password
+                        </InputLabel>
                         <OutlinedInput
                             id="password"
                             type={showPassword ? 'text' : 'password'}
                             value={formData.password}
                             onChange={handleChange}
-                            style={{backgroundColor: '#fff', borderRadius: '5px'}}
+                            sx={{
+                                backgroundColor: '#fff',
+                                borderRadius: '5px',
+                                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                    borderColor: 'black',
+                                },
+                            }}
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton
@@ -89,6 +114,6 @@ const SignIn = () => {
             </form>
         </>
     );
-}
+};
 
 export default SignIn;

@@ -29,11 +29,10 @@ const EditService = () => {
 
   return (
     <div>
-      <h1>Edit Service</h1>
+     <h2 style={{textAlign: 'center', color: '#fff', fontFamily: 'monospace', fontSize: '30px'}}>Edit service</h2>
       {service && (
         <div>
           <p>Service Name: {service.name}</p>
-          {/* Add your form or other components to edit the service */}
         </div>
       )}
     </div>

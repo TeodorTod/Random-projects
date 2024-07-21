@@ -38,6 +38,7 @@ function getStyles(name, selectedItems, theme) {
 
 const AddService = () => {
     const [formData, setFormData] = useState({ name: '', serviceType: [], yearsExperience: [], priceRange: [], portfolio: '', weekAvailability: [] });
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const theme = useTheme();
 
@@ -59,8 +60,21 @@ const AddService = () => {
         }));
     };
 
+    const validateForm = () => {
+        const newErrors = {};
+        if (!formData.name) newErrors.name = 'This field is required';
+        if (formData.serviceType.length === 0) newErrors.serviceType = 'This field is required';
+        if (formData.yearsExperience.length === 0) newErrors.yearsExperience = 'This field is required';
+        if (formData.priceRange.length === 0) newErrors.priceRange = 'This field is required';
+        if (!formData.portfolio) newErrors.portfolio = 'This field is required';
+        if (formData.weekAvailability.length === 0) newErrors.weekAvailability = 'This field is required';
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!validateForm()) return;
 
         try {
             const response = await apiRequest.post('/service/add-service', formData);
@@ -74,6 +88,7 @@ const AddService = () => {
         <>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'column', alignItems: 'center' }}>
+                <h2 style={{textAlign: 'center', color: '#fff', fontFamily: 'monospace', fontSize: '30px'}}>Add your service</h2>
                     <div>
                         <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
                             <TextField
@@ -83,11 +98,36 @@ const AddService = () => {
                                 fullWidth
                                 value={formData.name}
                                 onChange={handleChange}
-                                style={{backgroundColor: '#fff', borderRadius: '5px'}}
+                                required
+                                error={!!errors.name}
+                                helperText={errors.name}
+                                sx={{
+                                    backgroundColor: '#fff',
+                                    borderRadius: '5px',
+                                    '& .MuiOutlinedInput-root': {
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: 'black',
+                                        },
+                                    },
+                                    '& .MuiInputLabel-root': {
+                                        '&.Mui-focused': {
+                                            color: 'black',
+                                        },
+                                    },
+                                }}
                             />
                         </FormControl>
-                        <FormControl sx={{ m: 1, width: 300 }} variant="outlined">
-                            <InputLabel id="service-type-label">Service Type</InputLabel>
+                        <FormControl sx={{ m: 1, width: 300 }} variant="outlined" required error={!!errors.serviceType}>
+                            <InputLabel
+                                id="service-type-label"
+                                sx={{
+                                    '&.Mui-focused': {
+                                        color: 'black',
+                                    },
+                                }}
+                            >
+                                Service Type
+                            </InputLabel>
                             <Select
                                 labelId="service-type-label"
                                 id="serviceType"
@@ -107,6 +147,13 @@ const AddService = () => {
                                         ))}
                                     </Box>
                                 )}
+                                sx={{
+                                    backgroundColor: '#fff',
+                                    borderRadius: '5px',
+                                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                        borderColor: 'black',
+                                    },
+                                }}
                                 MenuProps={MenuProps}
                             >
                                 {servicesList.map((name) => (
@@ -119,9 +166,19 @@ const AddService = () => {
                                     </MenuItem>
                                 ))}
                             </Select>
+                            {errors.serviceType && <p className="error-text">{errors.serviceType}</p>}
                         </FormControl>
-                        <FormControl sx={{ m: 1, width: 300 }} variant="outlined">
-                            <InputLabel id="years-experience-label">Years Experience</InputLabel>
+                        <FormControl sx={{ m: 1, width: 300 }} variant="outlined" required error={!!errors.yearsExperience}>
+                            <InputLabel
+                                id="years-experience-label"
+                                sx={{
+                                    '&.Mui-focused': {
+                                        color: 'black',
+                                    },
+                                }}
+                            >
+                                Years Experience
+                            </InputLabel>
                             <Select
                                 labelId="years-experience-label"
                                 id="yearsExperience"
@@ -130,6 +187,13 @@ const AddService = () => {
                                 onChange={handleMultiSelectChange('yearsExperience')}
                                 input={<OutlinedInput label="Years Experience" />}
                                 renderValue={(selected) => selected.map(value => `${value} years`).join(', ')}
+                                sx={{
+                                    backgroundColor: '#fff',
+                                    borderRadius: '5px',
+                                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                        borderColor: 'black',
+                                    },
+                                }}
                                 MenuProps={MenuProps}
                             >
                                 {years.map((year) => (
@@ -139,11 +203,21 @@ const AddService = () => {
                                     </MenuItem>
                                 ))}
                             </Select>
+                            {errors.yearsExperience && <p className="error-text">{errors.yearsExperience}</p>}
                         </FormControl>
                     </div>
                     <div>
-                        <FormControl sx={{ m: 1, width: 300 }} variant="outlined">
-                            <InputLabel id="price-range-label">Price Range</InputLabel>
+                        <FormControl sx={{ m: 1, width: 300 }} variant="outlined" required error={!!errors.priceRange}>
+                            <InputLabel
+                                id="price-range-label"
+                                sx={{
+                                    '&.Mui-focused': {
+                                        color: 'black',
+                                    },
+                                }}
+                            >
+                                Price Range
+                            </InputLabel>
                             <Select
                                 labelId="price-range-label"
                                 id="priceRange"
@@ -152,6 +226,13 @@ const AddService = () => {
                                 onChange={handleMultiSelectChange('priceRange')}
                                 input={<OutlinedInput label="Price Range" />}
                                 renderValue={(selected) => selected.map(value => `$${value} per hour`).join(', ')}
+                                sx={{
+                                    backgroundColor: '#fff',
+                                    borderRadius: '5px',
+                                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                        borderColor: 'black',
+                                    },
+                                }}
                                 MenuProps={MenuProps}
                             >
                                 {range.map((price) => (
@@ -161,6 +242,7 @@ const AddService = () => {
                                     </MenuItem>
                                 ))}
                             </Select>
+                            {errors.priceRange && <p className="error-text">{errors.priceRange}</p>}
                         </FormControl>
                         <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
                             <TextField
@@ -170,10 +252,36 @@ const AddService = () => {
                                 fullWidth
                                 value={formData.portfolio}
                                 onChange={handleChange}
+                                required
+                                error={!!errors.portfolio}
+                                helperText={errors.portfolio}
+                                sx={{
+                                    backgroundColor: '#fff',
+                                    borderRadius: '5px',
+                                    '& .MuiOutlinedInput-root': {
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: 'black',
+                                        },
+                                    },
+                                    '& .MuiInputLabel-root': {
+                                        '&.Mui-focused': {
+                                            color: 'black',
+                                        },
+                                    },
+                                }}
                             />
                         </FormControl>
-                        <FormControl sx={{ m: 1, width: 300 }} variant="outlined">
-                            <InputLabel id="working-availability-label">Working Availability</InputLabel>
+                        <FormControl sx={{ m: 1, width: 300 }} variant="outlined" required error={!!errors.weekAvailability}>
+                            <InputLabel
+                                id="working-availability-label"
+                                sx={{
+                                    '&.Mui-focused': {
+                                        color: 'black',
+                                    },
+                                }}
+                            >
+                                Working Availability
+                            </InputLabel>
                             <Select
                                 labelId="working-availability-label"
                                 id="weekAvailability"
@@ -182,6 +290,13 @@ const AddService = () => {
                                 onChange={handleMultiSelectChange('weekAvailability')}
                                 input={<OutlinedInput label="Working Availability" />}
                                 renderValue={(selected) => selected.map(value => `${value} per week`).join(', ')}
+                                sx={{
+                                    backgroundColor: '#fff',
+                                    borderRadius: '5px',
+                                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                        borderColor: 'black',
+                                    },
+                                }}
                                 MenuProps={MenuProps}
                             >
                                 {availability.map((availability) => (
@@ -191,6 +306,7 @@ const AddService = () => {
                                     </MenuItem>
                                 ))}
                             </Select>
+                            {errors.weekAvailability && <p className="error-text">{errors.weekAvailability}</p>}
                         </FormControl>
                     </div>
                     <Button type="submit" variant="contained" sx={{ m: 1, width: '250px' }}>
@@ -200,6 +316,6 @@ const AddService = () => {
             </form>
         </>
     );
-}
+};
 
 export default AddService;

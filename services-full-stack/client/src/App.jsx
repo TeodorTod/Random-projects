@@ -12,6 +12,7 @@ import EditService from './components/edit-service/EditService';
 import AddService from './components/add-service/AddService';
 import { singleServiceLoader } from './lib/loaders';
 import { setNavigate } from './navigation';
+import Footer from './components/footer/Footer';
 
 const NavigationSetup = () => {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ function App() {
   const { currentUser } = useContext(AuthContext);
 
   return (
+    <>
     <div className='container'>
     <Router>
       <NavigationSetup />
@@ -51,8 +53,11 @@ function App() {
           )}
         </Routes>
       </div>
+   
     </Router>
     </div>
+    <Footer />
+    </>
   );
 }
 

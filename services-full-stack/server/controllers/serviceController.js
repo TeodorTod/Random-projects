@@ -45,19 +45,30 @@ const addService = async (req, res) => {
         const savedService = await newService.save();
         return res.status(200).json({ message: "Service added successfully!", newService: savedService });
     } catch (error) {
-        console.error('Error saving service:', error); // Log the error
+        console.error('Error saving service:', error); 
         return res.status(500).json({ message: "Failed to create a service!", error });
     }
 };
 
 const updateService = async (req, res) => {
     try {
-        return res.status(200).json({ message: "Update service!" });
+        const service = await Service.findById(req.params.id);
+        if (!service) {
+            return res.status(404).json({ message: "Service not found" });
+        }
+
+        const updatedService = await Service.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+        return res.status(200).json({ message: "Service updated!", editedService: updatedService });
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ message: "Failed to get current user!" });
+        return res.status(500).json({ message: "Failed to update service!" });
     }
 };
+
 const deleteService = async (req, res) => {
     const service = await Service.findById(req.params.id);
     if (!service) {
