@@ -180,8 +180,7 @@ const Services = () => {
     [order, orderBy, page, rowsPerPage, filteredRows],
   );
 
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - visibleRows.length) : 0;
+  const emptyRows = rowsPerPage - visibleRows.length;
 
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -409,7 +408,7 @@ const Services = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-      <FormControlLabel
+      <FormControlLabel style={{color: '#fff'}}
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />

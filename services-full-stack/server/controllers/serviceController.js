@@ -36,7 +36,7 @@ const addService = async (req, res) => {
             name,
             serviceType,
             yearsExperience,
-            priceRange,
+            priceRange, 
             portfolio,
             weekAvailability,
             user_id: req.user_id

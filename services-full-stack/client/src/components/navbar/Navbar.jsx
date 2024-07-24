@@ -53,6 +53,10 @@ export default function Navbar() {
         }
     };
 
+    const goToUserSettings = () => {
+        navigate('/user-settings'); 
+    }
+
     return (
         <div className="navbar-container">
             <Box
@@ -142,19 +146,10 @@ export default function Navbar() {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <MenuItem onClick={handleClose}>
-                    <Avatar /> Profile
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <Avatar /> My account
+                    <Avatar /> {currentUser?.user?.username}
                 </MenuItem>
                 <Divider />
-                <MenuItem onClick={handleClose}>
-                    <ListItemIcon>
-                        <PersonAdd fontSize="small" />
-                    </ListItemIcon>
-                    Add another account
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={goToUserSettings}>
                     <ListItemIcon>
                         <Settings fontSize="small" />
                     </ListItemIcon>

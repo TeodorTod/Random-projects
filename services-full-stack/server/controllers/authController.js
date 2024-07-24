@@ -63,7 +63,7 @@ const loginUser = async (req, res) => {
                 maxAge: 1000 * 60 * 60 * 24 * 7 // 7 days
             });
 
-            return res.status(200).json({ accessToken });
+            return res.status(200).json({ accessToken, user: user});
         } else {
             return res.status(401).json({ message: 'Email or password does not match!' });
         }

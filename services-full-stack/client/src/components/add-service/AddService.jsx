@@ -182,7 +182,6 @@ const AddService = () => {
                             <Select
                                 labelId="years-experience-label"
                                 id="yearsExperience"
-                                multiple
                                 value={formData.yearsExperience}
                                 onChange={handleMultiSelectChange('yearsExperience')}
                                 input={<OutlinedInput label="Years Experience" />}

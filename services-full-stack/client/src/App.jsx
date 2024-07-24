@@ -13,11 +13,11 @@ import AddService from './components/add-service/AddService';
 import { singleServiceLoader } from './lib/loaders';
 import { setNavigate } from './navigation';
 import Footer from './components/footer/Footer';
+import UserSettings from './components/user-settings/UserSettings';
 
 const NavigationSetup = () => {
   const navigate = useNavigate();
   React.useEffect(() => {
-    console.log("Setting navigate function");
     setNavigate(navigate);
   }, [navigate]);
 
@@ -42,6 +42,7 @@ function App() {
               <Route path="/add-service" element={<AddService />} />
               <Route path="/edit-service/:id" element={<EditService />} loader={singleServiceLoader} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/user-settings" element={<UserSettings />} />
               <Route path="*" element={<Navigate to="/services" />} />
             </>
           ) : (
