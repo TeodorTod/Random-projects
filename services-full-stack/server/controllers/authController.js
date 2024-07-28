@@ -81,8 +81,46 @@ const currentUser = async (req, res) => {
     }
 };
 
+const updateUser = async (req, res) => {
+    const { username, email, password, newPassword } = req.body;
+
+    try {
+        const user = await User.findById(req.user_id);
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Check current password
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        if (!isPasswordMatch) {
+            return res.status(400).json({ message: 'Current password is incorrect' });
+        }
+
+        // Update user information
+        user.username = username || user.username;
+        user.email = email || user.email;
+        if (newPassword) {
+            user.password = await bcrypt.hash(newPassword, 10);
+        }
+
+        const updatedUser = await user.save();
+
+        const token = jwt.sign(
+            { user: { username: updatedUser.username, email: updatedUser.email, id: updatedUser._id } },
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: '1h' }
+        );
+
+        res.status(200).json({ accessToken: token, user: updatedUser });
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).json({ message: 'Failed to update user' });
+    }
+};
+
 const logoutUser = async (req, res) => {
     res.clearCookie("token").status(200).json({ message: "Logout successfull" });
 };
 
-module.exports = { registerUser, loginUser, currentUser, logoutUser };
+module.exports = { registerUser, loginUser, currentUser, updateUser,  logoutUser };
