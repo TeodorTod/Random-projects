@@ -28,7 +28,7 @@ const apiRequest = axios.create({
     },
     (error) => {
       if (error.response && error.response.status === 401) {
-        console.log('Unauthorized, redirecting to login');
+        console.log('Unauthorized, redirecting to login!');
         localStorage.clear();
         navigateTo('/signin');
         window.location.reload();
