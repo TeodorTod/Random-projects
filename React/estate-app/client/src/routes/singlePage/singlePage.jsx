@@ -66,8 +66,8 @@ function SinglePage() {
                 <span>Utilities</span>
                 {
                   post.postDetail.utilities === "owner"
-                    ? <p>Owner is responsibe</p>
-                    : <p>Tenant is responsibe</p>
+                    ? <p>Owner is responsible</p>
+                    : <p>Tenant is responsible</p>
                 }
               </div>
             </div>
