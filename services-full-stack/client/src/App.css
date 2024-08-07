@@ -42,7 +42,7 @@ padding: 0;
 }
 
 .container {
-  background-image: url('public/background.jpg');
+  background-image: url('/background.jpg');
   width: 100vw;
   min-height: 91vh;
   background-size: cover;

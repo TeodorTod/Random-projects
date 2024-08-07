@@ -9,11 +9,12 @@ import SignIn from './components/sign-up/SignIn';
 import SignUp from './components/sign-in/SignUp';
 import { AuthContext } from './contexts/AuthContext';
 import EditService from './components/edit-service/EditService';
-import AddService from './components/add-service/AddService';
+
 import { singleServiceLoader } from './lib/loaders';
 import { setNavigate } from './navigation';
 import Footer from './components/footer/Footer';
 import UserSettings from './components/user-settings/UserSettings';
+import AddService from './components/add-service/AddService';
 
 const NavigationSetup = () => {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ function App() {
             <>
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="*" element={<Navigate to="/services" />} />
+              <Route path="*" element={<Navigate to="/signin" />} />
             </>
           )}
         </Routes>
