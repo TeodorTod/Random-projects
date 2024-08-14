@@ -23,9 +23,16 @@ export default function Navbar() {
     const { currentUser, updateUser } = useContext(AuthContext);
     const [anchorEl, setAnchorEl] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
+    const [userLetter, setUserLetter] = useState('');
     const navigate = useNavigate();
     const open = Boolean(anchorEl);
 
+    useState(() => {
+        const firstLetter = currentUser.user.username.charAt(0).toUpperCase();
+        setUserLetter(firstLetter);
+        console.log(firstLetter);
+    }, []);
+    
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -104,7 +111,7 @@ export default function Navbar() {
                                 aria-haspopup="true"
                                 aria-expanded={open ? 'true' : undefined}
                             >
-                                <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                                <Avatar sx={{ width: 32, height: 32 }}>{userLetter}</Avatar>
                             </IconButton>
                         </Tooltip>
                     )}
