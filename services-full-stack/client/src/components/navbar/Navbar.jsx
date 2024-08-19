@@ -28,10 +28,9 @@ export default function Navbar() {
     const open = Boolean(anchorEl);
 
     useState(() => {
-        const firstLetter = currentUser.user.username.charAt(0).toUpperCase();
+        const firstLetter = currentUser?.user?.username.charAt(0).toUpperCase() || '';
         setUserLetter(firstLetter);
-        console.log(firstLetter);
-    }, []);
+    }, [currentUser]);
     
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);

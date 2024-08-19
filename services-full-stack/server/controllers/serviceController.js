@@ -16,13 +16,41 @@ const getSingleService = async (req, res) => {
 
 const getAllServices = async (req, res) => {
     try {
-        const allServices = await Service.find({ user_id: req.user_id })
-        return res.status(200).json({ message: "Get all services!", services: allServices });
+        const { page = 1, limit = 10, search = '', sortField = 'name', sortOrder = 'asc' } = req.query;
+
+        let query = { user_id: req.user_id };
+
+        if (search) {
+            const searchConditions = Object.keys(Service.schema.paths).reduce((acc, key) => {
+                if (Service.schema.paths[key].instance === 'String') {
+                    acc.push({ [key]: { $regex: search, $options: 'i' } });
+                }
+                return acc;
+            }, []);
+
+            query.$or = searchConditions;
+        }
+
+        const totalServices = await Service.countDocuments(query);
+
+        const allServices = await Service.find(query)
+            .sort({ [sortField]: sortOrder === 'asc' ? 1 : -1 })
+            .skip((parseInt(page) - 1) * parseInt(limit))
+            .limit(parseInt(limit));
+
+        return res.status(200).json({
+            message: "Get all services!",
+            services: allServices,
+            total: totalServices,
+            page: parseInt(page),
+            totalPages: Math.ceil(totalServices / parseInt(limit)),
+        });
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ message: "Failed to get current user!" });
+        return res.status(500).json({ message: "Failed to get services!" });
     }
 };
+
 const addService = async (req, res) => {
     const { name, serviceType, yearsExperience, priceRange, portfolio, weekAvailability } = req.body;
 

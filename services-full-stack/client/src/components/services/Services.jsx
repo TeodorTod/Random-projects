@@ -37,13 +37,23 @@ const Services = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [data, setData] = useState([]);
   const [columns, setColumns] = useState([]);
+  const [totalRecords, setTotalRecords] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAllServices = async () => {
       try {
-        const res = await apiRequest.get('/service/get-all');
-        const services = res.data.services;
+        const params = new URLSearchParams({
+          page: page + 1, // Adjust for zero-based indexing in frontend
+          limit: rowsPerPage,
+          search: searchQuery,
+          sortField: orderBy,
+          sortOrder: order,
+        });
+
+        const res = await apiRequest.get(`/service/get-all?${params.toString()}`);
+        const { services, total } = res.data;
+
         if (services.length > 0) {
           const filteredColumns = Object.keys(services[0])
             .filter(column =>
@@ -70,15 +80,18 @@ const Services = () => {
           });
 
           setColumns(formattedColumns);
-          setData(formattedServices);
+          setData(formattedServices); // Ensure data is set correctly here
         }
+
+        // Update the pagination state
+        setTotalRecords(total); // Ensure the total count is set correctly
       } catch (error) {
         console.error('Error fetching services:', error);
       }
     };
 
     fetchAllServices();
-  }, []);
+  }, [page, rowsPerPage, order, orderBy, searchQuery]);
 
   const deleteSelectedServices = async () => {
     try {
@@ -163,22 +176,9 @@ const Services = () => {
 
   const isSelected = (id) => selected.indexOf(id) !== -1;
 
-  const filteredRows = useMemo(() => {
-    return data.filter((row) =>
-      Object.keys(row).some((key) =>
-        row[key].toString().toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    );
-  }, [searchQuery, data]);
-
-  const visibleRows = useMemo(
-    () =>
-      stableSort(filteredRows, getComparator(order, orderBy)).slice(
-        page * rowsPerPage,
-        page * rowsPerPage + rowsPerPage,
-      ),
-    [order, orderBy, page, rowsPerPage, filteredRows],
-  );
+  const visibleRows = useMemo(() => {
+    return stableSort(data, getComparator(order, orderBy));
+  }, [order, orderBy, data]);
 
   const emptyRows = rowsPerPage - visibleRows.length;
 
@@ -202,9 +202,7 @@ const Services = () => {
     const stabilizedThis = array.map((el, index) => [el, index]);
     stabilizedThis.sort((a, b) => {
       const order = comparator(a[0], b[0]);
-      if (order !== 0) {
-        return order;
-      }
+      if (order !== 0) return order;
       return a[1] - b[1];
     });
     return stabilizedThis.map((el) => el[0]);
@@ -366,16 +364,14 @@ const Services = () => {
                     role="checkbox"
                     aria-checked={isItemSelected}
                     tabIndex={-1}
-                    key={row._id}
+                    key={row._id} // Ensure unique key
                     selected={isItemSelected}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
                         color="primary"
                         checked={isItemSelected}
-                        inputProps={{
-                          'aria-labelledby': labelId,
-                        }}
+                        inputProps={{ 'aria-labelledby': labelId }}
                       />
                     </TableCell>
                     {columns.map((column) => (
@@ -387,11 +383,7 @@ const Services = () => {
                 );
               })}
               {emptyRows > 0 && (
-                <TableRow
-                  style={{
-                    height: (dense ? 33 : 53) * emptyRows,
-                  }}
-                >
+                <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
                   <TableCell colSpan={6} />
                 </TableRow>
               )}
@@ -401,7 +393,7 @@ const Services = () => {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={filteredRows.length}
+          count={totalRecords} // Use the total number of records from the backend
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
