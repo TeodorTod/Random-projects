@@ -1,7 +1,9 @@
 
 const AboutPage = () => {
   return (
-    <div>AboutPage</div>
+    <div>
+      <Image src="/about.png" alt="about"/>
+    </div>
   )
 }
 
