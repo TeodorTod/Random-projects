@@ -1,4 +1,5 @@
-// "use client";
+"use client";
+
 import Image from "next/image";
 import styles from "./contact.module.css";
 // import dynamic from "next/dynamic";
@@ -6,16 +7,17 @@ import styles from "./contact.module.css";
 
 // const HydrationTestNoSSR = dynamic(()=>import("@/components/hydrationTest"), {ssr: false})
 
-export const metadata = {
-  title: "Contact Page",
-  description: "Contact description",
-};
+// export const metadata = {
+//   title: "Contact Page",
+//   description: "Contact description",
+// };
 
 const ContactPage = () => {
   // const a = Math.random();
 
   // console.log(a);
-
+  console.log('It works here');
+  
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
