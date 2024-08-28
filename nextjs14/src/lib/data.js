@@ -19,26 +19,29 @@ import { connectToDb } from "./utils";
 
 
 export const getPosts = async () => {
+    await connectToDb(); // Ensure connection is awaited
+
     try {
-        connectToDb()
-        const posts = await Post.find();
+        const posts = await Post.find();  // Await the query result
         return posts;
     } catch (error) {
-        console.log(error);
-        throw new Error(error);
+        console.error('Error fetching posts:', error);
+        throw new Error('Error fetching posts!');
     }
 };
 
 export const getPost = async (slug) => {
+    await connectToDb(); // Ensure connection is awaited
+
     try {
-        connectToDb()
-        const post = await Post.find({slug});
+        const post = await Post.findOne({ slug });  // Await the query result
         return post;
     } catch (error) {
-        console.log(error);
-        throw new Error(error);
+        console.error('Error fetching post:', error);
+        throw new Error('Error fetching post!');
     }
 };
+
 
 
 export const getUser = async (id) => {

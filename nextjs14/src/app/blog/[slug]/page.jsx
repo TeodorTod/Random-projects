@@ -29,9 +29,9 @@ const SinglePostPage = async ({ params }) => {
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{post.title}</h1>
         <div className={styles.detail}>
-          <Suspense fallback={<div>Loading...</div>} >
+        {/* {post && <Suspense fallback={<div>Loading...</div>} >
             <PostUser userId={post.id} />
-          </Suspense>
+          </Suspense>} */}
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailValue}>06.09.2024</span>
