@@ -3,7 +3,7 @@ import Right from "@/components/icons/Right";
 
 const Hero = () => {
     return (
-        <section className="grid grid-cols-[4fr,6fr]">
+        <section className="grid grid-cols-[4fr,6fr] mt-4">
             <div className="py-8">
                 <h1 className="text-4xl font-semibold leading-12">
                     Everything

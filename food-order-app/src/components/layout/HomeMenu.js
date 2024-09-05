@@ -1,4 +1,7 @@
 import Image from "next/image";
+import MenuItem from "../menu/MenuItem";
+import SectionHaders from "./SectionHaders";
+import SectionHeaders from "./SectionHaders";
 
 const HomeMenu = () => {
     return (
@@ -11,16 +14,18 @@ const HomeMenu = () => {
                     <Image src={"/sallad2.png"} width={107} height={195} alt={"sallad"} />
                 </div>
             </div>
-            <div className="text-center">
-                <h3 className="uppercase text-gray-500 font-semibold leading-4">
-                    Check out
-                </h3>
-                <h2 className="text-primary font-bold text-4xl italic">Menu</h2>
+            <div className="text-center mb-4">
+                <SectionHeaders
+                    subHeader={'check out'}
+                    mainHeader={'Our Best Sellers'} />
             </div>
             <div className="grid grid-cols-3 gap-4 ">
-                <div>
-                    <img src="" alt="pizza" />
-                </div>
+                <MenuItem />
+                <MenuItem />
+                <MenuItem />
+                <MenuItem />
+                <MenuItem />
+                <MenuItem />
             </div>
         </section>
     );
