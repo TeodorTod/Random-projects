@@ -1,6 +1,6 @@
-import Hero from "@/components/layout/Hero";
-import HomeMenu from "@/components/layout/HomeMenu";
-import SectionHeaders from "@/components/layout/SectionHaders";
+import Hero from "../components/layout/Hero";
+import HomeMenu from "../components/layout/HomeMenu";
+import SectionHeaders from "../components/layout/SectionHaders";
 
 
 export default function Home() {

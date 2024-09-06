@@ -1,6 +1,5 @@
 import Image from "next/image";
 import MenuItem from "../menu/MenuItem";
-import SectionHaders from "./SectionHaders";
 import SectionHeaders from "./SectionHaders";
 
 const HomeMenu = () => {
