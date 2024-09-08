@@ -14,8 +14,8 @@ const RegisterPage = () => {
     async function handleFormSubmit(e) {
         e.preventDefault();
         setCreatingUser(true);
-        setError(false);  // Reset error state before making the request
-        setUserCreated(false); // Reset userCreated in case of a retry
+        setError(false);  
+        setUserCreated(false); 
         try {
             const response = await fetch("/api/register", {
                 method: "POST",
