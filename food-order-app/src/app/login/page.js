@@ -13,11 +13,20 @@ const LoginPage = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         setLoginInProgress(true);
-
-        await signIn('credentials', { email, password })
-
+    
+        const res = await signIn('credentials', { email, password, redirect: false });
         setLoginInProgress(false);
-    }
+    
+        if (res.error) {
+            console.log("Login error:", res.error);
+        } else if (res.ok) {
+            // Optionally handle successful login (redirect, etc.)
+            console.log("Login successful!");
+            // You can now manually redirect to another page if needed
+            window.location.href = res.url || '/';  // You can set this to your desired redirect route
+        }
+    };
+    
     return (
         <section className='mt-8'>
             <h1 className="text-center text-primary text-4xl mb-4">Login</h1>
@@ -45,8 +54,8 @@ const LoginPage = () => {
                     or login with provider
                 </div>
                 <button
-                    // onClick={() => signIn('google', { callbackUrl: '/' })}
-                    className="flex gap-4 justify-center"
+                    onClick={() => signIn('google', { callbackUrl: '/' })}
+                    className="flex gap-4 justify-center" type="button"
                 >
                     <Image src={"/google.png"} alt={""} width={24} height={24} />
                     Login with google

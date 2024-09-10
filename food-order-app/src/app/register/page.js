@@ -1,5 +1,6 @@
 "use client";
 
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -14,8 +15,8 @@ const RegisterPage = () => {
     async function handleFormSubmit(e) {
         e.preventDefault();
         setCreatingUser(true);
-        setError(false);  
-        setUserCreated(false); 
+        setError(false);
+        setUserCreated(false);
         try {
             const response = await fetch("/api/register", {
                 method: "POST",
@@ -43,7 +44,7 @@ const RegisterPage = () => {
                 {userCreated && (
                     <div className="my-4 text-center">
                         User created.
-                        <br /> Now you can {' '}
+                        <br /> Now you can{" "}
                         <Link className="underline" href={"/login"}>
                             Login &raquo;
                         </Link>
@@ -52,7 +53,8 @@ const RegisterPage = () => {
                 {error && (
                     <div className="my-4 text-center text-red-600">
                         Error.
-                        <br />Please try again later
+                        <br />
+                        Please try again later
                     </div>
                 )}
                 <input
@@ -76,15 +78,18 @@ const RegisterPage = () => {
                     or login with provider
                 </div>
                 <button
-                    // onClick={() => signIn('google', { callbackUrl: '/' })}
+                    onClick={() => signIn("google", { callbackUrl: "/" })}
                     className="flex gap-4 justify-center"
+                    type="button"
                 >
                     <Image src={"/google.png"} alt={""} width={24} height={24} />
                     Login with google
                 </button>
                 <div className="text-center my-4 text-gray-500 border-t pt-4">
-                    Existing account?{' '}
-                    <Link className="underline" href={'/login'}>Login here &raquo;</Link>
+                    Existing account?{" "}
+                    <Link className="underline" href={"/login"}>
+                        Login here &raquo;
+                    </Link>
                 </div>
             </form>
         </section>
