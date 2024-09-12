@@ -25,7 +25,9 @@ const Header = () => {
             <nav className="flex items-center gap-4 text-gray-500 font-semibold">
                 {status === "authenticated" && (
                     <>
-                        <Link href={'/profile'}>{username}</Link>
+                        <Link href={'/profile'} className="whitespace-nowrap">
+                            Hello,  {username}
+                        </Link>
                         <button
                             onClick={() => signOut()}
                             className="bg-primary text-white px-6 py-2 rounded-full"
