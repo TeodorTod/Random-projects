@@ -53,7 +53,7 @@ const page = () => {
         await toast.promise(savingPromise, {
             loading: 'Saving...',
             success: 'Profile saved!',
-            error: 'Error',
+            error: 'Error!',
         });
     }
 
