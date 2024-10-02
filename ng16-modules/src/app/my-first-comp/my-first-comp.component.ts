@@ -16,7 +16,7 @@ export class MyFirstCompComponent {
   constructor(
     private service: MyFirstService
   ) {
-    // this.messages = this.service.getAllMessages();
+    this.messages = this.service.getAllMessages();
     this.isSubmitted = this.messages.length > 0;
   }
 
