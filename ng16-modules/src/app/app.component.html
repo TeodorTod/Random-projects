@@ -1,2 +1,9 @@
-<app-my-first-comp></app-my-first-comp>
-<router-outlet></router-outlet>
+<!-- <app-menu></app-menu>
+<router-outlet></router-outlet> -->
+
+<div class="output">
+  <div class="message-wrapper" *ngFor="let output of outputs">
+    <span>{{output.time}}</span>:
+    <span>{{output.message}}</span>
+  </div>
+</div>
