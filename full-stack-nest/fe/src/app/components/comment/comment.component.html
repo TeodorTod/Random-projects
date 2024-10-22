@@ -1,40 +1,39 @@
-<a
-  href="#"
-  class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8"
->
-  <span
-    class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
-  ></span>
+<article class="relative block overflow-hidden rounded-lg border border-gray-200 p-4 sm:p-6 lg:p-8 shadow-md">
+    <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
 
-  <div class="sm:flex sm:justify-between sm:gap-4">
-    <div>
-      <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
-        Building a SaaS product as a software developer
-      </h3>
-
+    <div class="sm:flex sm:justify-between sm:gap-4">
+        <div>
+            <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
+                {{ comment.user.name }}
+            </h3>
+        </div>
     </div>
 
-  </div>
-
-  <div class="mt-4">
-    <p class="text-pretty text-sm text-gray-500">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
-      maiores deleniti consectetur nobis et eaque.
-    </p>
-  </div>
-
-  <dl class="mt-6 flex justify-end gap-4 sm:gap-6">
-    <button>Reply</button>
-    <button>12 Likes</button>
-    <button>Expand</button>
-    <div class="flex flex-col-reverse">
-      <dt class="text-sm font-medium text-gray-600">Published</dt>
-      <dd class="text-xs text-gray-500">31st June, 2021</dd>
+    <div class="mt-4">
+        <p class="text-pretty text-sm text-gray-500">
+            {{ comment.text }}
+        </p>
     </div>
 
-    <div class="flex flex-col-reverse">
-      <dt class="text-sm font-medium text-gray-600">Reading time</dt>
-      <dd class="text-xs text-gray-500">3 minute</dd>
+    <div class="mt-6 flex justify-end gap-4 sm:gap-6">
+        <button (click)="toggleReplying()"
+            class="inline-block rounded border border-current px-4 py-1 text-sm font-medium text-indigo-600 transition hover:rotate-2 hover:scale-110 focus:outline-none focus:ring active:text-indigo-500">
+            Reply
+        </button>
+        <button>12 Likes</button>
+        <button [ngClass]="isExpanded() ? 'rotate-180' : ''" (click)="toggleExpanded()" class="duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+        </button>
     </div>
-  </dl>
-</a>
+    <section class="my-4" *ngIf="isReplying()">
+        <app-comment-form placeholder="Write your reply..." buttonText="Send"></app-comment-form>
+    </section>
+    <section class="nested-comments" *ngIf="isExpanded()">
+        @for (nestedComment of nestedComments(); track nestedComment) {
+        <app-comment [comment]="nestedComment"></app-comment>
+        }
+    </section>
+</article>
