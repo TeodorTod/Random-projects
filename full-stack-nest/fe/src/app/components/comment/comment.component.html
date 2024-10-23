@@ -29,7 +29,7 @@
         </button>
     </div>
     <section class="my-4" *ngIf="isReplying()">
-        <app-comment-form placeholder="Write your reply..." buttonText="Send"></app-comment-form>
+        <app-comment-form (formSubmitted)="createComment($event)" placeholder="Write your reply..." buttonText="Send"></app-comment-form>
     </section>
     <section class="nested-comments" *ngIf="isExpanded()">
         @for (nestedComment of nestedComments(); track nestedComment) {

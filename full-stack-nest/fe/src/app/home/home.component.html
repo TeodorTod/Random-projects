@@ -1,5 +1,5 @@
 <section class="max-w-md mx-auto flex flex-col gap-4 mb-4">
-   <app-comment-form></app-comment-form>
+   <app-comment-form (formSubmitted)="createComment($event)"></app-comment-form>
 </section>
 <section class="max-w-md mx-auto flex flex-col gap-4">
     @for (comment of comments(); track comment) {

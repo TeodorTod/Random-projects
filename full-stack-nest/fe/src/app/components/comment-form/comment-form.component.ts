@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-comment-form',
@@ -10,7 +10,9 @@ import { Component, Input, Output } from '@angular/core';
 export class CommentFormComponent {
   @Input() placeholder = 'Write something...';
   @Input() buttonText = 'Create';
-  @Output()
+  @Output() formSubmitted = new EventEmitter<{
+    text: string
+  }>
 
   formSubmit(event: SubmitEvent) {
     event.preventDefault();
@@ -19,6 +21,8 @@ export class CommentFormComponent {
     const commentText = textAreaElement.value;
     form.reset();
     console.log({commentText});
-    
+    this.formSubmitted.emit({
+      text: commentText
+    })
   }
 }

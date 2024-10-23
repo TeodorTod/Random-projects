@@ -3,6 +3,7 @@ import { Component, effect, inject, Input, signal } from '@angular/core';
 import { CommentFormComponent } from '../comment-form/comment-form.component';
 import { Comment } from '../../interfaces/comment.interface';
 import { CommentService } from '../../services/comment.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-comment',
@@ -16,7 +17,8 @@ export class CommentComponent {
   isExpanded = signal<boolean>(false);
   isReplying = signal<boolean>(false);
   commentService = inject(CommentService);
-  nestedComments = signal<Comment[]>([])
+  nestedComments = signal<Comment[]>([]);
+  userService = inject(UserService);
 
   nestedCommentEffect = effect(() => {
     if (this.isExpanded()) {
@@ -39,5 +41,22 @@ export class CommentComponent {
 
   commentTrackBy(_index: number, comment: Comment) {
     return comment._id;
+  }
+
+  createComment(formValues: { text: string }) {
+    const { text } = formValues;
+    const user = this.userService.getUserFromStorage();
+    if (!user) {
+      return;
+    }
+    this.commentService
+      .createComment({
+        text,
+        userId: user._id,
+        parentId: this.comment._id
+      })
+      .subscribe((createdComment) => {
+        this.nestedComments.set([createdComment, ...this.nestedComments()]);
+      });
   }
 }
