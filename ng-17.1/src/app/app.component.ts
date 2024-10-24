@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { CounterComponent } from './components/counter/counter.component';
@@ -11,9 +11,24 @@ import { CounterComponent } from './components/counter/counter.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  counter: number = 20;
+  count = signal(0);
+  colors = signal(['green', 'blue']);
+  length = signal(20);
+  breath = signal(40);
+
+  area = computed(() => this.length() * this.breath());
 
   onIncrement() {
-    this.counter++;
+    this.count.update((prev) =>  prev += 1);
+    this.colors.update((colors) => [...colors, 'opapa'])
+    // console.log(this.colors());
+    
+  }
+
+  constructor() {
+    effect(() => {
+      console.log('Effect due to change', this.colors());
+      
+    })
   }
 }

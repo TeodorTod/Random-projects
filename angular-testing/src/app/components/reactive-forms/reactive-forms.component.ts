@@ -1,29 +1,30 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-forms',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './reactive-forms.component.html',
   styleUrl: './reactive-forms.component.scss'
 })
 export class ReactiveFormsComponent {
+  myForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
-  profileForm = this.formBuilder.group({
-    firstName: ['', Validators.required],
-    lastName: [''],
-    address: this.formBuilder.group({
-      street: [''],
-      city: [''],
-      state: [''],
-      zip: [''],
-    }),
-  })
+  constructor() {
+    this.myForm = new FormGroup({
+      // Define your form controls here
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
+      email: new FormControl('', [Validators.required, Validators.email])
+    });
+  }
 
   onSubmit() {
-    console.log(this.profileForm);
-
+    // Handle form submission here
+    console.log(this.myForm);
+    this.myForm.reset();
   }
+
 }

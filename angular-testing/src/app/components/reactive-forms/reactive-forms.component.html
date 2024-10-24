@@ -1,29 +1,17 @@
-<!-- Add formGroup binding to the parent element -->
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <label for="firstName">First Name: </label>
-    <input id="firstName" type="text" formControlName="firstName">
-    
-    <label for="lastName">Last Name: </label>
-    <input id="lastName" type="text" formControlName="lastName">
-  
-    <!-- Wrap the formGroupName inside the formGroup -->
-    <div formGroupName="address">
-      <h2>Address</h2>
-      <label for="street">Street: </label>
-      <input id="street" type="text" formControlName="street">
-      
-      <label for="city">City: </label>
-      <input id="city" type="text" formControlName="city">
-      
-      <label for="state">State: </label>
-      <input id="state" type="text" formControlName="state">
-      
-      <label for="zip">Zip Code: </label>
-      <input id="zip" type="text" formControlName="zip">
-    </div>
-  
-    <button [disabled]="!profileForm.valid">Submit</button>
-  </form>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <label for="firstName">First Name:</label>
+  <input type="text" id="firstName" formControlName="firstName">
 
-  <p>Form Status: {{ profileForm.status }}</p>
+  <label for="lastName">Last Name:</label>
+  <input type="text" id="lastName" formControlName="lastName">
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" formControlName="email">
   
+  <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.touched">
+    <div *ngIf="myForm.get('email')?.errors?.['required']" style="color: red">Email is required.</div>
+    <div *ngIf="myForm.get('email')?.errors?.['email']" style="color: red">Invalid email format.</div>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
