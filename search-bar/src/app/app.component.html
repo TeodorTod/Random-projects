@@ -1,0 +1,5 @@
+<div class="container">
+  <form [formGroup]="searchForm" class="searchBar" (ngSubmit)="onSearchSubmit()">
+    <input type="text" placeholder="Search.." formControlName="searchValue" class="searchBarInput">
+  </form>
+</div>
