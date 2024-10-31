@@ -1,5 +1,13 @@
 <div class="container">
-  <form [formGroup]="searchForm" class="searchBar" (ngSubmit)="onSearchSubmit()">
-    <input type="text" placeholder="Search.." formControlName="searchValue" class="searchBarInput">
-  </form>
+  <div class="headline">Layout</div>
+  <div class="links">
+    <a routerLink="/dashboard" routerLinkActive="active">dashboard</a>
+    <a routerLink="/products" routerLinkActive="active">products</a>
+    <a routerLink="/settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">settings</a>
+    <a routerLink="/settings/profile" routerLinkActive="active">profile</a>
+    <a routerLink="/pages/11" routerLinkActive="active">pages/11</a>
+  </div>
+  <div class="main">
+    <router-outlet />
+  </div>
 </div>
