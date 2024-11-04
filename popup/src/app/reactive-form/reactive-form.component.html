@@ -7,7 +7,7 @@
                 <small>First name is required field</small>
                 }
                  @if (form.controls.firstName.errors?.['minlength']) {
-                <small>First name must be at least 3 symbols</small>
+                <small>First name must be at least 3 symbols!</small>
                 }
                  @if (form.controls.firstName.errors?.['forbiddenName']) {
                 <small>The {{form.controls.firstName.value}} Name is forbidden</small>
