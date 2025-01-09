@@ -6,7 +6,7 @@
     [checked]="isAllTodosSelected()"
     (change)="toggleAllTodos($event)"
   />
-  <label for="toggle-all">Mark all as completed:</label>
+  <label for="toggle-all">Mark all as completed</label>
   <ul class="todo-list">
     @for (todo of visibleTodos(); track todo) {
     <app-todo
