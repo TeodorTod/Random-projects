@@ -13,5 +13,8 @@ export default defineConfig({
       ciBaseUrl: 'http://localhost:4200',
     }),
     baseUrl: 'http://localhost:4200',
+      videosFolder: '../dist/cypress/apps/angular-store-e2e/videos-changed',
+    screenshotsFolder:
+      '../dist/cypress/apps/angular-store-e2e/screenshots-changed',
   },
 });
