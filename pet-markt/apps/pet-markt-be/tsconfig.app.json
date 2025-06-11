@@ -3,13 +3,18 @@
   "compilerOptions": {
     "outDir": "dist",
     "types": ["node"],
-    "rootDir": "src",
+    "rootDir": ".",  // Ensure rootDir is set properly for your app
     "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "target": "es2021"
+    "target": "es2021",
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "prisma/**/*.ts"  // Ensure Prisma files are included for TypeScript compilation
+  ],
   "exclude": [
     "out-tsc",
     "dist",
