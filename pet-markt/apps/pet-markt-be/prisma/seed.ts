@@ -1,18 +1,18 @@
-import { PrismaClient } from "@prisma/client";
-import { productsList } from "./productsList";
+import { PrismaClient } from '@prisma/client';
+import { productsList } from './productsList';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log("Start seeding...");
+  console.log('Start seeding...');
 
   // Check existing products
-const existingProducts = await prisma.product.findMany({
-  select: { stripePriceId: true },
-});
-const existingPriceIds = new Set(
-  existingProducts.map((p: { stripePriceId: string }) => p.stripePriceId)
-);
+  const existingProducts = await prisma.product.findMany({
+    select: { stripePriceId: true },
+  });
+  const existingPriceIds = new Set(
+    existingProducts.map((p) => p.stripePriceId)
+  );
 
   console.log({ existingProducts });
 
@@ -40,7 +40,7 @@ const existingPriceIds = new Set(
     }
   }
 
-  console.log("Seeding finished.");
+  console.log('Seeding finished.');
 }
 
 main()

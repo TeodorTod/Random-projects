@@ -21,7 +21,6 @@
         }
       },
       "serve": {
-        "continuous": true,
         "executor": "@nx/js:node",
         "defaultConfiguration": "development",
         "dependsOn": [
@@ -51,7 +50,6 @@
     "seed": "npx ts-node ./prisma/seed.ts"
   },
   "dependencies": {
-    "@prisma/client": "^6.9.0",
-    "prisma": "^6.9.0"
+    "@prisma/client": "^6.4.1"
   }
 }
