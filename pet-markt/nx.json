@@ -52,12 +52,31 @@
         "targetName": "test"
       },
       "exclude": ["apps/pet-markt-be-e2e/**/*"]
+    },
+    {
+      "plugin": "@nx/playwright/plugin",
+      "options": {
+        "targetName": "e2e"
+      }
     }
   ],
   "targetDefaults": {
     "test": {
       "dependsOn": ["^build"]
+    },
+    "@angular/build:application": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
-  "nxCloudId": "684c7f6435b46c57ca4b8a92"
+  "nxCloudId": "684c7f6435b46c57ca4b8a92",
+  "generators": {
+    "@nx/angular:application": {
+      "e2eTestRunner": "playwright",
+      "linter": "eslint",
+      "style": "scss",
+      "unitTestRunner": "jest"
+    }
+  }
 }
